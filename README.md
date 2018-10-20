@@ -1,3 +1,5 @@
+![](https://i.imgur.com/z7XdAkb.png?1)
+
 ## Demo + Documentation
 
 https://iliyazelenko.github.io/vue-cool-select
