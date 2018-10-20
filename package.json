@@ -1,0 +1,65 @@
+{
+  "name": "vue-cool-select",
+  "version": "1.0.0",
+  "main": "dist/vue-cool-select.umd.min.js",
+  "author": "Ilya Zelenko",
+  "description": "Vue select with autocomplete and with slots. 2 themes: bootstrap 4, material design.",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "keywords": [
+    "vue",
+    "select",
+    "autocomplete",
+    "vue.js",
+    "slots",
+    "bootstrap",
+    "bootstrap 4",
+    "material design"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iliyaZelenko/vue-cool-select.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iliyaZelenko/vue-cool-select/issues"
+  },
+  "homepage": "https://github.com/iliyaZelenko/vue-cool-select#readme",
+  "license": "MIT",
+  "scripts": {
+    "serve": "vue-cli-service serve ./example/main.js",
+    "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
+    "gh-pages": "vue-cli-service build ./example/main.js --dest=gh-pages",
+    "bp": "yarn build && yalc publish --push",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.17"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-e2e-cypress": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-plugin-unit-jest": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "@vue/eslint-config-standard": "^3.0.5",
+    "@vue/test-utils": "^1.0.0-beta.25",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "propdoc": "^0.9.3",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
