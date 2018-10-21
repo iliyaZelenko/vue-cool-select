@@ -1,35 +1,9 @@
 <template>
-  <div class="demo-page-wrap">
-    <div>
-      <h1 style="text-align: center;">Usage Example 3</h1>
-
-      <b>Selected:</b> {{ selected || 'not chosen' }}.
-      <br><br>
-
-      <h3>Select name</h3>
-
-      <cool-select
-        v-model="selected"
-        :items="items"
-      />
-    </div>
+  <div style="padding: 60px;">
+    <iframe
+      class="example-frame"
+      src="https://codesandbox.io/embed/llz9rzl5yz?module=%2Fsrc%2FApp.vue"
+      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+    />
   </div>
 </template>
-
-<script>
-import { CoolSelect } from '../../src/main'
-
-export default {
-  components: { CoolSelect },
-  data: () => ({
-    selected: null,
-    items: [
-      'Anton',
-      'Andrey',
-      'Sasha',
-      'Vladimir',
-      'Dima'
-    ]
-  })
-}
-</script>

@@ -2,12 +2,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// 1. import
 import CoolSelect from '../src/main'
 
-// 2. use
+const theme = window.location.hash.slice(1) || 'bootstrap'
+
 Vue.use(CoolSelect, {
-  theme: 'bootstrap' // or 'material-design'
+  theme: theme // 'bootstrap' or 'material-design'
 })
 
 Vue.config.productionTip = false

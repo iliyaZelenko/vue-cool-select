@@ -1,3 +1,9 @@
+.IZ-select *
+  font-size: 16px;
+  font-weight: 400;
+  webkit-font-smoothing: antialiased;
+  font-family: Roboto, sans-serif;
+
 .IZ-select__input
   -webkit-box-align: center;
   align-items: center;
@@ -6,7 +12,7 @@
   flex: 1 1 auto;
   flex-wrap: wrap;
 
-  padding: 12px 20px;
+  //padding: 12px 20px;
   width: 100%;
   //padding: 0 12px;
   font-size: 1rem;
@@ -30,17 +36,25 @@
     transition: background 0s;
   /* End Ripple effect */
 
-  &.IZ-select__input--focused
-    border-bottom: 0;
+  &.IZ-select__input--has-menu
+    //border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
   &.IZ-select__input--selection-slot
+    padding-left: 20px;
+
     input
-      margin-left: 5px;
+      padding-left: 10px;
 
   input
+    /* Loading indicator */
+    background-size: 25px 25px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+
     background-color: transparent;
+    padding: 12px 20px; // поменять и в другом месте 20px (сделать поиск)
     border-style: none;
     pointer-events: auto;
     flex: 1 1;
@@ -56,7 +70,7 @@
     &:focus
       outline: none;
 
-.IZ-select__items-wrap
+.IZ-select__menu
   position: absolute;
   z-index: 8;
   transform-origin: left top 0; // на всякий случай

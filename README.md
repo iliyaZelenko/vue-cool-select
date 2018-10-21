@@ -1,8 +1,10 @@
-![](https://i.imgur.com/z7XdAkb.png?1)
+![](https://i.imgur.com/z7XdAkb.png?3)
 
-## Demo + Documentation
+## [Demo + Documentation](https://iliyazelenko.github.io/vue-cool-select)
 
 https://iliyazelenko.github.io/vue-cool-select
+
+[![](https://i.imgur.com/XqHoHxM.png)](https://iliyazelenko.github.io/vue-cool-select)
 
 ## Features
 
@@ -17,7 +19,7 @@ https://iliyazelenko.github.io/vue-cool-select
 
 ## Get started
 
-1. Select theme
+1. Import and select theme
   ```js
   import VueSelect from 'vue-cool-select'
   
@@ -36,8 +38,7 @@ export default {
 }
 ```
 
-3. Use in template
-
+3. Add to template
 ```vue
 <cool-select
   v-model="selected"
@@ -45,7 +46,7 @@ export default {
 />
 ```
 
-See examples [here](https://iliyazelenko.github.io/vue-cool-select).
+Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select).
 
 #### TODO
 - Control through arrows and Tab

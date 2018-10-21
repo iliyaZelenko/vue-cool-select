@@ -7,7 +7,6 @@
   flex-wrap: wrap;
 
   width: 100%;
-  padding: .375rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
   color: #495057;
@@ -17,17 +16,25 @@
   border-radius: .25rem;
   //transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
-  &.IZ-select__input--focused
+  &.IZ-select__input--has-menu
     border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
   &.IZ-select__input--selection-slot
+    padding-left: .75rem;
+
     input
-      margin-left: 5px;
+      padding-left: 10px;
 
   input
+    /* Loading indicator */
+    background-size: 25px 25px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+
     background-color: transparent;
+    padding: .375rem .75rem; // поменять и в другом месте .75rem (сделать поиск)
     border-style: none;
     pointer-events: auto;
     flex: 1 1;
@@ -43,7 +50,7 @@
     &:focus
       outline: none;
 
-.IZ-select__items-wrap
+.IZ-select__menu
   position: absolute;
   z-index: 8;
   transform-origin: left top 0; // на всякий случай

@@ -4,7 +4,7 @@
       ref="IZ-select__input"
       :class="{
         'IZ-select__input': true,
-        'IZ-select__input--focused': focused,
+        'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--selection-slot': showSelectionSlot
       }"
       @click="onInputClick"
@@ -20,6 +20,8 @@
       <input
         ref="IZ-select__input-for-text"
         :value="inputValue"
+        :placeholder="placeholder"
+        :style="inputForTextStyles"
         type="text"
         role="combobox"
         autocomplete="off"
@@ -30,12 +32,12 @@
 
     <transition name="fade">
       <div
-        v-if="focused"
-        ref="IZ-select__items-wrap"
+        v-if="hasMenu"
+        ref="IZ-select__menu"
         :style="{
           'min-width': this.$refs['IZ-select__input'].offsetWidth + 'px'
         }"
-        class="IZ-select__items-wrap"
+        class="IZ-select__menu"
         @scroll="onScroll"
       >
         <div
@@ -58,7 +60,7 @@
           </slot>
         </div>
         <span
-          v-if="!computedItems.length"
+          v-if="!computedItems.length && !loading"
           class="IZ-select__no-data"
         >
           <slot name="no-data">
@@ -101,6 +103,21 @@ export default {
       type: String,
       default: null, // значит вернуть весь объект, 'value'
       note: 'property in item for value'
+    },
+    placeholder: {
+      type: String,
+      default: null,
+      note: 'placeholder for input'
+    },
+    loading: {
+      type: Boolean,
+      default: null,
+      note: 'display the loading indicator'
+    },
+    loadingIndicator: { // http://loadinggif.com/images/image-selection/3.gif
+      type: String,
+      default: 'https://i.imgur.com/fLYd7PN.gif',
+      note: 'sets custom loading spinner/indicator. https://loading.io/'
     },
     filter: {
       type: Function,
@@ -153,6 +170,18 @@ export default {
     },
     showSelectionSlot () {
       return this.$scopedSlots.selection && this.selectedItem && !this.search
+    },
+    inputForTextStyles () {
+      if (this.loading) {
+        return {
+          'background-image': `url(${this.loadingIndicator})`
+        }
+      }
+
+      return {}
+    },
+    hasMenu () {
+      return this.focused && !this.loading
     }
   },
   watch: {
@@ -175,7 +204,7 @@ export default {
     this.setSelectedItemByValue()
 
     window.addEventListener('click', ({ target }) => {
-      const itemsWrap = this.$refs['IZ-select__items-wrap']
+      const itemsWrap = this.$refs['IZ-select__menu']
       const input = this.$refs['IZ-select__input']
 
       if (itemsWrap && !itemsWrap.contains(target) && !input.contains(target)) {
