@@ -30,8 +30,8 @@
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js",
     "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
-    "ghp": "vue-cli-service build ./example/main.js --dest=gh-pages",
-    "ghp-deploy": "./gp-deploy.sh",
+    "gp": "vue-cli-service build ./example/main.js --dest=gh-pages",
+    "gp-deploy": "./gp-deploy.sh",
     "bp": "yarn build && yalc publish --push",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
