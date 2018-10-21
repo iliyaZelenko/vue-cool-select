@@ -111,7 +111,7 @@ export default {
     },
     loading: {
       type: Boolean,
-      default: null,
+      default: false,
       note: 'display the loading indicator'
     },
     loadingIndicator: { // http://loadinggif.com/images/image-selection/3.gif
