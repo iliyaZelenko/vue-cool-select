@@ -28,9 +28,9 @@
   "homepage": "https://github.com/iliyaZelenko/vue-cool-select#readme",
   "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve ./example/main.js",
+    "serve": "vue-cli-service serve ./gh-pages-src/main.js",
     "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
-    "gp": "vue-cli-service build ./example/main.js --dest=gh-pages-build",
+    "gp": "vue-cli-service build ./gh-pages-src/main.js --dest=gh-pages-build",
     "gp-deploy": "./gp-deploy.sh",
     "bp": "yarn build && yalc publish --push",
     "lint": "vue-cli-service lint",
