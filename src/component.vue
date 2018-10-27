@@ -68,7 +68,6 @@
           </slot>
         </span>
       </div>
-      {{ computedItems }}
     </transition>
   </div>
 </template>

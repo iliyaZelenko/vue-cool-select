@@ -6,7 +6,7 @@ set -e
 yarn gp
 
 # navigate into the build output directory
-cd gh-pages
+cd gh-pages-build
 
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME

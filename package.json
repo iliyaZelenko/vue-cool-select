@@ -1,6 +1,6 @@
 {
   "name": "vue-cool-select",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "dist/vue-cool-select.umd.min.js",
   "author": "Ilya Zelenko",
   "description": "Vue select with autocomplete and with slots. 2 themes: bootstrap 4, material design.",
@@ -30,7 +30,7 @@
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js",
     "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
-    "gp": "vue-cli-service build ./example/main.js --dest=gh-pages",
+    "gp": "vue-cli-service build ./example/main.js --dest=gh-pages-build",
     "gp-deploy": "./gp-deploy.sh",
     "bp": "yarn build && yalc publish --push",
     "lint": "vue-cli-service lint",

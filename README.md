@@ -1,4 +1,9 @@
-![](https://i.imgur.com/z7XdAkb.png?3)
+# Flexible select, you can use slots and 2 style themes.
+
+<div style="text-align: center">
+  <img src="https://i.imgur.com/z7XdAkb.png?3" width="350px;">
+  <img src="https://i.imgur.com/Ko1XsvT.png" width="350px;">
+</div>
 
 ## [Demo + Documentation](https://iliyazelenko.github.io/vue-cool-select)
 
@@ -12,6 +17,7 @@ https://iliyazelenko.github.io/vue-cool-select
 - autocomplete
 - asynchronous data
 - slots
+- loading indicator
 
 ## Installation
 
@@ -50,5 +56,4 @@ Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select
 
 #### TODO
 - Control through arrows and Tab
-- Loading indicator
 - Tests

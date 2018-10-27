@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 #/dist
-/gh-pages
+gh-pages-src
+gh-pages-build
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
