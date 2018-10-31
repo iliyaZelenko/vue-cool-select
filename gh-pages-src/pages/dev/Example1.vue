@@ -66,7 +66,7 @@
 
 <script>
 import countries from '../../countries'
-import { CoolSelect } from 'vue-cool-select'
+import { CoolSelect } from '../../../src/main'
 
 export default {
   components: { CoolSelect },
@@ -77,9 +77,9 @@ export default {
   methods: {
     getFlag (flagName) {
       try {
-        return require(`./flags/${flagName.toLowerCase()}.svg`)
+        return require(`../../flags/${flagName.toLowerCase()}.svg`)
       } catch (e) {
-        return require('./flags/undefined.svg')
+        return require('../../flags/undefined.svg')
       }
     },
     setRandom () {

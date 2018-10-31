@@ -26,6 +26,7 @@
         v-model="selected"
         :items="items"
         :loading="loading"
+        placeholder="Search"
         item-text="name"
         disable-filtering-by-search
         @search="onSearch"

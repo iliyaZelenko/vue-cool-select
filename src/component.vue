@@ -4,7 +4,9 @@
       ref="IZ-select__input"
       :class="{
         'IZ-select__input': true,
+        'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
+        'IZ-select__input--has-error': hasError,
         'IZ-select__input--selection-slot': showSelectionSlot
       }"
       @click="onInputClick"
@@ -26,6 +28,7 @@
         role="combobox"
         autocomplete="off"
         @keyup="onSearchKeyUp"
+        @keydown="onSearchKeyDown"
         @input="onSearch"
       >
     </div>
@@ -35,7 +38,8 @@
         v-if="hasMenu"
         ref="IZ-select__menu"
         :style="{
-          'min-width': this.$refs['IZ-select__input'].offsetWidth + 'px'
+          'min-width': this.$refs['IZ-select__input'].offsetWidth + 'px',
+          'pointer-events': !hasMenu ? 'none' : 'auto'
         }"
         class="IZ-select__menu"
         @scroll="onScroll"
@@ -67,6 +71,20 @@
             No data avalidable
           </slot>
         </span>
+      </div>
+    </transition>
+
+    <transition name="fade">
+      <div
+        v-show="errorMessage"
+        class="IZ-select__error"
+      >
+        <slot
+          :errorMessage="errorMessage"
+          name="error"
+        >
+          {{ errorMessage }}
+        </slot>
       </div>
     </transition>
   </div>
@@ -118,6 +136,13 @@ export default {
       default: 'https://i.imgur.com/fLYd7PN.gif',
       note: 'sets custom loading spinner/indicator. https://loading.io/'
     },
+    // invalid: {
+    //   type: Boolean,
+    // },
+    errorMessage: {
+      type: String,
+      default: null
+    },
     filter: {
       type: Function,
       default: (item, queryText, itemText) => {
@@ -136,6 +161,11 @@ export default {
       type: Boolean,
       default: false,
       note: 'disable filtering by search (you can use search for manually getting items)'
+    },
+    resetSearchOnBlur: {
+      type: Boolean,
+      default: true,
+      note: 'Reset search on blur event'
     }
   },
   data: () => ({
@@ -181,6 +211,9 @@ export default {
     },
     hasMenu () {
       return this.focused && !this.loading
+    },
+    hasError () {
+      return !!this.errorMessage
     }
   },
   watch: {
@@ -196,7 +229,18 @@ export default {
       this.$emit('input', this.currentItemValue)
     },
     focused () {
-      this.$emit('focus', this.focused)
+      // TODO я знаю что это ламающее изменение, но лучше пусть немного пользователей пострадают чем это будет запутывать людей
+      // this.$emit('focus', this.focused)
+
+      if (this.focused) {
+        this.$emit('focus')
+      } else {
+        this.$emit('blur')
+
+        if (this.resetSearchOnBlur) {
+          this.search = ''
+        }
+      }
     }
   },
   created () {
@@ -223,13 +267,24 @@ export default {
 
       this.$emit('select', item)
     },
-    onSearchKeyUp (e) {
-      if (!this.search && e.key === 'Backspace') {
+    onSearchKeyDown (e) {
+      // key === 'Delete' ||
+      if (!e.target.value && e.key === 'Backspace') {
         this.selectedItem = null
       }
+      this.$emit('keydown', e)
+    },
+    onSearchKeyUp (e) {
+      this.$emit('keyup', e)
     },
     onSearch (e) {
+      this.selectedItem = null
+      // e.inputType: "deleteContentBackward"
       // if (!this.focused) this.focused = true
+      // console.log(e.target.value)
+      // if (!e.target.value) {
+      //   this.selectedItem = null
+      // }
 
       this.search = e.target.value
       this.$emit('search', this.search)
@@ -263,7 +318,9 @@ export default {
       return item
     },
     setSelectedItemByValue () {
-      this.selectedItem = this.items.find(i => this.getItemValue(i) === this.value)
+      this.selectedItem = this.items.find(i =>
+        this.getItemValue(i) === this.value
+      )
     }
   }
 }

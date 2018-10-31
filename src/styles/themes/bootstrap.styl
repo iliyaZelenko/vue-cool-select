@@ -1,3 +1,8 @@
+//.IZ-select *
+//  font-size: 16px;
+//  font-weight: 400;
+//  font-family: sans-serif;
+
 .IZ-select__input
   -webkit-box-align: center;
   align-items: center;
@@ -14,10 +19,15 @@
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: .25rem;
+  transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   //transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
+  // TODO disabled
+  //color: #6c757d !important;
+  //background-color: #e9ecef !important;
+
   &.IZ-select__input--has-menu
-    border-bottom: 0;
+    //border-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
@@ -27,7 +37,23 @@
     input
       padding-left: 10px;
 
+  &.IZ-select__input--has-error
+    border: 1px solid #dc3545 !important;
+    caret-color: #ff5252 !important;
+
+    input
+      color: #ff5252 !important;
+
+  &.IZ-select__input--focused
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(128, 189, 255, 0.5);
+
+    &.IZ-select__input--has-error
+      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+
   input
+    font-size: 1rem;
     /* Loading indicator */
     background-size: 25px 25px;
     background-position: right 10px center;
@@ -62,6 +88,7 @@
   padding: 8px 0 8px;
   border: 1px solid #ced4da;
   border-radius: .25rem;
+  border-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: 0px 2px 11px -2px rgba(0,0,0,0.19);
@@ -71,7 +98,7 @@
 
 .IZ-select__item
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 14px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 
   &:hover
@@ -80,3 +107,8 @@
   &.IZ-select__item--selected
     color: #1976d2 !important;
     //background-color: lightgrey;
+
+.IZ-select__error
+  margin-top: .55rem;
+  font-size: 85%;
+  color: #dc3545;

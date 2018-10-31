@@ -1,11 +1,13 @@
-# Flexible select, you can use slots and 2 style themes.
+# Flexible select.
 
 <div style="text-align: center">
-  <img src="https://i.imgur.com/z7XdAkb.png?3" width="350px;">
-  <img src="https://i.imgur.com/Ko1XsvT.png" width="350px;">
+  <img src="https://i.imgur.com/z7XdAkb.png?3" width="210px;">
+  <img src="https://i.imgur.com/Ko1XsvT.png" width="210px;">
+  <img src="https://i.imgur.com/FeOD4Go.png" width="210px;">
+  <img src="https://i.imgur.com/38xQWCg.png" width="210px;">
 </div>
 
-## [Demo + Documentation](https://iliyazelenko.github.io/vue-cool-select)
+## [Demos + Documentation](https://iliyazelenko.github.io/vue-cool-select)
 
 https://iliyazelenko.github.io/vue-cool-select
 
@@ -18,6 +20,7 @@ https://iliyazelenko.github.io/vue-cool-select
 - asynchronous data
 - slots
 - loading indicator
+- validation
 
 ## Installation
 
@@ -56,4 +59,8 @@ Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select
 
 #### TODO
 - Control through arrows and Tab
+- Disabled state
 - Tests
+
+I am happy to add something or improve, you can write what you want to see.
+I also have more motivation to work if you put a star.
