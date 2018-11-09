@@ -7,7 +7,9 @@
         'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--has-error': hasError,
-        'IZ-select__input--selection-slot': showSelectionSlot
+        'IZ-select__input--selection-slot': showSelectionSlot,
+        'IZ-select__input--disabled': disabled,
+        'IZ-select__input--readonly': readonly
       }"
       @click="onInputClick"
     >
@@ -21,9 +23,12 @@
 
       <input
         ref="IZ-select__input-for-text"
+        v-bind="inputElCustomAttributes"
         :value="inputValue"
         :placeholder="placeholder"
         :style="inputForTextStyles"
+        :disabled="disableSearch || disabled"
+        :readonly="readonly"
         type="text"
         role="combobox"
         autocomplete="off"
@@ -143,6 +148,16 @@ export default {
       type: String,
       default: null
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+      note: 'disable the select'
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+      note: 'readonly state'
+    },
     filter: {
       type: Function,
       default: (item, queryText, itemText) => {
@@ -157,6 +172,16 @@ export default {
       },
       note: 'filter function for search'
     },
+    inputElCustomAttributes: {
+      type: Object,
+      default: () => ({}),
+      note: 'you can pass your attributes to the input element'
+    },
+    disableSearch: {
+      type: Boolean,
+      default: false,
+      note: 'disable search input element'
+    },
     disableFilteringBySearch: {
       type: Boolean,
       default: false,
@@ -165,7 +190,7 @@ export default {
     resetSearchOnBlur: {
       type: Boolean,
       default: true,
-      note: 'Reset search on blur event'
+      note: 'reset search on blur event'
     }
   },
   data: () => ({
@@ -257,6 +282,8 @@ export default {
   },
   methods: {
     onInputClick () {
+      if (this.disabled || this.readonly) return
+
       this.$refs['IZ-select__input-for-text'].focus()
       this.focused = true
     },

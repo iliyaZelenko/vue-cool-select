@@ -44,6 +44,10 @@
       <router-link to="/dev/4">
         Dev 4
       </router-link>
+      |
+      <router-link to="/dev/5">
+        Dev 5
+      </router-link>
 
       <switch-theme v-if="$route.fullPath.includes('dev')" />
     </p>

@@ -56,6 +56,10 @@ export default new Router({
       {
         path: '/4',
         component: () => import(/* webpackChunkName: "DevExample2" */ './pages/dev/Example4')
+      },
+      {
+        path: '/5',
+        component: () => import(/* webpackChunkName: "DevExample2" */ './pages/dev/Example5')
       }
     ])
   ]

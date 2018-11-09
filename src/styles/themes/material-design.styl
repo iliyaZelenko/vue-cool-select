@@ -22,19 +22,20 @@
   background-clip: padding-box;
   border-radius: 2px;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
-
-  /* Ripple effect */
-  background-position: center;
   transition: background 0.8s;
 
-  &:hover
-    background: #fbfbfb radial-gradient(circle, transparent 1%, #fbfbfb 1%) center/15000%;
+  &:not(.IZ-select__input--disabled)&:not(.IZ-select__input--readonly)
+    /* Ripple effect */
+    background-position: center;
 
-  &:active
-    background-color: #f5f5f5;
-    background-size: 100%;
-    transition: background 0s;
-  /* End Ripple effect */
+    &:hover
+      background: #fbfbfb radial-gradient(circle, transparent 1%, #fbfbfb 1%) center/15000%;
+
+    &:active
+      background-color: #f5f5f5;
+      background-size: 100%;
+      transition: background 0s;
+    /* End Ripple effect */
 
   &.IZ-select__input--has-menu
     //border-bottom: 0;
@@ -62,6 +63,16 @@
   //
   //  &.IZ-select__input--has-error
   //    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+
+  &.IZ-select__input--disabled
+    pointer-events: none;
+    background: rgba(0,0,0,0.01);
+
+    input
+      color: #c8c8c8 !important;
+
+      &::placeholder
+        color: #c8c8c8;
 
   input
     /* Loading indicator */
