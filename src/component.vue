@@ -42,15 +42,15 @@
       <div
         v-if="hasMenu"
         ref="IZ-select__menu"
-        :style="{
-          'min-width': this.$refs['IZ-select__input'].offsetWidth + 'px',
-          'pointer-events': !hasMenu ? 'none' : 'auto'
+        :style="menuDynamicStyles"
+        :class="{
+          'IZ-select__menu': true,
+          'IZ-select__menu--disable-search': disableSearch
         }"
-        class="IZ-select__menu"
         @scroll="onScroll"
       >
         <div
-          v-for="(item, i) in computedItems"
+          v-for="(item, i) in itemsComputed"
           v-if="i < itemsLimit"
           :key="'IZ-item-' + i"
           :class="{
@@ -69,7 +69,7 @@
           </slot>
         </div>
         <span
-          v-if="!computedItems.length && !loading"
+          v-if="!itemsComputed.length && !loading"
           class="IZ-select__no-data"
         >
           <slot name="no-data">
@@ -111,7 +111,7 @@ export default {
       note: 'value for v-model'
     },
     items: {
-      type: Array,
+      type: [Array, String],
       required: true,
       note: 'array of suggestions (data fetched from backend, etc)'
     },
@@ -200,6 +200,15 @@ export default {
     search: '' // null
   }),
   computed: {
+    itemsComputed () {
+      let items = this.items
+
+      if (typeof this.items === 'string') {
+        items = JSON.parse(this.items)
+      }
+
+      return this.filteredBySearchItems(items)
+    },
     inputValue () {
       // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
       if (this.$scopedSlots.selection && this.search === '') return ''
@@ -211,16 +220,6 @@ export default {
     },
     currentItemValue () {
       return this.getItemValue(this.selectedItem)
-    },
-    computedItems () {
-      return this.filteredBySearchItems
-    },
-    filteredBySearchItems () {
-      if (!this.search || this.disableFilteringBySearch) return this.items
-
-      return this.items.filter(i =>
-        this.filter(i, this.search, this.getItemText(i))
-      )
     },
     showSelectionSlot () {
       return this.$scopedSlots.selection && this.selectedItem && !this.search
@@ -239,16 +238,31 @@ export default {
     },
     hasError () {
       return !!this.errorMessage
+    },
+    isMobile () {
+      // return window.innerWidth + window.innerHeight <= 1800
+      return window.innerWidth <= 900 && window.innerHeight <= 900
+    },
+    menuDynamicStyles () {
+      let obj = {
+        // ширина такая же как и у поля ввода
+        'width': this.$refs['IZ-select__input'].offsetWidth + 'px',
+        'pointer-events': !this.hasMenu ? 'none' : 'auto'
+      }
+
+      if (this.disableSearch) {
+        obj.top = this.$refs['IZ-select__input'].offsetTop + 'px'
+      }
+
+      return obj
     }
   },
   watch: {
     value () {
       this.setSelectedItemByValue()
     },
-    items (items) {
-      // console.log(122)
+    items () {
       this.setSelectedItemByValue()
-      // console.log(items, this.items)
     },
     selectedItem () {
       this.$emit('input', this.currentItemValue)
@@ -256,6 +270,11 @@ export default {
     focused () {
       // TODO я знаю что это ламающее изменение, но лучше пусть немного пользователей пострадают чем это будет запутывать людей
       // this.$emit('focus', this.focused)
+      // this.$nextTick(() => {
+      //   console.log(this.$refs['IZ-select__input'].offsetTop)
+      //   console.log(this.$refs['IZ-select__input'].getBoundingClientRect().top)
+      //   console.log(this.$refs['IZ-select__input'].scrollTop)
+      // })
 
       if (this.focused) {
         this.$emit('focus')
@@ -284,7 +303,27 @@ export default {
     onInputClick () {
       if (this.disabled || this.readonly) return
 
-      this.$refs['IZ-select__input-for-text'].focus()
+      // if search enabled
+      if (!this.disableSearch) {
+        // focus text input
+        this.$refs['IZ-select__input-for-text'].focus()
+      }
+
+      // scroll to component input el
+      // this.$refs['IZ-select__input'].scrollIntoView({
+      //   behavior: 'smooth',
+      //   // to top or bottom border
+      //   block: this.isMobile ? 'start' : 'end'
+      // })
+
+      if (this.isMobile) {
+        // scroll to component input el
+        scrollTo({
+          top: this.$refs['IZ-select__input'].offsetTop - 8,
+          behavior: 'smooth'
+        })
+      }
+
       this.focused = true
     },
     onSelect (item) {
@@ -319,7 +358,7 @@ export default {
     onScroll (event) {
       this.$emit('scroll', event)
 
-      if (this.itemsLimit >= this.computedItems.length) return
+      if (this.itemsLimit >= this.itemsComputed.length) return
 
       const content = event.target
       const showMoreItems = (
@@ -336,17 +375,38 @@ export default {
       if (!item) return null
       if (this.itemText) return item[this.itemText]
 
+      const keys = Object.keys(item)
+
+      if (keys.length === 1) {
+        return item[keys[0]]
+      }
+
       return item
     },
     getItemValue (item) {
       if (!item) return null
       if (this.itemValue) return item[this.itemValue]
 
+      const keys = Object.keys(item)
+
+      if (keys.length === 1) {
+        return item[keys[0]]
+      }
+
       return item
     },
+    // ставит выбраный элемент по значению
     setSelectedItemByValue () {
-      this.selectedItem = this.items.find(i =>
+      this.selectedItem = this.itemsComputed.find(i =>
         this.getItemValue(i) === this.value
+      )
+    },
+    // возвращает отфильтрованные итемы
+    filteredBySearchItems (items) {
+      if (!this.search || this.disableFilteringBySearch) return items
+
+      return items.filter(i =>
+        this.filter(i, this.search, this.getItemText(i))
       )
     }
   }

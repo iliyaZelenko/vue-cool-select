@@ -1,6 +1,6 @@
 <template>
   <div class="demo-page-wrap">
-    <div>
+    <div style="height: 500px;">
       <h1 style="text-align: center;">Usage Example 5</h1>
 
       <b>Selected:</b> {{ selected || 'not chosen' }}.
@@ -12,6 +12,7 @@
         :error-message="errorMessage"
         :disabled="disabled"
         :readonly="readonly"
+        :disable-search="disableSearch"
         placeholder="Select name"
         @blur="validate"
       />
@@ -23,6 +24,10 @@
 
       <button @click="readonly = !readonly">
         Toggle readonly
+      </button>
+
+      <button @click="disableSearch = !disableSearch">
+        Toggle disable search
       </button>
     </div>
   </div>
@@ -36,14 +41,9 @@ export default {
   data: () => ({
     disabled: false,
     readonly: false,
+    disableSearch: false,
     selected: null,
-    items: [
-      'Anton',
-      'Andrey',
-      'Sasha',
-      'Vladimir',
-      'Dima'
-    ],
+    items: '[{"first_name":"one"}, {"first_name":"two"}, {"first_name":"three"}, {"first_name":"four"}, {"first_name":"five"}]',
     errorMessage: null
   }),
   methods: {
