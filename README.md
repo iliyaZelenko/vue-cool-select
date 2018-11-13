@@ -21,6 +21,8 @@ https://iliyazelenko.github.io/vue-cool-select
 - slots
 - loading indicator
 - validation
+- support on mobile devices
+- many props and events
 
 ## Installation
 
@@ -59,7 +61,6 @@ Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select
 
 #### TODO
 - Control through arrows and Tab
-- Disabled state
 - Tests
 
 I am happy to add something or improve, you can write what you want to see.
