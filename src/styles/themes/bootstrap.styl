@@ -19,12 +19,7 @@
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: .25rem;
-  transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  //transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
-  // TODO disabled
-  //color: #6c757d !important;
-  //background-color: #e9ecef !important;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
   &.IZ-select__input--has-menu
     //border-bottom: 0;
@@ -57,12 +52,19 @@
     background-color: #e9ecef;
     opacity: 1;
 
+    input
+      color: #6c737a !important;
+
+    &::placeholder
+      color: #6c737a !important;
+
   input
     font-size: 1rem;
     /* Loading indicator */
     background-size: 25px 25px;
     background-position: right 10px center;
     background-repeat: no-repeat;
+    color: #495057 !important;
 
     background-color: transparent;
     padding: .375rem .75rem; // поменять и в другом месте .75rem (сделать поиск)
@@ -79,6 +81,9 @@
 
     &:focus
       outline: none;
+
+    &:disabled
+      pointer-events: none;
 
 .IZ-select__menu
   position: absolute;

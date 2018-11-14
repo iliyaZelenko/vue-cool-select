@@ -79,6 +79,7 @@
     background-size: 25px 25px;
     background-position: right 10px center;
     background-repeat: no-repeat;
+    color: #495057 !important;
 
     background-color: transparent;
     padding: 12px 20px; // поменять и в другом месте 20px (сделать поиск)
@@ -96,6 +97,9 @@
 
     &:focus
       outline: none;
+
+    &:disabled
+      pointer-events: none;
 
 .IZ-select__menu
   position: absolute;
