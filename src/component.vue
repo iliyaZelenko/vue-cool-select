@@ -1,5 +1,12 @@
 <template>
-  <div class="IZ-select">
+  <div
+    class="IZ-select"
+    tabindex="0"
+    @keydown.up="selectByArrow"
+    @keydown.down="selectByArrow"
+    @keydown.enter="focused = !focused"
+    @keydown.tab.esc="focused = false"
+  >
     <div
       ref="IZ-select__input"
       :class="{
@@ -17,9 +24,7 @@
         v-if="showSelectionSlot"
         :item="selectedItem"
         name="selection"
-      >
-        <!---->
-      </slot>
+      />
 
       <input
         ref="IZ-select__input-for-text"
@@ -194,6 +199,7 @@ export default {
     }
   },
   data: () => ({
+    arrowsIndex: null,
     focused: false,
     selectedItem: null,
     itemsLimit: 20,
@@ -255,6 +261,16 @@ export default {
       }
 
       return obj
+    },
+    // get item index from arr
+    selectedItemIndex () {
+      for (let itemKey in this.itemsComputed) {
+        if (this.selectedItem === this.itemsComputed[itemKey] && this.itemsComputed.hasOwnProperty(itemKey)) {
+          return itemKey
+        }
+      }
+
+      return null
     }
   },
   watch: {
@@ -270,11 +286,6 @@ export default {
     focused () {
       // TODO я знаю что это ламающее изменение, но лучше пусть немного пользователей пострадают чем это будет запутывать людей
       // this.$emit('focus', this.focused)
-      // this.$nextTick(() => {
-      //   console.log(this.$refs['IZ-select__input'].offsetTop)
-      //   console.log(this.$refs['IZ-select__input'].getBoundingClientRect().top)
-      //   console.log(this.$refs['IZ-select__input'].scrollTop)
-      // })
 
       if (this.focused) {
         this.$emit('focus')
@@ -288,6 +299,7 @@ export default {
     }
   },
   created () {
+    // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
 
     window.addEventListener('click', ({ target }) => {
@@ -300,6 +312,31 @@ export default {
     })
   },
   methods: {
+    selectByArrow (e) {
+      if (this.arrowsIndex === null) {
+        // если arrowsIndex не был задан, то ставит из выбранного элемента или из -1 (не 0 чтобы когда вниз нажимаешь, то не выбирался второй элемент)
+        this.arrowsIndex = this.selectedItemIndex || -1
+      }
+
+      if (e.key === 'ArrowDown') {
+        this.arrowsIndex++
+      }
+      if (e.key === 'ArrowUp') {
+        this.arrowsIndex--
+      }
+
+      const end = this.itemsComputed.length - 1
+      if (this.arrowsIndex < 0) {
+        this.arrowsIndex = end
+      }
+      if (this.arrowsIndex > end) {
+        this.arrowsIndex = 0
+      }
+
+      this.selectedItem = this.itemsComputed[this.arrowsIndex]
+
+      e.preventDefault()
+    },
     onInputClick () {
       if (this.disabled || this.readonly) return
 
@@ -397,6 +434,8 @@ export default {
     },
     // ставит выбраный элемент по значению
     setSelectedItemByValue () {
+      if (!this.items.length) return
+
       this.selectedItem = this.itemsComputed.find(i =>
         this.getItemValue(i) === this.value
       )

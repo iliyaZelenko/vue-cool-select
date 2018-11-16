@@ -1,5 +1,6 @@
 .DS_Store
 /node_modules
+/dist/demo.html
 #/dist
 #/gh-pages-src
 /gh-pages-build

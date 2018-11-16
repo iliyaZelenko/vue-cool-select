@@ -22,6 +22,8 @@ https://iliyazelenko.github.io/vue-cool-select
 - loading indicator
 - validation
 - support on mobile devices
+- disabled and readonly
+- control through arrows
 - many props and events
 
 ## Installation
@@ -44,8 +46,13 @@ https://iliyazelenko.github.io/vue-cool-select
 import { CoolSelect } from 'vue-cool-select'
 
 export default {
-  components: { CoolSelect }
-  // ...
+  components: { CoolSelect },
+  data () {
+    return {
+      items: [...],
+      selected: null
+    }
+  }
 }
 ```
 
@@ -60,7 +67,6 @@ export default {
 Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select).
 
 #### TODO
-- Control through arrows and Tab
 - Tests
 
 I am happy to add something or improve, you can write what you want to see.
