@@ -18,7 +18,7 @@
         'IZ-select__input--disabled': disabled,
         'IZ-select__input--readonly': readonly
       }"
-      @click="onInputClick"
+      @mousedown="setFocus"
     >
       <slot
         v-if="showSelectionSlot"
@@ -73,14 +73,15 @@
             </span>
           </slot>
         </div>
-        <span
+        <!-- TODO до этого тут был span, не проверил на div'e -->
+        <div
           v-if="!itemsComputed.length && !loading"
           class="IZ-select__no-data"
         >
           <slot name="no-data">
             No data avalidable
           </slot>
-        </span>
+        </div>
       </div>
     </transition>
 
@@ -337,7 +338,7 @@ export default {
 
       e.preventDefault()
     },
-    onInputClick () {
+    setFocus () {
       if (this.disabled || this.readonly) return
 
       // if search enabled
@@ -368,6 +369,7 @@ export default {
       this.focused = false
       this.search = ''
 
+      // TODO это выполняете перед input, поэтому в обработчике select то что в v-model будет не определенно
       this.$emit('select', item)
     },
     onSearchKeyDown (e) {
@@ -375,6 +377,7 @@ export default {
       if (!e.target.value && e.key === 'Backspace') {
         this.selectedItem = null
       }
+      this.setFocus()
       this.$emit('keydown', e)
     },
     onSearchKeyUp (e) {
