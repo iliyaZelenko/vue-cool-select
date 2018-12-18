@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="IZ-select"
     class="IZ-select"
     tabindex="0"
     @keydown.up="selectByArrow"
@@ -303,11 +304,11 @@ export default {
     // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
 
-    window.addEventListener('click', ({ target }) => {
-      const itemsWrap = this.$refs['IZ-select__menu']
-      const input = this.$refs['IZ-select__input']
+    // listener for window
+    window.addEventListener('mousedown', ({ target }) => {
+      const select = this.$refs['IZ-select']
 
-      if (itemsWrap && !itemsWrap.contains(target) && !input.contains(target)) {
+      if (!select.contains(target)) {
         this.focused = false
       }
     })

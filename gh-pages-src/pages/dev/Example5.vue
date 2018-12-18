@@ -18,6 +18,31 @@
       />
 
       <br>
+
+      <cool-select
+        v-model="selected"
+        :items="items"
+        :error-message="errorMessage"
+        :disabled="disabled"
+        :readonly="readonly"
+        :disable-search="disableSearch"
+        placeholder="Select name"
+        @blur="validate"
+      />
+
+      <br>
+
+      <cool-select
+        v-model="selected2"
+        :items="items"
+        :disabled="disabled"
+        :readonly="readonly"
+        :disable-search="disableSearch"
+        placeholder="Select name"
+        @blur="validate"
+      />
+
+      <br>
       <button @click="disabled = !disabled">
         Toggle disable
       </button>
@@ -43,6 +68,7 @@ export default {
     readonly: false,
     disableSearch: false,
     selected: null,
+    selected2: null,
     items: '[{"first_name":"one"}, {"first_name":"two"}, {"first_name":"three"}, {"first_name":"four"}, {"first_name":"five"}]',
     errorMessage: null
   }),
