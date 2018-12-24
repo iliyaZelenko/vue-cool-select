@@ -9,7 +9,7 @@
       <cool-select
         v-model="selected"
         :items="items"
-        :error-message="errorMessage"
+        item-value="b"
         placeholder="Select name"
         @blur="validate"
       />
@@ -22,17 +22,28 @@ import { CoolSelect } from '../../../src/main'
 
 export default {
   components: { CoolSelect },
-  data: () => ({
-    selected: null,
-    items: [
-      'Anton',
-      'Andrey',
-      'Sasha',
-      'Vladimir',
-      'Dima'
-    ],
-    errorMessage: null
-  }),
+  data () {
+    const items = [
+      {
+        'name': '1',
+        'b': 11
+      },
+      {
+        'name': '2',
+        'b': 22
+      },
+      {
+        'name': '3',
+        'b': 33
+      }
+    ]
+
+    return {
+      selected: items[1],
+      items,
+      errorMessage: null
+    }
+  },
   methods: {
     validate () {
       this.errorMessage = !this.selected ? 'This is required field!' : null

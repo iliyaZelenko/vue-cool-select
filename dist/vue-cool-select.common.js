@@ -1476,6 +1476,13 @@ module.exports = {
 
 /***/ }),
 
+/***/ "8bbf":
+/***/ (function(module, exports) {
+
+module.exports = require("vue");
+
+/***/ }),
+
 /***/ "8e47":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2033,9 +2040,9 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  var i
-  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js$/))) {
-    __webpack_require__.p = i[1] // eslint-disable-line
+  var setPublicPath_i
+  if ((setPublicPath_i = window.document.currentScript) && (setPublicPath_i = setPublicPath_i.src.match(/(.+\/)[^/]+\.js$/))) {
+    __webpack_require__.p = setPublicPath_i[1] // eslint-disable-line
   }
 }
 
@@ -2051,7 +2058,7 @@ var es6_string_includes = __webpack_require__("2fdb");
 // EXTERNAL MODULE: ./src/styles/main.styl
 var main = __webpack_require__("2583");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=110cbd89&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=68450183&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"IZ-select",staticClass:"IZ-select",attrs:{"tabindex":"0"},on:{"keydown":[function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.focused = !_vm.focused},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")&&_vm._k($event.keyCode,"esc",27,$event.key,"Escape")){ return null; }_vm.focused = false}]}},[_c('div',{ref:"IZ-select__input",class:{
       'IZ-select__input': true,
       'IZ-select__input--focused': _vm.focused,
@@ -2070,7 +2077,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=110cbd89&
+// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=68450183&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
 var es6_array_find = __webpack_require__("7514");
@@ -2093,6 +2100,29 @@ var es6_regexp_to_string = __webpack_require__("6b54");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
 
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
+
+// CONCATENATED MODULE: ./src/locales.js
+/* harmony default export */ var locales = ({
+  en: {},
+  ru: {}
+});
+// CONCATENATED MODULE: ./src/config.js
+var defaultLocale = 'en';
+// CONCATENATED MODULE: ./src/helpers.js
+
+
+
+function isObject(val) {
+  return !!val && val.constructor === Object;
+}
+function __(key) {
+  var locale = external_commonjs_vue_commonjs2_vue_root_Vue_default.a.prototype.$avatarUploader && external_commonjs_vue_commonjs2_vue_root_Vue_default.a.prototype.$avatarUploader.locale || defaultLocale; // || 'ru'
+
+  return locales[locale][key];
+}
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/@vue/cli-plugin-babel/node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=script&lang=js&
 
 
@@ -2205,6 +2235,7 @@ var es6_number_constructor = __webpack_require__("c5f6");
 //
 //
 //
+
 /* harmony default export */ var componentvue_type_script_lang_js_ = ({
   name: 'VueSelect',
   introduction: 'an amazing select',
@@ -2543,6 +2574,14 @@ var es6_number_constructor = __webpack_require__("c5f6");
 
       if (!this.items.length) return;
       this.selectedItem = this.itemsComputed.find(function (i) {
+        // если "{}" (не массив, не функция, не null...)
+        if (isObject(_this2.value)) {
+          // значение из объекта this.value
+          var valFromObjVal = _this2.getItemValue(_this2.value);
+
+          return _this2.getItemValue(i) === valFromObjVal;
+        }
+
         return _this2.getItemValue(i) === _this2.value;
       });
     },
@@ -2675,8 +2714,6 @@ var component = normalizeComponent(
 
 component.options.__file = "component.vue"
 /* harmony default export */ var src_component = (component.exports);
-// CONCATENATED MODULE: ./src/config.js
-var defaultLocale = 'en';
 // CONCATENATED MODULE: ./src/main.js
 
 

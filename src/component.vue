@@ -103,6 +103,8 @@
 </template>
 
 <script>
+import { isObject } from './helpers'
+
 export default {
   name: 'VueSelect',
   introduction: 'an amazing select',
@@ -440,9 +442,17 @@ export default {
     setSelectedItemByValue () {
       if (!this.items.length) return
 
-      this.selectedItem = this.itemsComputed.find(i =>
-        this.getItemValue(i) === this.value
-      )
+      this.selectedItem = this.itemsComputed.find(i => {
+        // если "{}" (не массив, не функция, не null...)
+        if (isObject(this.value)) {
+          // значение из объекта this.value
+          const valFromObjVal = this.getItemValue(this.value)
+
+          return this.getItemValue(i) === valFromObjVal
+        }
+
+        return this.getItemValue(i) === this.value
+      })
     },
     // возвращает отфильтрованные итемы
     filteredBySearchItems (items) {
