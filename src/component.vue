@@ -443,6 +443,9 @@ export default {
       if (!this.items.length) return
 
       this.selectedItem = this.itemsComputed.find(i => {
+        // TODO вынести получение this.value в computed (оно только в этом методе пока)
+        // сделать тут такую првоерку return this.getItemValue(i) === this.computedValue()
+
         // если "{}" (не массив, не функция, не null...)
         if (isObject(this.value)) {
           // значение из объекта this.value
