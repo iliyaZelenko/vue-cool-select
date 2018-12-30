@@ -310,7 +310,7 @@ export default {
     window.addEventListener('mousedown', ({ target }) => {
       const select = this.$refs['IZ-select']
 
-      if (!select.contains(target)) {
+      if (select && !select.contains(target)) {
         this.focused = false
       }
     })
