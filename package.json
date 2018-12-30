@@ -1,6 +1,6 @@
 {
   "name": "vue-cool-select",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "main": "dist/vue-cool-select.umd.min.js",
   "author": "Ilya Zelenko",
   "description": "Vue select with autocomplete and with slots. 2 themes: bootstrap 4, material design.",
