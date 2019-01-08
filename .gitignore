@@ -1,9 +1,9 @@
 .DS_Store
-/node_modules
+/node_modules/
 /dist/demo.html
-#/dist
-#/gh-pages-src
-/gh-pages-build
+#/dist/
+#/gh-pages-src/
+/gh-pages-build/
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
