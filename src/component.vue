@@ -288,9 +288,6 @@ export default {
       this.$emit('input', this.currentItemValue)
     },
     focused () {
-      // TODO я знаю что это ламающее изменение, но лучше пусть немного пользователей пострадают чем это будет запутывать людей
-      // this.$emit('focus', this.focused)
-
       if (this.focused) {
         this.$emit('focus')
       } else {
@@ -372,8 +369,9 @@ export default {
       this.focused = false
       this.search = ''
 
-      // TODO это выполняете перед input, поэтому в обработчике select то что в v-model будет не определенно
-      this.$emit('select', item)
+      this.$nextTick(() => {
+        this.$emit('select', item)
+      })
     },
     onSearchKeyDown (e) {
       // key === 'Delete' ||

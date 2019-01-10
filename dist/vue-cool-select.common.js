@@ -2058,7 +2058,7 @@ var es6_string_includes = __webpack_require__("2fdb");
 // EXTERNAL MODULE: ./src/styles/main.styl
 var main = __webpack_require__("2583");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=2e28b039&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=6a4a707d&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"IZ-select",staticClass:"IZ-select",attrs:{"tabindex":"0"},on:{"keydown":[function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.focused = !_vm.focused},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")&&_vm._k($event.keyCode,"esc",27,$event.key,"Escape")){ return null; }_vm.focused = false}]}},[_c('div',{ref:"IZ-select__input",class:{
       'IZ-select__input': true,
       'IZ-select__input--focused': _vm.focused,
@@ -2077,7 +2077,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=2e28b039&
+// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=6a4a707d&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
 var es6_array_find = __webpack_require__("7514");
@@ -2426,8 +2426,6 @@ function __(key) {
       this.$emit('input', this.currentItemValue);
     },
     focused: function focused() {
-      // TODO я знаю что это ламающее изменение, но лучше пусть немного пользователей пострадают чем это будет запутывать людей
-      // this.$emit('focus', this.focused)
       if (this.focused) {
         this.$emit('focus');
       } else {
@@ -2507,11 +2505,14 @@ function __(key) {
       this.focused = true;
     },
     onSelect: function onSelect(item) {
+      var _this2 = this;
+
       this.selectedItem = item;
       this.focused = false;
-      this.search = ''; // TODO это выполняете перед input, поэтому в обработчике select то что в v-model будет не определенно
-
-      this.$emit('select', item);
+      this.search = '';
+      this.$nextTick(function () {
+        _this2.$emit('select', item);
+      });
     },
     onSearchKeyDown: function onSearchKeyDown(e) {
       // key === 'Delete' ||
@@ -2570,30 +2571,30 @@ function __(key) {
     },
     // ставит выбраный элемент по значению
     setSelectedItemByValue: function setSelectedItemByValue() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (!this.items.length) return;
       this.selectedItem = this.itemsComputed.find(function (i) {
         // TODO вынести получение this.value в computed (оно только в этом методе пока)
         // сделать тут такую првоерку return this.getItemValue(i) === this.computedValue()
         // если "{}" (не массив, не функция, не null...)
-        if (isObject(_this2.value)) {
+        if (isObject(_this3.value)) {
           // значение из объекта this.value
-          var valFromObjVal = _this2.getItemValue(_this2.value);
+          var valFromObjVal = _this3.getItemValue(_this3.value);
 
-          return _this2.getItemValue(i) === valFromObjVal;
+          return _this3.getItemValue(i) === valFromObjVal;
         }
 
-        return _this2.getItemValue(i) === _this2.value;
+        return _this3.getItemValue(i) === _this3.value;
       });
     },
     // возвращает отфильтрованные итемы
     filteredBySearchItems: function filteredBySearchItems(items) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (!this.search || this.disableFilteringBySearch) return items;
       return items.filter(function (i) {
-        return _this3.filter(i, _this3.search, _this3.getItemText(i));
+        return _this4.filter(i, _this4.search, _this4.getItemText(i));
       });
     }
   }

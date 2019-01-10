@@ -9,9 +9,11 @@
       <cool-select
         v-model="selected"
         :items="items"
-        item-value="b"
+        item-value="id"
+        item-text="name"
         placeholder="Select name"
         @blur="validate"
+        @select="onSelect"
       />
     </div>
   </div>
@@ -25,16 +27,19 @@ export default {
   data () {
     const items = [
       {
-        'name': '1',
-        'b': 11
+        id: '1',
+        name: 'Product 1',
+        price: '30.0'
       },
       {
-        'name': '2',
-        'b': 22
+        id: '2',
+        name: 'Product 2',
+        price: '100.0'
       },
       {
-        'name': '3',
-        'b': 33
+        id: '3',
+        name: 'Product 3',
+        price: '150.0'
       }
     ]
 
@@ -47,6 +52,9 @@ export default {
   methods: {
     validate () {
       this.errorMessage = !this.selected ? 'This is required field!' : null
+    },
+    onSelect (selected) {
+      console.log(selected, this.selected)
     }
   }
 }
