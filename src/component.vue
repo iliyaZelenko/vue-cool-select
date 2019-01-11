@@ -5,7 +5,7 @@
     tabindex="0"
     @keydown.up="selectByArrow"
     @keydown.down="selectByArrow"
-    @keydown.enter="focused = !focused"
+    @keydown.enter="onEnter"
     @keydown.tab.esc="focused = false"
   >
     <div
@@ -334,8 +334,10 @@ export default {
         this.arrowsIndex = 0
       }
 
+      this.search = ''
       this.selectedItem = this.itemsComputed[this.arrowsIndex]
 
+      this.fireSelectEvent(this.selectedItem)
       e.preventDefault()
     },
     setFocus () {
@@ -364,19 +366,35 @@ export default {
 
       this.focused = true
     },
+    // TODO вызывать только в watch, в остальных местах убрать, там проверять если !== null, то вызывать
+    fireSelectEvent (item) {
+      this.$nextTick(() => {
+        this.$emit('select', item)
+      })
+    },
+    onEnter () {
+      this.focused = !this.focused
+
+      if (this.arrowsIndex === null) {
+        this.selectedItem = this.itemsComputed[0]
+
+        this.fireSelectEvent(this.selectedItem)
+      }
+    },
+    // on click on item
     onSelect (item) {
       this.selectedItem = item
       this.focused = false
       this.search = ''
 
-      this.$nextTick(() => {
-        this.$emit('select', item)
-      })
+      this.fireSelectEvent(item)
     },
     onSearchKeyDown (e) {
       // key === 'Delete' ||
+      // !!! Эта часть важна когда используешь слот "selection"
       if (!e.target.value && e.key === 'Backspace') {
         this.selectedItem = null
+        this.arrowsIndex = null
       }
       this.setFocus()
       this.$emit('keydown', e)
@@ -386,6 +404,7 @@ export default {
     },
     onSearch (e) {
       this.selectedItem = null
+      this.arrowsIndex = null
       // e.inputType: "deleteContentBackward"
       // if (!this.focused) this.focused = true
       // console.log(e.target.value)
