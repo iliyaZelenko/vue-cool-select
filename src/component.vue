@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import { isObject } from './helpers'
+import { isObject, getOffsetSum } from './helpers'
 
 export default {
   name: 'VueSelect',
@@ -200,6 +200,11 @@ export default {
       type: Boolean,
       default: true,
       note: 'reset search on blur event'
+    },
+    allowMobileScroll: {
+      type: Boolean,
+      default: true,
+      note: 'Allow scrolling to an item on mobile devices.'
     }
   },
   data: () => ({
@@ -356,10 +361,14 @@ export default {
       //   block: this.isMobile ? 'start' : 'end'
       // })
 
-      if (this.isMobile) {
+      if (this.allowMobileScroll && this.isMobile) {
+        const { top } = getOffsetSum(this.$refs['IZ-select__input'])
+
         // scroll to component input el
-        scrollTo({
-          top: this.$refs['IZ-select__input'].offsetTop - 8,
+        window.scrollTo({
+          // this.$refs['IZ-select__input'].offsetTop - 8
+          // (bug with position: relative; https://github.com/iliyaZelenko/vue-cool-select/issues/10)
+          top: top - 8,
           behavior: 'smooth'
         })
       }
