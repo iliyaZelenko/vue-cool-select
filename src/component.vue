@@ -205,6 +205,11 @@ export default {
       type: Boolean,
       default: true,
       note: 'Allow scrolling to an item on mobile devices.'
+    },
+    disableAutoSelect: {
+      type: Boolean,
+      default: false,
+      note: 'disable auto select when up or down with key arrow'
     }
   },
   data: () => ({
@@ -342,7 +347,10 @@ export default {
       this.search = ''
       this.selectedItem = this.itemsComputed[this.arrowsIndex]
 
-      this.fireSelectEvent(this.selectedItem)
+      if (!this.disableAutoSelect) {
+        this.fireSelectEvent(this.selectedItem)
+      }
+
       e.preventDefault()
     },
     setFocus () {
@@ -386,9 +394,9 @@ export default {
 
       if (this.arrowsIndex === null) {
         this.selectedItem = this.itemsComputed[0]
-
-        this.fireSelectEvent(this.selectedItem)
       }
+
+      this.fireSelectEvent(this.selectedItem)
     },
     // on click on item
     onSelect (item) {
