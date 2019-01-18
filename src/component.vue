@@ -3,10 +3,11 @@
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    @keydown.up="selectByArrow"
-    @keydown.down="selectByArrow"
+    @keydown.up="onSelectByArrow"
+    @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
-    @keydown.tab.esc="focused = false"
+    @keydown.tab.esc="setBlured"
+    @mousedown="onClick"
   >
     <div
       ref="IZ-select__input"
@@ -19,7 +20,6 @@
         'IZ-select__input--disabled': disabled,
         'IZ-select__input--readonly': readonly
       }"
-      @mousedown="setFocus"
     >
       <slot
         v-if="showSelectionSlot"
@@ -61,9 +61,9 @@
           :key="'IZ-item-' + i"
           :class="{
             'IZ-select__item': true,
-            'IZ-select__item--selected': selectedItem === item
+            'IZ-select__item--selected': isItemSelected(item)
           }"
-          @click="onSelect(item)"
+          @click="onClickSelectItem(item)"
         >
           <slot
             :item="item"
@@ -80,7 +80,7 @@
           class="IZ-select__no-data"
         >
           <slot name="no-data">
-            No data avalidable
+            No data available
           </slot>
         </div>
       </div>
@@ -104,6 +104,9 @@
 
 <script>
 import { isObject, getOffsetSum } from './helpers'
+import eventsListeners from './eventsListeners'
+import props from './props'
+import computed from './computed'
 
 export default {
   name: 'VueSelect',
@@ -112,181 +115,17 @@ export default {
   This \`select\` is amazing, you should _check_ it out 😊.
   `,
   token: `<cool-select v-model="selected" :items="items" />`,
-  props: {
-    value: {
-      type: [Array, Object, String, Number, Boolean], // TODO set to null (any type) after issue fix
-      // required: true,
-      default: () => null,
-      note: 'value for v-model'
-    },
-    items: {
-      type: [Array, String],
-      required: true,
-      note: 'array of suggestions (data fetched from backend, etc)'
-    },
-    itemText: {
-      type: String,
-      default: null, // 'text',
-      // required: true,
-      note: 'property in item for text'
-    },
-    itemValue: {
-      type: String,
-      default: null, // значит вернуть весь объект, 'value'
-      note: 'property in item for value'
-    },
-    placeholder: {
-      type: String,
-      default: null,
-      note: 'placeholder for input'
-    },
-    loading: {
-      type: Boolean,
-      default: false,
-      note: 'display the loading indicator'
-    },
-    loadingIndicator: { // http://loadinggif.com/images/image-selection/3.gif
-      type: String,
-      default: 'https://i.imgur.com/fLYd7PN.gif',
-      note: 'sets custom loading spinner/indicator. https://loading.io/'
-    },
-    // invalid: {
-    //   type: Boolean,
-    // },
-    errorMessage: {
-      type: String,
-      default: null
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-      note: 'disable the select'
-    },
-    readonly: {
-      type: Boolean,
-      default: false,
-      note: 'readonly state'
-    },
-    filter: {
-      type: Function,
-      default: (item, queryText, itemText) => {
-        const hasValue = val => val != null ? val : ''
-
-        const text = hasValue(itemText)
-        const query = hasValue(queryText)
-
-        return text.toString()
-          .toLowerCase()
-          .indexOf(query.toString().toLowerCase()) > -1
-      },
-      note: 'filter function for search'
-    },
-    inputElCustomAttributes: {
-      type: Object,
-      default: () => ({}),
-      note: 'you can pass your attributes to the input element'
-    },
-    disableSearch: {
-      type: Boolean,
-      default: false,
-      note: 'disable search input element'
-    },
-    disableFilteringBySearch: {
-      type: Boolean,
-      default: false,
-      note: 'disable filtering by search (you can use search for manually getting items)'
-    },
-    resetSearchOnBlur: {
-      type: Boolean,
-      default: true,
-      note: 'reset search on blur event'
-    },
-    allowMobileScroll: {
-      type: Boolean,
-      default: true,
-      note: 'Allow scrolling to an item on mobile devices.'
-    },
-    disableAutoSelect: {
-      type: Boolean,
-      default: false,
-      note: 'disable auto select when up or down with key arrow'
-    }
-  },
+  props,
   data: () => ({
+    wishShowMenu: false,
     arrowsIndex: null,
     focused: false,
     selectedItem: null,
+    selectedItemByArrows: null,
     itemsLimit: 20,
     search: '' // null
   }),
-  computed: {
-    itemsComputed () {
-      let items = this.items
-
-      if (typeof this.items === 'string') {
-        items = JSON.parse(this.items)
-      }
-
-      return this.filteredBySearchItems(items)
-    },
-    inputValue () {
-      // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
-      if (this.$scopedSlots.selection && this.search === '') return ''
-      // если есть строка поиска, то пусть она там будет
-      if (this.search !== '') return this.search
-
-      // иначе пусть будет текст элемента или его значение
-      return this.getItemText(this.selectedItem) || this.currentItemValue
-    },
-    currentItemValue () {
-      return this.getItemValue(this.selectedItem)
-    },
-    showSelectionSlot () {
-      return this.$scopedSlots.selection && this.selectedItem && !this.search
-    },
-    inputForTextStyles () {
-      if (this.loading) {
-        return {
-          'background-image': `url(${this.loadingIndicator})`
-        }
-      }
-
-      return {}
-    },
-    hasMenu () {
-      return this.focused && !this.loading
-    },
-    hasError () {
-      return !!this.errorMessage
-    },
-    isMobile () {
-      // return window.innerWidth + window.innerHeight <= 1800
-      return window.innerWidth <= 900 && window.innerHeight <= 900
-    },
-    menuDynamicStyles () {
-      let obj = {
-        // ширина такая же как и у поля ввода
-        'width': this.$refs['IZ-select__input'].offsetWidth + 'px',
-        'pointer-events': !this.hasMenu ? 'none' : 'auto'
-      }
-
-      if (this.disableSearch) {
-        obj.top = this.$refs['IZ-select__input'].offsetTop + 'px'
-      }
-
-      return obj
-    },
-    // get item index from arr
-    selectedItemIndex () {
-      for (let itemKey in this.itemsComputed) {
-        if (this.selectedItem === this.itemsComputed[itemKey] && this.itemsComputed.hasOwnProperty(itemKey)) {
-          return itemKey
-        }
-      }
-
-      return null
-    }
-  },
+  computed,
   watch: {
     value () {
       this.setSelectedItemByValue()
@@ -295,18 +134,9 @@ export default {
       this.setSelectedItemByValue()
     },
     selectedItem () {
-      this.$emit('input', this.currentItemValue)
-    },
-    focused () {
-      if (this.focused) {
-        this.$emit('focus')
-      } else {
-        this.$emit('blur')
+      this.selectedItemByArrows = null
 
-        if (this.resetSearchOnBlur) {
-          this.search = ''
-        }
-      }
+      this.$emit('input', this.currentItemValue)
     }
   },
   created () {
@@ -317,44 +147,15 @@ export default {
     window.addEventListener('mousedown', ({ target }) => {
       const select = this.$refs['IZ-select']
 
-      if (select && !select.contains(target)) {
-        this.focused = false
+      if (this.focused && select && !select.contains(target)) {
+        this.setBlured()
       }
     })
   },
   methods: {
-    selectByArrow (e) {
-      if (this.arrowsIndex === null) {
-        // если arrowsIndex не был задан, то ставит из выбранного элемента или из -1 (не 0 чтобы когда вниз нажимаешь, то не выбирался второй элемент)
-        this.arrowsIndex = this.selectedItemIndex || -1
-      }
-
-      if (e.key === 'ArrowDown') {
-        this.arrowsIndex++
-      }
-      if (e.key === 'ArrowUp') {
-        this.arrowsIndex--
-      }
-
-      const end = this.itemsComputed.length - 1
-      if (this.arrowsIndex < 0) {
-        this.arrowsIndex = end
-      }
-      if (this.arrowsIndex > end) {
-        this.arrowsIndex = 0
-      }
-
-      this.search = ''
-      this.selectedItem = this.itemsComputed[this.arrowsIndex]
-
-      if (!this.disableAutoSelect) {
-        this.fireSelectEvent(this.selectedItem)
-      }
-
-      e.preventDefault()
-    },
-    setFocus () {
-      if (this.disabled || this.readonly) return
+    ...eventsListeners,
+    setFocused () {
+      if (this.focused || this.disabled || this.readonly) return
 
       // if search enabled
       if (!this.disableSearch) {
@@ -382,71 +183,27 @@ export default {
       }
 
       this.focused = true
+
+      this.showMenu()
+      this.$emit('focus')
+    },
+    setBlured () {
+      if (this.resetSearchOnBlur) {
+        this.search = ''
+      }
+      this.focused = false
+
+      this.hideMenu()
+      this.$refs['IZ-select__input-for-text'].blur()
+      this.$emit('blur')
     },
     // TODO вызывать только в watch, в остальных местах убрать, там проверять если !== null, то вызывать
     fireSelectEvent (item) {
+      this.selectedItemByArrows = null
+
       this.$nextTick(() => {
         this.$emit('select', item)
       })
-    },
-    onEnter () {
-      this.focused = !this.focused
-
-      if (this.arrowsIndex === null) {
-        this.selectedItem = this.itemsComputed[0]
-      }
-
-      this.fireSelectEvent(this.selectedItem)
-    },
-    // on click on item
-    onSelect (item) {
-      this.selectedItem = item
-      this.focused = false
-      this.search = ''
-
-      this.fireSelectEvent(item)
-    },
-    onSearchKeyDown (e) {
-      // key === 'Delete' ||
-      // !!! Эта часть важна когда используешь слот "selection"
-      if (!e.target.value && e.key === 'Backspace') {
-        this.selectedItem = null
-        this.arrowsIndex = null
-      }
-      this.setFocus()
-      this.$emit('keydown', e)
-    },
-    onSearchKeyUp (e) {
-      this.$emit('keyup', e)
-    },
-    onSearch (e) {
-      this.selectedItem = null
-      this.arrowsIndex = null
-      // e.inputType: "deleteContentBackward"
-      // if (!this.focused) this.focused = true
-      // console.log(e.target.value)
-      // if (!e.target.value) {
-      //   this.selectedItem = null
-      // }
-
-      this.search = e.target.value
-      this.$emit('search', this.search)
-    },
-    onScroll (event) {
-      this.$emit('scroll', event)
-
-      if (this.itemsLimit >= this.itemsComputed.length) return
-
-      const content = event.target
-      const showMoreItems = (
-        content.scrollHeight -
-        (content.scrollTop + content.clientHeight)
-      ) < 200
-
-      // если проскролил вниз то показать больше итемов
-      if (showMoreItems) {
-        this.itemsLimit += 20
-      }
     },
     getItemText (item) {
       if (!item) return null
@@ -498,6 +255,19 @@ export default {
       return items.filter(i =>
         this.filter(i, this.search, this.getItemText(i))
       )
+    },
+    isItemSelected (item) {
+      return item === this.selectedItemByArrows || (item === this.selectedItem && !this.selectedItemByArrows)
+    },
+    showMenu () {
+      if (this.hasMenu) return
+
+      this.wishShowMenu = true
+    },
+    hideMenu () {
+      if (!this.hasMenu) return
+
+      this.wishShowMenu = false
     }
   }
 }

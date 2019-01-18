@@ -1476,13 +1476,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "8bbf":
-/***/ (function(module, exports) {
-
-module.exports = require("vue");
-
-/***/ }),
-
 /***/ "8e47":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2058,8 +2051,8 @@ var es6_string_includes = __webpack_require__("2fdb");
 // EXTERNAL MODULE: ./src/styles/main.styl
 var main = __webpack_require__("2583");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=7c56cb22&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"IZ-select",staticClass:"IZ-select",attrs:{"tabindex":"0"},on:{"keydown":[function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.onEnter($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")&&_vm._k($event.keyCode,"esc",27,$event.key,"Escape")){ return null; }_vm.focused = false}]}},[_c('div',{ref:"IZ-select__input",class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"545da000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=df9e4cfc&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"IZ-select",staticClass:"IZ-select",attrs:{"tabindex":"0"},on:{"keydown":[function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.onSelectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.onSelectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.onEnter($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")&&_vm._k($event.keyCode,"esc",27,$event.key,"Escape")){ return null; }return _vm.setBlured($event)}],"mousedown":_vm.onClick}},[_c('div',{ref:"IZ-select__input",class:{
       'IZ-select__input': true,
       'IZ-select__input--focused': _vm.focused,
       'IZ-select__input--has-menu': _vm.hasMenu,
@@ -2067,17 +2060,20 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       'IZ-select__input--selection-slot': _vm.showSelectionSlot,
       'IZ-select__input--disabled': _vm.disabled,
       'IZ-select__input--readonly': _vm.readonly
-    },on:{"mousedown":_vm.setFocus}},[(_vm.showSelectionSlot)?_vm._t("selection",null,{item:_vm.selectedItem}):_vm._e(),_c('input',_vm._b({ref:"IZ-select__input-for-text",style:(_vm.inputForTextStyles),attrs:{"placeholder":_vm.placeholder,"disabled":_vm.disableSearch || _vm.disabled,"readonly":_vm.readonly,"type":"text","role":"combobox","autocomplete":"off"},domProps:{"value":_vm.inputValue},on:{"keyup":_vm.onSearchKeyUp,"keydown":_vm.onSearchKeyDown,"input":_vm.onSearch}},'input',_vm.inputElCustomAttributes,false))],2),_c('transition',{attrs:{"name":"fade"}},[(_vm.hasMenu)?_c('div',{ref:"IZ-select__menu",class:{
+    }},[(_vm.showSelectionSlot)?_vm._t("selection",null,{item:_vm.selectedItem}):_vm._e(),_c('input',_vm._b({ref:"IZ-select__input-for-text",style:(_vm.inputForTextStyles),attrs:{"placeholder":_vm.placeholder,"disabled":_vm.disableSearch || _vm.disabled,"readonly":_vm.readonly,"type":"text","role":"combobox","autocomplete":"off"},domProps:{"value":_vm.inputValue},on:{"keyup":_vm.onSearchKeyUp,"keydown":_vm.onSearchKeyDown,"input":_vm.onSearch}},'input',_vm.inputElCustomAttributes,false))],2),_c('transition',{attrs:{"name":"fade"}},[(_vm.hasMenu)?_c('div',{ref:"IZ-select__menu",class:{
         'IZ-select__menu': true,
         'IZ-select__menu--disable-search': _vm.disableSearch
       },style:(_vm.menuDynamicStyles),on:{"scroll":_vm.onScroll}},[_vm._l((_vm.itemsComputed),function(item,i){return (i < _vm.itemsLimit)?_c('div',{key:'IZ-item-' + i,class:{
           'IZ-select__item': true,
-          'IZ-select__item--selected': _vm.selectedItem === item
-        },on:{"click":function($event){_vm.onSelect(item)}}},[_vm._t("item",[_c('span',[_vm._v("\n            "+_vm._s(_vm.getItemText(item))+"\n          ")])],{item:item})],2):_vm._e()}),(!_vm.itemsComputed.length && !_vm.loading)?_c('div',{staticClass:"IZ-select__no-data"},[_vm._t("no-data",[_vm._v("\n          No data avalidable\n        ")])],2):_vm._e()],2):_vm._e()]),_c('transition',{attrs:{"name":"fade"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.errorMessage),expression:"errorMessage"}],staticClass:"IZ-select__error"},[_vm._t("error",[_vm._v("\n        "+_vm._s(_vm.errorMessage)+"\n      ")],{errorMessage:_vm.errorMessage})],2)])],1)}
+          'IZ-select__item--selected': _vm.isItemSelected(item)
+        },on:{"click":function($event){_vm.onClickSelectItem(item)}}},[_vm._t("item",[_c('span',[_vm._v("\n            "+_vm._s(_vm.getItemText(item))+"\n          ")])],{item:item})],2):_vm._e()}),(!_vm.itemsComputed.length && !_vm.loading)?_c('div',{staticClass:"IZ-select__no-data"},[_vm._t("no-data",[_vm._v("\n          No data available\n        ")])],2):_vm._e()],2):_vm._e()]),_c('transition',{attrs:{"name":"fade"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.errorMessage),expression:"errorMessage"}],staticClass:"IZ-select__error"},[_vm._t("error",[_vm._v("\n        "+_vm._s(_vm.errorMessage)+"\n      ")],{errorMessage:_vm.errorMessage})],2)])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=7c56cb22&
+// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=df9e4cfc&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.search.js
+var es6_regexp_search = __webpack_require__("386d");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
 var es6_array_find = __webpack_require__("7514");
@@ -2091,30 +2087,42 @@ var es6_array_iterator = __webpack_require__("cadf");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
 var es6_object_keys = __webpack_require__("456d");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.search.js
-var es6_regexp_search = __webpack_require__("386d");
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/defineProperty.js
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
-var es6_regexp_to_string = __webpack_require__("6b54");
+  return obj;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/objectSpread.js
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
-var es6_number_constructor = __webpack_require__("c5f6");
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
 
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
 
-// CONCATENATED MODULE: ./src/locales.js
-/* harmony default export */ var locales = ({
-  en: {},
-  ru: {}
-});
-// CONCATENATED MODULE: ./src/config.js
-var defaultLocale = 'en';
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
 // CONCATENATED MODULE: ./src/helpers.js
-
-
-
 function isObject(val) {
   return !!val && val.constructor === Object;
 }
@@ -2133,11 +2141,305 @@ function getOffsetSum(elem) {
     left: Math.round(left)
   };
 }
-function __(key) {
-  var locale = external_commonjs_vue_commonjs2_vue_root_Vue_default.a.prototype.$avatarUploader && external_commonjs_vue_commonjs2_vue_root_Vue_default.a.prototype.$avatarUploader.locale || defaultLocale; // || 'ru'
+// CONCATENATED MODULE: ./src/eventsListeners.js
 
-  return locales[locale][key];
-}
+
+
+/* harmony default export */ var eventsListeners = ({
+  onSelectByArrow: function onSelectByArrow(e) {
+    this.showMenu(); // if (!this.hasMenu) return
+
+    if (this.arrowsIndex === null) {
+      // если arrowsIndex не был задан, то ставит из выбранного элемента или из -1 (не 0 чтобы когда вниз нажимаешь, то не выбирался второй элемент)
+      this.arrowsIndex = this.selectedItemIndex || -1;
+    }
+
+    if (e.key === 'ArrowDown') {
+      this.arrowsIndex++;
+    }
+
+    if (e.key === 'ArrowUp') {
+      this.arrowsIndex--;
+    }
+
+    var end = this.itemsComputed.length - 1;
+
+    if (this.arrowsIndex < 0) {
+      this.arrowsIndex = end;
+    }
+
+    if (this.arrowsIndex > end) {
+      this.arrowsIndex = 0;
+    }
+
+    var itemByArrowsIndex = this.itemsComputed[this.arrowsIndex];
+
+    if (this.arrowsDisableInstantSelection) {
+      this.selectedItemByArrows = itemByArrowsIndex;
+    } else {
+      this.search = '';
+      this.selectedItem = itemByArrowsIndex;
+      this.fireSelectEvent(this.selectedItem);
+    }
+
+    e.preventDefault();
+  },
+  onEnter: function onEnter() {
+    // if (this.arrowsIndex === null) {
+    //   this.selectedItem = this.itemsComputed[0]
+    // }
+    //
+    // this.fireSelectEvent(this.selectedItem)
+    if (!this.arrowsIndex && this.hasMenu) {
+      var firstItem = this.itemsComputed[0];
+      if (!firstItem) return;
+      this.fireSelectEvent(this.selectedItem = firstItem);
+    }
+
+    if (this.arrowsDisableInstantSelection && this.selectedItemByArrows) {
+      this.fireSelectEvent(this.selectedItem = this.selectedItemByArrows);
+    }
+
+    this.search = ''; // show / hide menu
+
+    this.hasMenu ? this.hideMenu() : this.showMenu();
+  },
+  onClick: function onClick() {
+    this.setFocused();
+    this.showMenu();
+  },
+  // on click on item
+  onClickSelectItem: function onClickSelectItem(item) {
+    this.selectedItem = item;
+    this.hideMenu(); // this.focused = false
+
+    this.search = '';
+    this.fireSelectEvent(item);
+  },
+  onSearchKeyDown: function onSearchKeyDown(e) {
+    // ignore special keys
+    if (['Enter', 'ArrowDown', 'ArrowUp', 'Tab'].includes(e.key)) return; // key === 'Delete' ||
+    // !!! Эта часть важна когда используешь слот "selection"
+
+    if (!e.target.value && e.key === 'Backspace') {
+      this.selectedItem = null;
+      this.arrowsIndex = null;
+    } // this.setFocused()
+
+
+    this.showMenu();
+    this.$emit('keydown', e);
+  },
+  onSearchKeyUp: function onSearchKeyUp(e) {
+    this.$emit('keyup', e);
+  },
+  onSearch: function onSearch(e) {
+    this.selectedItemByArrows = this.selectedItem = this.arrowsIndex = null; // e.inputType: "deleteContentBackward"
+    // if (!this.focused) this.focused = true
+    // console.log(e.target.value)
+    // if (!e.target.value) {
+    //   this.selectedItem = null
+    // }
+
+    this.search = e.target.value;
+    this.$emit('search', this.search);
+  },
+  onScroll: function onScroll(event) {
+    this.$emit('scroll', event);
+    if (this.itemsLimit >= this.itemsComputed.length) return;
+    var content = event.target;
+    var showMoreItems = content.scrollHeight - (content.scrollTop + content.clientHeight) < 200; // если проскролил вниз то показать больше итемов
+
+    if (showMoreItems) {
+      this.itemsLimit += 20;
+    }
+  }
+});
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
+var es6_regexp_to_string = __webpack_require__("6b54");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
+
+// CONCATENATED MODULE: ./src/props.js
+
+
+/* harmony default export */ var props = ({
+  value: {
+    type: [Array, Object, String, Number, Boolean],
+    // TODO set to null (any type) after issue fix
+    // required: true,
+    default: function _default() {
+      return null;
+    },
+    note: 'value for v-model'
+  },
+  items: {
+    type: [Array, String],
+    required: true,
+    note: 'array of suggestions (data fetched from backend, etc)'
+  },
+  itemText: {
+    type: String,
+    default: null,
+    // 'text',
+    // required: true,
+    note: 'property in item for text'
+  },
+  itemValue: {
+    type: String,
+    default: null,
+    // значит вернуть весь объект, 'value'
+    note: 'property in item for value'
+  },
+  placeholder: {
+    type: String,
+    default: null,
+    note: 'placeholder for input'
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+    note: 'display the loading indicator'
+  },
+  loadingIndicator: {
+    // http://loadinggif.com/images/image-selection/3.gif
+    type: String,
+    default: 'https://i.imgur.com/fLYd7PN.gif',
+    note: 'sets custom loading spinner/indicator. https://loading.io/'
+  },
+  // invalid: {
+  //   type: Boolean,
+  // },
+  errorMessage: {
+    type: String,
+    default: null
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+    note: 'disable the select'
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
+    note: 'readonly state'
+  },
+  filter: {
+    type: Function,
+    default: function _default(item, queryText, itemText) {
+      var hasValue = function hasValue(val) {
+        return val != null ? val : '';
+      };
+
+      var text = hasValue(itemText);
+      var query = hasValue(queryText);
+      return text.toString().toLowerCase().indexOf(query.toString().toLowerCase()) > -1;
+    },
+    note: 'filter function for search'
+  },
+  inputElCustomAttributes: {
+    type: Object,
+    default: function _default() {
+      return {};
+    },
+    note: 'you can pass your attributes to the input element'
+  },
+  disableSearch: {
+    type: Boolean,
+    default: false,
+    note: 'disable search input element'
+  },
+  disableFilteringBySearch: {
+    type: Boolean,
+    default: false,
+    note: 'disable filtering by search (you can use search for manually getting items)'
+  },
+  resetSearchOnBlur: {
+    type: Boolean,
+    default: true,
+    note: 'reset search on blur event'
+  },
+  allowMobileScroll: {
+    type: Boolean,
+    default: true,
+    note: 'allow scrolling to an item on mobile devices.'
+  },
+  arrowsDisableInstantSelection: {
+    type: Boolean,
+    default: false,
+    note: 'disable auto select when up or down with key arrow'
+  }
+});
+// CONCATENATED MODULE: ./src/computed.js
+
+/* harmony default export */ var computed = ({
+  itemsComputed: function itemsComputed() {
+    var items = this.items;
+
+    if (typeof this.items === 'string') {
+      items = JSON.parse(this.items);
+    }
+
+    return this.filteredBySearchItems(items);
+  },
+  inputValue: function inputValue() {
+    // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
+    if (this.$scopedSlots.selection && this.search === '') return ''; // если есть строка поиска, то пусть она там будет
+
+    if (this.search !== '') return this.search; // иначе пусть будет текст элемента или его значение
+
+    return this.getItemText(this.selectedItem) || this.currentItemValue;
+  },
+  currentItemValue: function currentItemValue() {
+    return this.getItemValue(this.selectedItem);
+  },
+  showSelectionSlot: function showSelectionSlot() {
+    return this.$scopedSlots.selection && this.selectedItem && !this.search;
+  },
+  inputForTextStyles: function inputForTextStyles() {
+    if (this.loading) {
+      return {
+        'background-image': "url(".concat(this.loadingIndicator, ")")
+      };
+    }
+
+    return {};
+  },
+  hasMenu: function hasMenu() {
+    return this.wishShowMenu && !this.loading; // this.focused && !this.loading
+  },
+  hasError: function hasError() {
+    return !!this.errorMessage;
+  },
+  isMobile: function isMobile() {
+    // return window.innerWidth + window.innerHeight <= 1800
+    return window.innerWidth <= 900 && window.innerHeight <= 900;
+  },
+  menuDynamicStyles: function menuDynamicStyles() {
+    var obj = {
+      // ширина такая же как и у поля ввода
+      'width': this.$refs['IZ-select__input'].offsetWidth + 'px',
+      'pointer-events': !this.hasMenu ? 'none' : 'auto'
+    };
+
+    if (this.disableSearch) {
+      obj.top = this.$refs['IZ-select__input'].offsetTop + 'px';
+    }
+
+    return obj;
+  },
+  // get item index from arr
+  selectedItemIndex: function selectedItemIndex() {
+    for (var itemKey in this.itemsComputed) {
+      if (this.selectedItem === this.itemsComputed[itemKey] && this.itemsComputed.hasOwnProperty(itemKey)) {
+        return itemKey;
+      }
+    }
+
+    return null;
+  }
+});
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/@vue/cli-plugin-babel/node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=script&lang=js&
 
 
@@ -2145,301 +2447,133 @@ function __(key) {
 
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ var componentvue_type_script_lang_js_ = ({
   name: 'VueSelect',
   introduction: 'an amazing select',
   description: "\n  This `select` is amazing, you should _check_ it out \uD83D\uDE0A.\n  ",
   token: "<cool-select v-model=\"selected\" :items=\"items\" />",
-  props: {
-    value: {
-      type: [Array, Object, String, Number, Boolean],
-      // TODO set to null (any type) after issue fix
-      // required: true,
-      default: function _default() {
-        return null;
-      },
-      note: 'value for v-model'
-    },
-    items: {
-      type: [Array, String],
-      required: true,
-      note: 'array of suggestions (data fetched from backend, etc)'
-    },
-    itemText: {
-      type: String,
-      default: null,
-      // 'text',
-      // required: true,
-      note: 'property in item for text'
-    },
-    itemValue: {
-      type: String,
-      default: null,
-      // значит вернуть весь объект, 'value'
-      note: 'property in item for value'
-    },
-    placeholder: {
-      type: String,
-      default: null,
-      note: 'placeholder for input'
-    },
-    loading: {
-      type: Boolean,
-      default: false,
-      note: 'display the loading indicator'
-    },
-    loadingIndicator: {
-      // http://loadinggif.com/images/image-selection/3.gif
-      type: String,
-      default: 'https://i.imgur.com/fLYd7PN.gif',
-      note: 'sets custom loading spinner/indicator. https://loading.io/'
-    },
-    // invalid: {
-    //   type: Boolean,
-    // },
-    errorMessage: {
-      type: String,
-      default: null
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-      note: 'disable the select'
-    },
-    readonly: {
-      type: Boolean,
-      default: false,
-      note: 'readonly state'
-    },
-    filter: {
-      type: Function,
-      default: function _default(item, queryText, itemText) {
-        var hasValue = function hasValue(val) {
-          return val != null ? val : '';
-        };
-
-        var text = hasValue(itemText);
-        var query = hasValue(queryText);
-        return text.toString().toLowerCase().indexOf(query.toString().toLowerCase()) > -1;
-      },
-      note: 'filter function for search'
-    },
-    inputElCustomAttributes: {
-      type: Object,
-      default: function _default() {
-        return {};
-      },
-      note: 'you can pass your attributes to the input element'
-    },
-    disableSearch: {
-      type: Boolean,
-      default: false,
-      note: 'disable search input element'
-    },
-    disableFilteringBySearch: {
-      type: Boolean,
-      default: false,
-      note: 'disable filtering by search (you can use search for manually getting items)'
-    },
-    resetSearchOnBlur: {
-      type: Boolean,
-      default: true,
-      note: 'reset search on blur event'
-    },
-    allowMobileScroll: {
-      type: Boolean,
-      default: true,
-      note: 'Allow scrolling to an item on mobile devices.'
-    },
-    disableAutoSelect: {
-      type: Boolean,
-      default: false,
-      note: 'disable auto select when up or down with key arrow'
-    }
-  },
+  props: props,
   data: function data() {
     return {
+      wishShowMenu: false,
       arrowsIndex: null,
       focused: false,
       selectedItem: null,
+      selectedItemByArrows: null,
       itemsLimit: 20,
       search: '' // null
 
     };
   },
-  computed: {
-    itemsComputed: function itemsComputed() {
-      var items = this.items;
-
-      if (typeof this.items === 'string') {
-        items = JSON.parse(this.items);
-      }
-
-      return this.filteredBySearchItems(items);
-    },
-    inputValue: function inputValue() {
-      // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
-      if (this.$scopedSlots.selection && this.search === '') return ''; // если есть строка поиска, то пусть она там будет
-
-      if (this.search !== '') return this.search; // иначе пусть будет текст элемента или его значение
-
-      return this.getItemText(this.selectedItem) || this.currentItemValue;
-    },
-    currentItemValue: function currentItemValue() {
-      return this.getItemValue(this.selectedItem);
-    },
-    showSelectionSlot: function showSelectionSlot() {
-      return this.$scopedSlots.selection && this.selectedItem && !this.search;
-    },
-    inputForTextStyles: function inputForTextStyles() {
-      if (this.loading) {
-        return {
-          'background-image': "url(".concat(this.loadingIndicator, ")")
-        };
-      }
-
-      return {};
-    },
-    hasMenu: function hasMenu() {
-      return this.focused && !this.loading;
-    },
-    hasError: function hasError() {
-      return !!this.errorMessage;
-    },
-    isMobile: function isMobile() {
-      // return window.innerWidth + window.innerHeight <= 1800
-      return window.innerWidth <= 900 && window.innerHeight <= 900;
-    },
-    menuDynamicStyles: function menuDynamicStyles() {
-      var obj = {
-        // ширина такая же как и у поля ввода
-        'width': this.$refs['IZ-select__input'].offsetWidth + 'px',
-        'pointer-events': !this.hasMenu ? 'none' : 'auto'
-      };
-
-      if (this.disableSearch) {
-        obj.top = this.$refs['IZ-select__input'].offsetTop + 'px';
-      }
-
-      return obj;
-    },
-    // get item index from arr
-    selectedItemIndex: function selectedItemIndex() {
-      for (var itemKey in this.itemsComputed) {
-        if (this.selectedItem === this.itemsComputed[itemKey] && this.itemsComputed.hasOwnProperty(itemKey)) {
-          return itemKey;
-        }
-      }
-
-      return null;
-    }
-  },
+  computed: computed,
   watch: {
     value: function value() {
       this.setSelectedItemByValue();
@@ -2448,18 +2582,8 @@ function __(key) {
       this.setSelectedItemByValue();
     },
     selectedItem: function selectedItem() {
+      this.selectedItemByArrows = null;
       this.$emit('input', this.currentItemValue);
-    },
-    focused: function focused() {
-      if (this.focused) {
-        this.$emit('focus');
-      } else {
-        this.$emit('blur');
-
-        if (this.resetSearchOnBlur) {
-          this.search = '';
-        }
-      }
     }
   },
   created: function created() {
@@ -2472,47 +2596,14 @@ function __(key) {
       var target = _ref.target;
       var select = _this.$refs['IZ-select'];
 
-      if (select && !select.contains(target)) {
-        _this.focused = false;
+      if (_this.focused && select && !select.contains(target)) {
+        _this.setBlured();
       }
     });
   },
-  methods: {
-    selectByArrow: function selectByArrow(e) {
-      if (this.arrowsIndex === null) {
-        // если arrowsIndex не был задан, то ставит из выбранного элемента или из -1 (не 0 чтобы когда вниз нажимаешь, то не выбирался второй элемент)
-        this.arrowsIndex = this.selectedItemIndex || -1;
-      }
-
-      if (e.key === 'ArrowDown') {
-        this.arrowsIndex++;
-      }
-
-      if (e.key === 'ArrowUp') {
-        this.arrowsIndex--;
-      }
-
-      var end = this.itemsComputed.length - 1;
-
-      if (this.arrowsIndex < 0) {
-        this.arrowsIndex = end;
-      }
-
-      if (this.arrowsIndex > end) {
-        this.arrowsIndex = 0;
-      }
-
-      this.search = '';
-      this.selectedItem = this.itemsComputed[this.arrowsIndex];
-
-      if (!this.disableAutoSelect) {
-        this.fireSelectEvent(this.selectedItem);
-      }
-
-      e.preventDefault();
-    },
-    setFocus: function setFocus() {
-      if (this.disabled || this.readonly) return; // if search enabled
+  methods: _objectSpread({}, eventsListeners, {
+    setFocused: function setFocused() {
+      if (this.focused || this.disabled || this.readonly) return; // if search enabled
 
       if (!this.disableSearch) {
         // focus text input
@@ -2539,66 +2630,27 @@ function __(key) {
       }
 
       this.focused = true;
+      this.showMenu();
+      this.$emit('focus');
+    },
+    setBlured: function setBlured() {
+      if (this.resetSearchOnBlur) {
+        this.search = '';
+      }
+
+      this.focused = false;
+      this.hideMenu();
+      this.$refs['IZ-select__input-for-text'].blur();
+      this.$emit('blur');
     },
     // TODO вызывать только в watch, в остальных местах убрать, там проверять если !== null, то вызывать
     fireSelectEvent: function fireSelectEvent(item) {
       var _this2 = this;
 
+      this.selectedItemByArrows = null;
       this.$nextTick(function () {
         _this2.$emit('select', item);
       });
-    },
-    onEnter: function onEnter() {
-      this.focused = !this.focused;
-
-      if (this.arrowsIndex === null) {
-        this.selectedItem = this.itemsComputed[0];
-      }
-
-      this.fireSelectEvent(this.selectedItem);
-    },
-    // on click on item
-    onSelect: function onSelect(item) {
-      this.selectedItem = item;
-      this.focused = false;
-      this.search = '';
-      this.fireSelectEvent(item);
-    },
-    onSearchKeyDown: function onSearchKeyDown(e) {
-      // key === 'Delete' ||
-      // !!! Эта часть важна когда используешь слот "selection"
-      if (!e.target.value && e.key === 'Backspace') {
-        this.selectedItem = null;
-        this.arrowsIndex = null;
-      }
-
-      this.setFocus();
-      this.$emit('keydown', e);
-    },
-    onSearchKeyUp: function onSearchKeyUp(e) {
-      this.$emit('keyup', e);
-    },
-    onSearch: function onSearch(e) {
-      this.selectedItem = null;
-      this.arrowsIndex = null; // e.inputType: "deleteContentBackward"
-      // if (!this.focused) this.focused = true
-      // console.log(e.target.value)
-      // if (!e.target.value) {
-      //   this.selectedItem = null
-      // }
-
-      this.search = e.target.value;
-      this.$emit('search', this.search);
-    },
-    onScroll: function onScroll(event) {
-      this.$emit('scroll', event);
-      if (this.itemsLimit >= this.itemsComputed.length) return;
-      var content = event.target;
-      var showMoreItems = content.scrollHeight - (content.scrollTop + content.clientHeight) < 200; // если проскролил вниз то показать больше итемов
-
-      if (showMoreItems) {
-        this.itemsLimit += 20;
-      }
     },
     getItemText: function getItemText(item) {
       if (!item) return null;
@@ -2649,8 +2701,19 @@ function __(key) {
       return items.filter(function (i) {
         return _this4.filter(i, _this4.search, _this4.getItemText(i));
       });
+    },
+    isItemSelected: function isItemSelected(item) {
+      return item === this.selectedItemByArrows || item === this.selectedItem && !this.selectedItemByArrows;
+    },
+    showMenu: function showMenu() {
+      if (this.hasMenu) return;
+      this.wishShowMenu = true;
+    },
+    hideMenu: function hideMenu() {
+      if (!this.hasMenu) return;
+      this.wishShowMenu = false;
     }
-  }
+  })
 });
 // CONCATENATED MODULE: ./src/component.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_componentvue_type_script_lang_js_ = (componentvue_type_script_lang_js_); 
@@ -2775,7 +2838,6 @@ component.options.__file = "component.vue"
 
 
 
-
 /* harmony default export */ var src_main = (new Singelton());
 
 
@@ -2790,30 +2852,12 @@ function Singelton() {
   return {
     install: function install(Vue) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var _options$locale = options.locale,
-          optLocale = _options$locale === void 0 ? defaultLocale : _options$locale,
-          _options$theme = options.theme,
+      var _options$theme = options.theme,
           optTheme = _options$theme === void 0 ? 'bootstrap' : _options$theme;
       requireTheme(optTheme, self.themes);
-      Vue.prototype.$avatarUploader = this;
-      this.locale = optLocale; // Vue.prototype.$avatarUploader.locale =
     },
+
     // themes: ['bootstrap', 'material-design'],
-    locales: ['en', 'ru'],
-
-    // Локаль
-    get locale() {
-      return self.currentLocale;
-    },
-
-    set locale(val) {
-      if (this.locales.includes(val)) {
-        self.currentLocale = val;
-      } else {
-        throw new Error('Non-existent locale');
-      }
-    },
-
     // Стилевые тема
     get theme() {
       return self.currentTheme;
