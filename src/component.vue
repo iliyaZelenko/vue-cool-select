@@ -154,13 +154,16 @@ export default {
   },
   methods: {
     ...eventsListeners,
+    setInputFocused () {
+      this.$refs['IZ-select__input-for-text'].focus()
+    },
     setFocused () {
       if (this.focused || this.disabled || this.readonly) return
 
       // if search enabled
       if (!this.disableSearch) {
         // focus text input
-        this.$refs['IZ-select__input-for-text'].focus()
+        this.setInputFocused()
       }
 
       // scroll to component input el

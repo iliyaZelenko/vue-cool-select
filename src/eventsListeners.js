@@ -68,10 +68,12 @@ export default {
   },
   // on click on item
   onClickSelectItem (item) {
+    // this.focused = false
     this.selectedItem = item
-    this.hideMenu() // this.focused = false
     this.search = ''
 
+    this.setInputFocused()
+    this.hideMenu()
     this.fireSelectEvent(item)
   },
   onSearchKeyDown (e) {
