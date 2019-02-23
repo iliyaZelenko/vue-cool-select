@@ -11,4 +11,4 @@ describe('HelloWorld.vue', () => {
   })
 })
 
-// test CircleCI 5
+// test CircleCI 6
