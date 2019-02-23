@@ -1,3 +1,9 @@
+  <p align="center">
+    <a href="https://codecov.io/gh/vuetifyjs/vuetify">
+      <img src="https://img.shields.io/codecov/c/github/iliyaZelenko/vue-cool-select.svg" alt="Coverage">
+    </a>
+  </p>
+
 # Flexible select.
 
 <div style="text-align: center">
