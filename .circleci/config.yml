@@ -1,10 +1,46 @@
 version: 2
+
+defaults: &defaults
+#  working_directory: ~/repo
+  docker: # use the docker executor type; machine and macos executors are also supported
+    - image: circleci/node:8.9.1 # the primary container, where your job's commands are run (image: circleci/node:4.8.2)
+
 jobs:
-  build:
-    docker: # use the docker executor type; machine and macos executors are also supported
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
+  install_dependencies:
+    <<: *defaults
     steps:
       - checkout # check out the code in the project directory
-      - run: yarn test:unit
+      - restore_cache: # Restores a previously saved cache based on a key (or keys)
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run: # used for invoking all command-line programs
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache: # Generates and stores a cache of a file or directory of files
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+  build:
+    <<: *defaults
+    steps:
+      - checkout
       - run: yarn build
-      - run: echo "Tests completed!" # run the `echo` command
+
+  tests:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: yarn test:unit
+      - run: echo "Tests are performed!"
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install_dependencies
+      - tests
+      - build
+
