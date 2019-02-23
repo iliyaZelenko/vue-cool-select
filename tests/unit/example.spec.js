@@ -1,13 +1,12 @@
 import { mount } from '@vue/test-utils'
 import MainComponent from '@/component.vue'
 
-describe('HelloWorld.vue', () => {
+describe('MainComponent.vue', () => {
   const items = [
     'JS',
     'PHP',
     'CSS',
-    'HTML',
-    'Node.js'
+    'HTML'
   ]
 
   it('renders a component', () => {
@@ -24,9 +23,5 @@ describe('HelloWorld.vue', () => {
     expect(wrapper.vm.items).toBe(items)
     expect(wrapper.classes()).toContain('IZ-select')
     expect(wrapper.is('div')).toBe(true)
-  })
-
-  it('next test', () => {
-    // ...
   })
 })
