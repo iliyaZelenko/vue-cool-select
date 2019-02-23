@@ -6,7 +6,7 @@ defaults: &defaults
     - image: circleci/node:8.9.1 # the primary container, where your job's commands are run (image: circleci/node:4.8.2)
 
 jobs:
-  install_dependencies:
+  install:
     <<: *defaults
     steps:
       - checkout # check out the code in the project directory
@@ -16,7 +16,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: # used for invoking all command-line programs
           name: Install Dependencies
-          command: yarn install --frozen-lockfile
+          command: npm install # yarn install --frozen-lockfile
       - save_cache: # Generates and stores a cache of a file or directory of files
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
@@ -26,29 +26,28 @@ jobs:
   build:
     <<: *defaults
     steps:
-      - checkout
-      - run: yarn build
+      - run: npm run build
 
   tests:
     <<: *defaults
     steps:
-      - checkout
-      - run: yarn test:unit
+      - run: npm run test:unit
       - run: echo "Tests are performed!"
 
+# TODO run lint
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - install_dependencies
+      - install
       - tests:
           requires:
-            - install_dependencies
+            - install
 #          filters:
 #            branches:
 #              only: master
       - build:
           requires:
-            - install_dependencies
+            - install
             - tests
 

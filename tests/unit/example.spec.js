@@ -24,4 +24,8 @@ describe('MainComponent.vue', () => {
     expect(wrapper.classes()).toContain('IZ-select')
     expect(wrapper.is('div')).toBe(true)
   })
+
+  it('', () => {
+    //
+  })
 })
