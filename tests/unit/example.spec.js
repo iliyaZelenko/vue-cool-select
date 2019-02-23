@@ -126,6 +126,6 @@ describe('MainComponent.vue', () => {
   })
 
   // it('', () => {
-  //
+  // ...
   // })
 })
