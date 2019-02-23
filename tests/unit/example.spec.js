@@ -124,4 +124,8 @@ describe('MainComponent.vue', () => {
 
     expect(input1.attributes().disabled).toBe('disabled')
   })
+
+  // it('', () => {
+  //
+  // })
 })

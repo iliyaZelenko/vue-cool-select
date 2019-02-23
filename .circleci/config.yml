@@ -25,8 +25,12 @@ jobs:
 #          paths:
 #            - ~/.cache/yarn
       - run: npm run test:unit
-      - run: npm run lint --no-fix
+      - run:
+          name: Send to Codecov
+          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
+      - run: npm run lint -- --no-fix
       - run: npm run build
+
 
 #  build:
 #    <<: *defaults
