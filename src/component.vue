@@ -1,9 +1,12 @@
 <template>
   <div
+    @keydown.up="onSelectByArrow"
+  
+  
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    @keydown.up="onSelectByArrow"
+
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
@@ -12,8 +15,7 @@
     <div
       ref="IZ-select__input"
       :class="{
-        'IZ-select__input': true,
-        'IZ-select__input--focused': focused,
+        'IZ-select__input': true, 'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--has-error': hasError,
         'IZ-select__input--selection-slot': showSelectionSlot,
@@ -102,10 +104,12 @@
   </div>
 </template>
 
-<script>
+ <script>
 import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
 import props from './props'
+
+
 import computed from './computed'
 
 export default {
@@ -123,11 +127,11 @@ export default {
     selectedItem: null,
     selectedItemByArrows: null,
     itemsLimit: 20,
-    search: '' // null
+    search: '' //null
   }),
   computed,
   watch: {
-    value () {
+    value() {
       this.setSelectedItemByValue()
     },
     items () {
