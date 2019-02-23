@@ -2,6 +2,15 @@
     <a href="https://codecov.io/gh/vuetifyjs/vuetify">
       <img src="https://img.shields.io/codecov/c/github/iliyaZelenko/vue-cool-select.svg" alt="Coverage">
     </a>
+    <a href="https://www.npmjs.com/package/vuetify">
+      <img src="https://img.shields.io/npm/dm/vue-cool-select.svg" alt="Downloads">
+    </a>
+    <a href="https://www.npmjs.com/package/vuetify">
+      <img src="https://img.shields.io/npm/v/vuetify.svg" alt="Version">
+    </a>
+    <a href="https://www.npmjs.com/package/vuetify">
+      <img src="https://img.shields.io/npm/l/vuetify.svg" alt="License">
+    </a>
   </p>
 
 # Flexible select.
@@ -73,7 +82,7 @@ export default {
 Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select).
 
 #### TODO
-- Tests
+- Large test coverage
 
 I am happy to add something or improve, you can write what you want to see.
 I also have more motivation to work if you put a star.
