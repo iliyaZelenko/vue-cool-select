@@ -6,10 +6,10 @@
       <img src="https://img.shields.io/npm/dm/vue-cool-select.svg" alt="Downloads">
     </a>
     <a href="https://www.npmjs.com/package/vue-cool-select">
-      <img src="https://img.shields.io/npm/v/vuetify.svg" alt="Version">
+      <img src="https://img.shields.io/npm/v/vue-cool-select.svg" alt="Version">
     </a>
     <a href="https://www.npmjs.com/package/vue-cool-select">
-      <img src="https://img.shields.io/npm/l/vuetify.svg" alt="License">
+      <img src="https://img.shields.io/npm/l/vue-cool-select.svg" alt="License">
     </a>
   </p>
 
