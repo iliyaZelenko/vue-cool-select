@@ -41,13 +41,13 @@ workflows:
   build_and_test:
     jobs:
       - install_dependencies
-      - tests
+      - tests:
           requires:
             - install_dependencies
           filters:
             branches:
             only: master
-      - build
+      - build:
           requires:
             - install_dependencies
             - tests
