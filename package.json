@@ -8,7 +8,7 @@
     "gp": "vue-cli-service build ./gh-pages-src/main.js --dest=gh-pages-build",
     "gp-deploy": "./gp-deploy.sh",
     "bp": "yarn build && yalc publish --push",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "./node_modules/.bin/vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {},

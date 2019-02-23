@@ -3,13 +3,16 @@ version: 2
 defaults: &defaults
 #  working_directory: ~/repo
   docker: # use the docker executor type; machine and macos executors are also supported
-    - image: circleci/node:8.9.1 # the primary container, where your job's commands are run (image: circleci/node:4.8.2)
+    - image: circleci/node:4.8.2 # the primary container, where your job's commands are run (image: circleci/node:8.9.1)
 
 jobs:
-  install:
+  build: # install
     <<: *defaults
     steps:
       - checkout # check out the code in the project directory
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@5'
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
           name: Restore Yarn Package Cache
           keys:
@@ -21,33 +24,38 @@ jobs:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
-
-  build:
-    <<: *defaults
-    steps:
-      - run: npm run build
-
-  tests:
-    <<: *defaults
-    steps:
+            - ./node_modules
+#          paths:
+#            - ~/.cache/yarn
       - run: npm run test:unit
       - run: echo "Tests are performed!"
+      - run: npm run build
 
-# TODO run lint
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - install
-      - tests:
-          requires:
-            - install
-#          filters:
-#            branches:
-#              only: master
-      - build:
-          requires:
-            - install
-            - tests
+#  build:
+#    <<: *defaults
+#    steps:
+#      - run: npm run build
+#
+#  tests:
+#    <<: *defaults
+#    steps:
+#      - run: npm run test:unit
+#      - run: echo "Tests are performed!"
+
+## TODO run lint
+#workflows:
+#  version: 2
+#  build_and_test:
+#    jobs:
+#      - install
+#      - tests:
+#          requires:
+#            - install
+##          filters:
+##            branches:
+##              only: master
+#      - build:
+#          requires:
+#            - install
+#            - tests
 
