@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <p style="text-align: center; font-size: 20px;">
-      <router-link :to="{ name: 'Example1' }">
-        Countries example
+      <router-link :to="{ name: 'Example3' }">
+        Simple example
       </router-link>
       |
       <router-link :to="{ name: 'Example2' }">
         Async search example
       </router-link>
       |
-      <router-link :to="{ name: 'Example3' }">
-        Simple example
+      <router-link :to="{ name: 'Example1' }">
+        Timezones example
       </router-link>
       |
       <router-link :to="{ name: 'Example4' }">

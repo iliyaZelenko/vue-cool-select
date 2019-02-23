@@ -42,6 +42,11 @@ export default {
         id: '3',
         name: 'Product 3',
         price: '150.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
       }
     ]
 

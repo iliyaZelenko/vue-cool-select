@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ExamplePage1 from './pages/Example1'
+import ExamplePage3 from './pages/Example3'
 // import ExamplePage2 from './pages/Example2'
 // import ExamplePage3 from './pages/Example3'
 //
@@ -17,8 +17,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Example1',
-      component: ExamplePage1
+      name: 'Example3',
+      component: ExamplePage3
+    },
+    {
+      path: '/ex4',
+      name: 'Example4',
+      component: () => import(/* webpackChunkName: "Example3" */ './pages/Example4')
     },
     {
       path: '/ex2',
@@ -26,14 +31,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "Example2" */ './pages/Example2')
     },
     {
-      path: '/ex3',
-      name: 'Example3',
-      component: () => import(/* webpackChunkName: "Example3" */ './pages/Example3')
-    },
-    {
-      path: '/ex4',
-      name: 'Example4',
-      component: () => import(/* webpackChunkName: "Example3" */ './pages/Example4')
+      path: '/ex1',
+      name: 'Example1',
+      component: () => import(/* webpackChunkName: "Example3" */ './pages/Example1')
     },
     {
       path: '/docs',
