@@ -1,12 +1,9 @@
 <template>
   <div
-    @keydown.up="onSelectByArrow"
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    
-    
-    
+    @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
@@ -15,7 +12,7 @@
     <div
       ref="IZ-select__input"
       :class="{
-          'IZ-select__input': true,
+        'IZ-select__input': true,
         'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--has-error': hasError,
@@ -59,7 +56,8 @@
         @scroll="onScroll"
       >
         <div
-          v-for="(item, i) in itemsComputed" v-if="i < itemsLimit"
+          v-for="(item, i) in itemsComputed"
+          v-if="i < itemsLimit"
           :key="'IZ-item-' + i"
           :class="{
             'IZ-select__item': true,
@@ -108,8 +106,6 @@
 import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
 import props from './props'
-
-
 import computed from './computed'
 
 export default {
@@ -137,7 +133,7 @@ export default {
     items () {
       this.setSelectedItemByValue()
     },
-    selectedItem() {
+    selectedItem () {
       this.selectedItemByArrows = null
 
       this.$emit('input', this.currentItemValue)
