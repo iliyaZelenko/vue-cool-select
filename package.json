@@ -9,6 +9,7 @@
     "gp-deploy": "./gp-deploy.sh",
     "bp": "yarn build && yalc publish --push",
     "test:unit": "vue-cli-service test:unit",
+    "test:unit-watch": "vue-cli-service test:unit --watch",
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {},

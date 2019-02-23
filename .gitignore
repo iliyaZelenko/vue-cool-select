@@ -1,5 +1,3 @@
-/circleci.exe
-
 .DS_Store
 /node_modules/
 /dist/demo.html
