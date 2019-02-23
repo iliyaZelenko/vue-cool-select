@@ -28,7 +28,7 @@ jobs:
 #          paths:
 #            - ~/.cache/yarn
       - run: npm run test:unit
-      - run: echo "Tests are performed!"
+      - run: npm run lint --no-fix
       - run: npm run build
 
 #  build:

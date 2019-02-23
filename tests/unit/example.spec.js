@@ -26,6 +26,6 @@ describe('MainComponent.vue', () => {
   })
 
   it('', () => {
-    // ... 3
+    // ... 4
   })
 })
