@@ -1,10 +1,15 @@
 <template>
   <div
+    @keydown.up="onSelectByArrow"
+  
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    @keydown.up="onSelectByArrow"
+    
     @keydown.down="onSelectByArrow"
+    
+    
+    
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
     @mousedown="onClick"
@@ -12,8 +17,7 @@
     <div
       ref="IZ-select__input"
       :class="{
-        'IZ-select__input': true,
-        'IZ-select__input--focused': focused,
+        'IZ-select__input': true, 'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--has-error': hasError,
         'IZ-select__input--selection-slot': showSelectionSlot,
@@ -133,8 +137,8 @@ export default {
     items () {
       this.setSelectedItemByValue()
     },
-    selectedItem () {
-      this.selectedItemByArrows = null
+    selectedItem() {
+      this.selectedItemByArrows = null;
 
       this.$emit('input', this.currentItemValue)
     }
