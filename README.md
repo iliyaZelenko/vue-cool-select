@@ -1,14 +1,14 @@
   <p align="center">
-    <a href="https://codecov.io/gh/vuetifyjs/vuetify">
+    <a href="https://codecov.io/gh/iliyaZelenko/vue-cool-select">
       <img src="https://img.shields.io/codecov/c/github/iliyaZelenko/vue-cool-select.svg" alt="Coverage">
     </a>
-    <a href="https://www.npmjs.com/package/vuetify">
+    <a href="https://www.npmjs.com/package/vue-cool-select">
       <img src="https://img.shields.io/npm/dm/vue-cool-select.svg" alt="Downloads">
     </a>
-    <a href="https://www.npmjs.com/package/vuetify">
+    <a href="https://www.npmjs.com/package/vue-cool-select">
       <img src="https://img.shields.io/npm/v/vuetify.svg" alt="Version">
     </a>
-    <a href="https://www.npmjs.com/package/vuetify">
+    <a href="https://www.npmjs.com/package/vue-cool-select">
       <img src="https://img.shields.io/npm/l/vuetify.svg" alt="License">
     </a>
   </p>
