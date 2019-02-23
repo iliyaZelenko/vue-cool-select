@@ -6,7 +6,8 @@ describe('HelloWorld.vue', () => {
     'JS',
     'PHP',
     'CSS',
-    'HTML'
+    'HTML',
+    'Node.js'
   ]
 
   it('renders a component', () => {
