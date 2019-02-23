@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production'
+  publicPath: process.env.NODE_ENV === 'production'
     ? '/vue-cool-select/'
     : '/',
   outputDir: undefined,
