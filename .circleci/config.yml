@@ -42,5 +42,13 @@ workflows:
     jobs:
       - install_dependencies
       - tests
+          requires:
+            - install_dependencies
+          filters:
+            branches:
+            only: master
       - build
+          requires:
+            - install_dependencies
+            - tests
 

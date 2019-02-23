@@ -25,7 +25,7 @@ describe('HelloWorld.vue', () => {
     expect(wrapper.is('div')).toBe(true)
   })
 
-  it('next test', () => {
+  it('next test (2)', () => {
     // ...
   })
 })
