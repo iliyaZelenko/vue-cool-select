@@ -10,9 +10,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout # check out the code in the project directory
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@5'
+#      - run:
+#          name: update-npm
+#          command: 'sudo npm install -g npm@5'
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
           name: Restore Yarn Package Cache
           keys:
