@@ -158,7 +158,7 @@ export default {
     })
   },
   methods: {
-    ...eventsListeners,
+      ...eventsListeners,
     setInputFocused () {
       this.$refs['IZ-select__input-for-text'].focus()
     },
