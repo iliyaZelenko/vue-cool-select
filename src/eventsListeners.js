@@ -3,8 +3,6 @@ export default {
     if (this.disabled || this.readonly) return
 
     this.showMenu()
-    // if (!this.hasMenu) return
-
     if (this.arrowsIndex === null) {
       // если arrowsIndex не был задан, то ставит из выбранного элемента или из -1 (не 0 чтобы когда вниз нажимаешь, то не выбирался второй элемент)
       this.arrowsIndex = this.selectedItemIndex || -1
