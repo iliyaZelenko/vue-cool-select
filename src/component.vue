@@ -1,9 +1,11 @@
 <template>
   <div
+    @keydown.up="onSelectByArrow"
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    @keydown.up="onSelectByArrow"
+    
+    
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
@@ -12,8 +14,7 @@
     <div
       ref="IZ-select__input"
       :class="{
-        'IZ-select__input': true,
-        'IZ-select__input--focused': focused,
+        'IZ-select__input': true, 'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--has-error': hasError,
         'IZ-select__input--selection-slot': showSelectionSlot,
@@ -81,7 +82,7 @@
         >
           <slot name="no-data">
             No data available
-          </slot>
+          </ slot>
         </div>
       </div>
     </transition>
@@ -116,8 +117,8 @@ export default {
   `,
   token: `<cool-select v-model="selected" :items="items" />`,
   props,
-  data: () => ({
-    wishShowMenu: false,
+  data:() =>({
+    wishShowMenu:false,
     arrowsIndex: null,
     focused: false,
     selectedItem: null,
@@ -127,11 +128,11 @@ export default {
   }),
   computed,
   watch: {
-    value () {
-      this.setSelectedItemByValue()
+    value() {
+      this.setSelectedItemByValue();
     },
     items () {
-      this.setSelectedItemByValue()
+      this.setSelectedItemByValue();
     },
     selectedItem () {
       this.selectedItemByArrows = null
