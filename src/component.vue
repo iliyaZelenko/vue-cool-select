@@ -1,9 +1,11 @@
 <template>
   <div
+    @keydown.up="onSelectByArrow"
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    @keydown.up="onSelectByArrow"
+    
+    
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
@@ -12,8 +14,7 @@
     <div
       ref="IZ-select__input"
       :class="{
-        'IZ-select__input': true,
-        'IZ-select__input--focused': focused,
+        'IZ-select__input': true, 'IZ-select__input--focused': focused,
         'IZ-select__input--has-menu': hasMenu,
         'IZ-select__input--has-error': hasError,
         'IZ-select__input--selection-slot': showSelectionSlot,
@@ -118,7 +119,7 @@ export default {
   props,
   data: () => ({
     wishShowMenu: false,
-    arrowsIndex: null,
+    arrowsIndex: null ,
     focused: false,
     selectedItem: null,
     selectedItemByArrows: null,
@@ -126,9 +127,9 @@ export default {
     search: '' // null
   }),
   computed,
-  watch: {
-    value () {
-      this.setSelectedItemByValue()
+  watch:{
+    value() {
+      this.setSelectedItemByValue();
     },
     items () {
       this.setSelectedItemByValue()
