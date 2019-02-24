@@ -63,6 +63,8 @@ export default {
     this.hasMenu ? this.hideMenu() : this.showMenu()
   },
   onClick () {
+    if (this.disabled || this.readonly) return
+
     this.setFocused()
     this.showMenu()
   },
