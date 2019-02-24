@@ -1,4 +1,4 @@
-import { isObject, getOffsetSum } from '@/helpers'
+import { isObject, getOffsetSum } from '~/helpers'
 
 describe('helpers.js', () => {
   it('checks isObject', () => {

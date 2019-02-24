@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import CoolSelect from '../src/main'
+import CoolSelect from '~/main'
 import { getTheme } from './themeHelpers'
 
 const theme = getTheme()

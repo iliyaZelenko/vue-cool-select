@@ -1,0 +1,81 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["tslint:latest", "tslint-config-standard"],
+  "linterOptions": {
+    "include": [
+      "**/*.ts",
+      "**/*.vue"
+    ],
+    "exclude": [
+//      "**/*.spec.js",
+      "./node_modules/**/*"
+    ]
+  },
+  "rules": {
+    /* Ilya Zelen tastes */
+    "object-literal-key-quotes": false,
+    "interface-name": [true, "never-prefix"],
+    "prefer-const": true,
+    "ordered-imports": [false],
+    "object-literal-sort-keys": [false],
+    "whitespace": false, // вызывало предупреждение вообще где не нужно
+    // "no-implicit-dependencies": [true, "dev"],
+
+    // it is important for the imports work
+    "no-implicit-dependencies": [true, ["~", "@"]],
+    "no-submodule-imports": false, // [true, "~", "@"],
+
+    "quotemark": [true, "single"],
+    "semicolon": [true, "never"],
+    "trailing-comma": [true, {
+      "multiline": "never",
+      "singleline": "never"
+    }],
+    "space-before-function-paren": true,
+
+    // почитать
+    "restrict-plus-operands": false
+  }
+}
+
+//{
+//  "defaultSeverity": "warning",
+//  "extends": ["tslint:latest", "tslint-config-standard"],
+//  "linterOptions": {
+//    "include": [
+//      "**/*.ts", "**/*.vue"
+//    ],
+//    "exclude": [
+//      "node_modules/**",
+//      "dist/**",
+//      "dist.js/**",
+//      ".nuxt/**",
+//      "tests/**"
+//    ]
+//  },
+//  "rules": {
+//    /* Ilya Zelen tastes */
+//    "interface-name": [true, "never-prefix"],
+//    "prefer-const": true,
+//    "ordered-imports": [false],
+//    "object-literal-sort-keys": [false],
+//    "whitespace": false, // вызывало предупреждение вообще где не нужно
+//    "max-classes-per-file": [true, 1, "exclude-class-expressions"],
+//    // "no-implicit-dependencies": [true, "dev"],
+//
+//    // it is important for the imports work
+//    "no-implicit-dependencies": [true, ["~", "@"]],
+//    "no-submodule-imports": [true, "~", "@"],
+//
+//    "quotemark": [true, "single"],
+//    "semicolon": [true, "never"],
+//    "trailing-comma": [true, {
+//      "multiline": "never",
+//      "singleline": "never"
+//    }],
+//    "space-before-function-paren": true,
+//
+//    // почитать
+//    "restrict-plus-operands": false
+//  }
+//}

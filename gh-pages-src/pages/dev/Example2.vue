@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { CoolSelect } from '../../../src/main'
+import { CoolSelect } from '~/main'
 
 export default {
   components: { CoolSelect },

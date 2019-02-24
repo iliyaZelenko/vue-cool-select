@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
     ? '/vue-cool-select/'
@@ -10,5 +12,13 @@ module.exports = {
 
   css: {
     extract: false
+  },
+
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, 'src')
+      }
+    }
   }
 }

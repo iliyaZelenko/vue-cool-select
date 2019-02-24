@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import clone from 'clone'
-import MainComponent from '@/component.vue'
+import MainComponent from '~/component.vue'
 
 describe('MainComponent.vue', () => {
   const itemsDefault = [
@@ -136,6 +136,7 @@ describe('MainComponent.vue', () => {
     })
 
     expect(wrapper.contains(errorSelector)).toBe(true)
+    expect(wrapper.contains('.IZ-select__input--has-error')).toBe(true)
 
     const errorEl = wrapper.find(errorSelector)
 
@@ -369,5 +370,29 @@ describe('MainComponent.vue', () => {
 
     wrapper.vm.hideMenu()
     expect(wrapper.vm.wishShowMenu).toBe(false)
+  })
+
+  it('should check menuDynamicStyles', () => {
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items: clone(itemsDefault),
+        disableSearch: false
+      }
+    })
+    let styles = wrapper.vm.menuDynamicStyles
+
+    expect(
+      !!(styles.width && styles['pointer-events'] && !styles.top)
+    ).toBe(true)
+
+    wrapper.setProps({
+      disableSearch: true
+    })
+
+    styles = wrapper.vm.menuDynamicStyles
+
+    expect(
+      !!(styles.width && styles['pointer-events'] && styles.top)
+    ).toBe(true)
   })
 })
