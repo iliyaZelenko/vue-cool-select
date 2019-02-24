@@ -1,6 +1,6 @@
 {
   "name": "vue-cool-select",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "scripts": {
     "serve": "vue-cli-service serve ./gh-pages-src/main.js",
     "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",

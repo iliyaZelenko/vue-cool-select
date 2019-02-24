@@ -1,5 +1,7 @@
 export default {
   onSelectByArrow (e) {
+    if (this.disabled || this.readonly) return
+
     this.showMenu()
     // if (!this.hasMenu) return
 
@@ -79,6 +81,8 @@ export default {
     this.fireSelectEvent(item)
   },
   onSearchKeyDown (e) {
+    if (this.disabled || this.readonly) return
+
     // ignore special keys
     if (['Enter', 'ArrowDown', 'ArrowUp', 'Tab'].includes(e.key)) return
 
@@ -93,9 +97,13 @@ export default {
     this.$emit('keydown', e)
   },
   onSearchKeyUp (e) {
+    if (this.disabled || this.readonly) return
+
     this.$emit('keyup', e)
   },
   onSearch (e) {
+    if (this.disabled || this.readonly) return
+
     this.selectedItemByArrows = this.selectedItem = this.arrowsIndex = null
     // e.inputType: "deleteContentBackward"
     // if (!this.focused) this.focused = true
