@@ -60,7 +60,7 @@
 
 <script>
 import propDoc from 'propdoc'
-import { CoolSelect } from '../../src/main'
+import { CoolSelect } from '~/main'
 
 export default {
   name: 'Docs',

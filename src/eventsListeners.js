@@ -1,8 +1,8 @@
 export default {
   onSelectByArrow (e) {
-    this.showMenu()
-    // if (!this.hasMenu) return
+    if (this.disabled || this.readonly) return
 
+    this.showMenu()
     if (this.arrowsIndex === null) {
       // если arrowsIndex не был задан, то ставит из выбранного элемента или из -1 (не 0 чтобы когда вниз нажимаешь, то не выбирался второй элемент)
       this.arrowsIndex = this.selectedItemIndex || -1
@@ -79,6 +79,8 @@ export default {
     this.fireSelectEvent(item)
   },
   onSearchKeyDown (e) {
+    if (this.disabled || this.readonly) return
+
     // ignore special keys
     if (['Enter', 'ArrowDown', 'ArrowUp', 'Tab'].includes(e.key)) return
 
@@ -93,9 +95,13 @@ export default {
     this.$emit('keydown', e)
   },
   onSearchKeyUp (e) {
+    if (this.disabled || this.readonly) return
+
     this.$emit('keyup', e)
   },
   onSearch (e) {
+    if (this.disabled || this.readonly) return
+
     this.selectedItemByArrows = this.selectedItem = this.arrowsIndex = null
     // e.inputType: "deleteContentBackward"
     // if (!this.focused) this.focused = true

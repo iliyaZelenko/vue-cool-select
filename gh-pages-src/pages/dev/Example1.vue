@@ -66,7 +66,7 @@
 
 <script>
 import countries from '../../countries'
-import { CoolSelect } from '../../../src/main'
+import { CoolSelect } from '~/main'
 
 export default {
   components: { CoolSelect },

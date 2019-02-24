@@ -1,6 +1,6 @@
 {
   "name": "vue-cool-select",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "scripts": {
     "serve": "vue-cli-service serve ./gh-pages-src/main.js",
     "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
@@ -16,6 +16,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^24.0.6",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-e2e-cypress": "^3.4.1",
     "@vue/cli-plugin-eslint": "^3.0.5",
@@ -26,9 +27,15 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "clone": "^2.1.2",
+    "jest": "^24.1.0",
     "propdoc": "^0.9.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.13.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.3.3333",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"

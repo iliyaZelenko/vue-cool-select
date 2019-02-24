@@ -1,5 +1,5 @@
-import './styles/main.styl'
-import component from './component.vue'
+import '~/styles/main.styl'
+import component from '~/component.vue'
 
 export default new Singelton()
 export {

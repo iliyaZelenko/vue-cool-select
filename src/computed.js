@@ -46,7 +46,7 @@ export default {
     let obj = {
       // ширина такая же как и у поля ввода
       'width': this.$refs['IZ-select__input'].offsetWidth + 'px',
-      'pointer-events': !this.hasMenu ? 'none' : 'auto'
+      'pointer-events': this.hasMenu ? 'auto' : 'none'
     }
 
     if (this.disableSearch) {
