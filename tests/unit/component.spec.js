@@ -86,6 +86,14 @@ describe('MainComponent.vue', () => {
     expect(
       wrapper.vm.selectedItemIndex
     ).toBe(itemIndex.toString())
+
+    // Если нет результатов поиска, то selectedItemIndex === null
+    wrapper.setData({
+      search: 'u4904g098fdhg0d9f8'
+    })
+    expect(
+      wrapper.vm.selectedItemIndex
+    ).toBe(null)
   })
 
   it('should change selectedItem by the value prop', () => {
@@ -279,21 +287,6 @@ describe('MainComponent.vue', () => {
     expect(wrapper.vm.selectedItem).toBe(value)
   })
 
-  it('should check the setSelectedItemByValue', () => {
-    const index = 0
-    const value = itemsDefault[index]
-    const wrapper = mount(MainComponent, {
-      propsData: {
-        items: itemsDefault,
-        value
-      }
-    })
-
-    wrapper.vm.setSelectedItemByValue()
-
-    expect(wrapper.vm.selectedItem).toBe(value)
-  })
-
   it('should check return the only key in object for text if no "itemText" prop provided', () => {
     const items = [
       {
@@ -330,5 +323,51 @@ describe('MainComponent.vue', () => {
         wrapper.vm.selectedItem
       )
     )
+  })
+
+  it('should check the setSelectedItemByValue', () => {
+    const items = clone(itemsDefault)
+    const index = 0
+    const value = items[index]
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items,
+        value
+      }
+    })
+
+    wrapper.vm.setSelectedItemByValue()
+
+    expect(wrapper.vm.selectedItem).toBe(value)
+  })
+
+  it('should check the setSelectedItemByValue result after items change', () => {
+    const items = clone(itemsDefault)
+    const value = itemsDefault[0]
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items,
+        value
+      }
+    })
+
+    wrapper.vm.items.pop()
+    wrapper.vm.setSelectedItemByValue()
+
+    expect(wrapper.vm.selectedItem).toBe(value)
+  })
+
+  it('should check showMenu / hideMenu methods', () => {
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items: clone(itemsDefault)
+      }
+    })
+
+    wrapper.vm.showMenu()
+    expect(wrapper.vm.wishShowMenu).toBe(true)
+
+    wrapper.vm.hideMenu()
+    expect(wrapper.vm.wishShowMenu).toBe(false)
   })
 })
