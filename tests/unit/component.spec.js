@@ -52,7 +52,8 @@ describe('MainComponent.vue', () => {
   })
 
   it('tests "item-value", "itemText" props, checks values for every item, checks if an item is selected', () => {
-    const value = 1
+    const itemIndex = 0
+    const value = itemsCollection[itemIndex][VAL]
     const items = clone(itemsCollection)
     const itemByValue = items.find(i => i[VAL] === value)
     const wrapper = mount(MainComponent, {
@@ -81,6 +82,10 @@ describe('MainComponent.vue', () => {
     expect(
       wrapper.vm.isItemSelected(itemByValue)
     ).toBe(true)
+
+    expect(
+      wrapper.vm.selectedItemIndex
+    ).toBe(itemIndex.toString())
   })
 
   it('should change selectedItem by the value prop', () => {
@@ -259,8 +264,71 @@ describe('MainComponent.vue', () => {
     expect(wrapper.vm.hasMenu).toBe(true)
   })
 
-  // TODO написать тесты и отправить их как PR, посмотреть как изменится покрытие
-  // it('', () => {
-  // ...
-  // })
+  it('should check the setSelectedItemByValue', () => {
+    const index = 0
+    const value = itemsDefault[index]
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items: itemsDefault,
+        value
+      }
+    })
+
+    wrapper.vm.setSelectedItemByValue()
+
+    expect(wrapper.vm.selectedItem).toBe(value)
+  })
+
+  it('should check the setSelectedItemByValue', () => {
+    const index = 0
+    const value = itemsDefault[index]
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items: itemsDefault,
+        value
+      }
+    })
+
+    wrapper.vm.setSelectedItemByValue()
+
+    expect(wrapper.vm.selectedItem).toBe(value)
+  })
+
+  it('should check return the only key in object for text if no "itemText" prop provided', () => {
+    const items = [
+      {
+        singleProperty: 'Text 1'
+      },
+      {
+        singleProperty: 'Text 2'
+      },
+      {
+        singleProperty: 'Text 2'
+      }
+    ]
+    const value = items[2]
+    const wrapper = mount(MainComponent, {
+      propsData: {
+        items,
+        value
+      }
+    })
+
+    expect(
+      wrapper.vm.getItemText(
+        wrapper.vm.selectedItem
+      )
+    ).toBe(value.singleProperty)
+
+    // значение получается аналогично тексту
+    expect(
+      wrapper.vm.getItemText(
+        wrapper.vm.selectedItem
+      )
+    ).toBe(
+      wrapper.vm.getItemValue(
+        wrapper.vm.selectedItem
+      )
+    )
+  })
 })

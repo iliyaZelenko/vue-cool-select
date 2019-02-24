@@ -212,10 +212,14 @@ export default {
       if (!item) return null
       if (this.itemText) return item[this.itemText]
 
-      const keys = Object.keys(item)
+      if (isObject(item)) {
+        const keys = Object.keys(item)
 
-      if (keys.length === 1) {
-        return item[keys[0]]
+        if (keys.length === 1) {
+          return item[keys[0]]
+        }
+
+        return item
       }
 
       return item
@@ -224,10 +228,14 @@ export default {
       if (!item) return null
       if (this.itemValue) return item[this.itemValue]
 
-      const keys = Object.keys(item)
+      if (isObject(item)) {
+        const keys = Object.keys(item)
 
-      if (keys.length === 1) {
-        return item[keys[0]]
+        if (keys.length === 1) {
+          return item[keys[0]]
+        }
+
+        return item
       }
 
       return item
