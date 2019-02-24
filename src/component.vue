@@ -82,7 +82,7 @@
         >
           <slot name="no-data">
             No data available
-          </ slot>
+          </slot>
         </div>
       </div>
     </transition>
