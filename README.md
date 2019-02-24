@@ -47,7 +47,7 @@ https://iliyazelenko.github.io/vue-cool-select
 
 ## Get started
 
-1. Import and select theme
+1. Import and select a theme:
   ```js
   import VueSelect from 'vue-cool-select'
   
@@ -56,7 +56,7 @@ https://iliyazelenko.github.io/vue-cool-select
   })
   ```
 
-2. Use inside component
+2. Use inside inside another component:
 ```js
 import { CoolSelect } from 'vue-cool-select'
 
@@ -71,7 +71,8 @@ export default {
 }
 ```
 
-3. Add to template
+3. Add to `<template>`:
+
 ```vue
 <cool-select
   v-model="selected"
