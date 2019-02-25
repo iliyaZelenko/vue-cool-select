@@ -11,6 +11,9 @@
     <a href="https://www.npmjs.com/package/vue-cool-select">
       <img src="https://img.shields.io/npm/l/vue-cool-select.svg" alt="License">
     </a>
+    <a href="https://circleci.com/gh/iliyaZelenko/vue-cool-select">
+      <img src="https://circleci.com/gh/iliyaZelenko/vue-cool-select.svg?style=shield" alt="CircleCI Build Status">
+    </a>
   </p>
 
 # Flexible select.
