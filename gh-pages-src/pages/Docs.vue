@@ -123,6 +123,16 @@ export default {
         description: 'Define a custom item appearance'
       },
       {
+        name: 'before-items',
+        scopeProperties: {},
+        description: 'Content before items'
+      },
+      {
+        name: 'after-items',
+        scopeProperties: {},
+        description: 'Content after items'
+      },
+      {
         name: 'error',
         scopeProperties: {
           errorMessage: 'error message string'
