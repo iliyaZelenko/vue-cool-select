@@ -74,6 +74,7 @@
             </span>
           </slot>
         </div>
+        <slot name="after-items" />
         <!-- TODO до этого тут был span, не проверил на div'e -->
         <div
           v-if="!itemsComputed.length && !loading"
