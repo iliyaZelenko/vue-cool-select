@@ -29,7 +29,7 @@
 
 https://iliyazelenko.github.io/vue-cool-select
 
-[![](https://i.imgur.com/XqHoHxM.png)](https://iliyazelenko.github.io/vue-cool-select)
+[![](https://i.imgur.com/XqHoHxM.png)](https://iliyazelenko.github.io/vue-cool-select) [![Greenkeeper badge](https://badges.greenkeeper.io/iliyaZelenko/vue-cool-select.svg)](https://greenkeeper.io/)
 
 ## Features
 
