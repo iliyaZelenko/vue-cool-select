@@ -31,6 +31,7 @@ jobs:
           command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
       - run: npm run lint-show
       - run: npm run build
+      - run: npx semantic-release
 
 
 #  build:

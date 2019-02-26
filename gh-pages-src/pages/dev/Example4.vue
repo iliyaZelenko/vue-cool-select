@@ -16,7 +16,21 @@
         @select="onSelect"
         @focus="onFocus"
         @blur="onBlur"
-      />
+      >
+        <div
+          slot="before-items"
+          style="background: red;"
+        >
+          before
+        </div>
+        <div
+          slot="after-items"
+          style="background: blue;"
+        >
+          after
+        </div>
+        <div slot="no-data" />
+      </cool-select>
     </div>
   </div>
 </template>
