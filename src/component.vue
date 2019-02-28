@@ -44,13 +44,10 @@
       >
     </div>
 
-    <!--TODO сделать before-items-inner, after-items-inner и переделать прошлые слои, чтобы была совместимость с прокруткой-->
-    <!--TODO исправить CircleCI-->
     <div
       v-if="hasMenu"
       name="fade"
     >
-
       <div
         ref="IZ-select__menu"
         :style="menuDynamicStyles"
