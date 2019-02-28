@@ -3,9 +3,3 @@ module.exports = {
     autoprefixer: {}
   }
 }
-
-// "postcss": {
-//   "plugins": {
-//     "autoprefixer": {}
-//   }
-// },
