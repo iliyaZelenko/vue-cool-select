@@ -18,16 +18,28 @@
         @blur="onBlur"
       >
         <div
+          slot="before-items-fixed"
+          style="background: red;"
+        >
+          before-items-fixed
+        </div>
+        <div
           slot="before-items"
           style="background: red;"
         >
-          before
+          before-items
         </div>
         <div
           slot="after-items"
           style="background: blue;"
         >
-          after
+          after-items
+        </div>
+        <div
+          slot="after-items-fixed"
+          style="background: blue;"
+        >
+          after-items-fixed
         </div>
         <div slot="no-data" />
       </cool-select>
@@ -56,6 +68,46 @@ export default {
         id: '3',
         name: 'Product 3',
         price: '150.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
+      },
+      {
+        id: '3',
+        name: 'Product 3',
+        price: '150.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
+      },
+      {
+        id: '4',
+        name: 'Product 4',
+        price: '120.0'
       },
       {
         id: '4',

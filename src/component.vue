@@ -44,9 +44,11 @@
       >
     </div>
 
-    <transition name="fade">
+    <div
+      v-if="hasMenu"
+      name="fade"
+    >
       <div
-        v-if="hasMenu"
         ref="IZ-select__menu"
         :style="menuDynamicStyles"
         :class="{
@@ -55,41 +57,62 @@
         }"
         @scroll="onScroll"
       >
-        <slot name="before-items" />
+        <slot name="before-items-fixed" />
 
         <div
-          v-for="(item, i) in itemsComputed"
-          v-if="i < itemsLimit"
-          :key="'IZ-item-' + i"
-          :class="{
-            'IZ-select__item': true,
-            'IZ-select__item--selected': isItemSelected(item)
+          :style="{
+            'max-height': menuItemsMaxHeight
           }"
-          @click="onClickSelectItem(item)"
+          class="IZ-select__menu-items"
         >
-          <slot
-            :item="item"
-            name="item"
+          <slot name="before-items">
+            <div style="height: 8px;" />
+          </slot>
+
+          <div
+            v-for="(item, i) in itemsComputed"
+            v-if="i < itemsLimit"
+            :key="'IZ-item-' + i"
+            :class="{
+              'IZ-select__item': true,
+              'IZ-select__item--selected': isItemSelected(item)
+            }"
+            @click="onClickSelectItem(item)"
           >
-            <span>
-              {{ getItemText(item) }}
-            </span>
+            <slot
+              :item="item"
+              name="item"
+            >
+              <span>
+                {{ getItemText(item) }}
+              </span>
+            </slot>
+          </div>
+
+          <div
+            v-if="!itemsComputed.length && !loading"
+            class="IZ-select__no-data"
+          >
+            <slot name="no-data">
+              No data available
+            </slot>
+          </div>
+
+          <slot name="after-items">
+            <div style="height: 8px;" />
           </slot>
         </div>
 
-        <slot name="after-items" />
+        <slot name="after-items-fixed" />
 
-        <!-- TODO до этого тут был span, не проверил на div'e -->
-        <div
-          v-if="!itemsComputed.length && !loading"
-          class="IZ-select__no-data"
-        >
-          <slot name="no-data">
-            No data available
-          </slot>
+        <div style="position: absolute; top: 0; left: 0; right: 0;">
+          <slot name="before-items-fixed-absolute" />
+        </div>
+        <div style="position: absolute; bottom: 0; left: 0; right: 0;">
+          <slot name="after-items-fixed-absolute" />
         </div>
       </div>
-    </transition>
+    </div>
 
     <transition name="fade">
       <div

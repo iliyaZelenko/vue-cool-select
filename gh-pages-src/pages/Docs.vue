@@ -133,11 +133,24 @@ export default {
         description: 'Content after items'
       },
       {
-        name: 'error',
-        scopeProperties: {
-          errorMessage: 'error message string'
-        },
-        description: 'Define a custom error appearance'
+        name: 'before-items-fixed',
+        scopeProperties: {},
+        description: 'Content after items (fixed)'
+      },
+      {
+        name: 'after-items-fixed',
+        scopeProperties: {},
+        description: 'Content after items (fixed)'
+      },
+      {
+        name: 'before-items-fixed-absolute',
+        scopeProperties: {},
+        description: 'Content after items (fixed, absolute)'
+      },
+      {
+        name: 'after-items-fixed-absolute',
+        scopeProperties: {},
+        description: 'Define a custom error appearance (fixed, absolute)'
       }
     ]
   })
