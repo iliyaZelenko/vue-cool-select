@@ -96,5 +96,10 @@ export default {
     type: Boolean,
     default: false,
     note: 'disable auto select when up or down with key arrow'
+  },
+  menuItemsMaxHeight: {
+    type: String,
+    default: '300px',
+    note: 'max menu height (any css value)'
   }
 }
