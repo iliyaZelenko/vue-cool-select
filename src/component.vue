@@ -44,11 +44,9 @@
       >
     </div>
 
-    <div
-      v-if="hasMenu"
-      name="fade"
-    >
+    <transition name="fade">
       <div
+        v-if="hasMenu"
         ref="IZ-select__menu"
         :style="menuDynamicStyles"
         :class="{
@@ -112,7 +110,7 @@
           <slot name="after-items-fixed-absolute" />
         </div>
       </div>
-    </div>
+    </transition>
 
     <transition name="fade">
       <div
