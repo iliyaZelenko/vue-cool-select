@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-wrapp">
+  <div class="theme-wrap">
     <template
       v-for="(theme, i) of themes"
     >
@@ -8,11 +8,15 @@
         class="theme"
         @click="changeTheme(theme.name)"
       >
-        <img :src="theme.img">
+        <img
+          :src="theme.img"
+          alt="theme image"
+        >
         <img
           v-if="theme.name === currentTheme"
           src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-128.png"
           style="width: 20px; position: absolute;  transform: translateX(-5px) translateY(-5px)"
+          alt="mark as current image"
         >
         <br>
         {{ theme.name }}
@@ -55,7 +59,7 @@ export default {
 </script>
 
 <style>
-  .theme-wrapp {
+  .theme-wrap {
     display: flex;
     justify-content: center;
     align-items: center;

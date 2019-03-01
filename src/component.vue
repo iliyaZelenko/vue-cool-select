@@ -163,6 +163,9 @@ export default {
       this.selectedItemByArrows = null
 
       this.$emit('input', this.currentItemValue)
+    },
+    itemsComputed (items) {
+      this.$emit('change-displayed-items', items)
     }
   },
   created () {
