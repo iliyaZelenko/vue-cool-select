@@ -100,6 +100,11 @@ export default {
         name: '@scroll',
         params: 'scroll event (UIEvent, derives from Event)',
         notes: 'invoked when user scrolls in menu'
+      },
+      {
+        name: '@change-displayed-items',
+        params: 'current items displayed (filtered)',
+        notes: 'invoked when the displayed items change'
       }
     ],
     slots: [
