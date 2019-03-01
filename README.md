@@ -29,20 +29,22 @@
 
 https://iliyazelenko.github.io/vue-cool-select
 
-[![](https://i.imgur.com/XqHoHxM.png)](https://iliyazelenko.github.io/vue-cool-select)
+[![](https://i.imgur.com/b7wxLPT.png)](https://iliyazelenko.github.io/vue-cool-select)
 
 ## Features
 
-- 2 themes: bootstrap 4, material design
-- autocomplete
-- asynchronous data
-- slots
-- loading indicator
+- 2 themes: Bootstrap 4, Material Design
+- autocomplete (you can use custom search)
+- control through arrows
+- slots (9)
+- events (7)
+- props (18)
+- loading indicator (helpful for REST requests)
 - validation
 - support on mobile devices
 - disabled and readonly
-- control through arrows
-- many props and events
+
+Write your suggestions, glad to add.
 
 ## Installation
 
@@ -89,4 +91,4 @@ Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select
 - Large test coverage
 
 I am happy to add something or improve, you can write what you want to see.
-I also have more motivation to work if you put a star.
+I also have more motivation to work if you give a star.
