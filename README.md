@@ -16,7 +16,7 @@
     </a>
   </p>
 
-# Flexible select. [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
+# Flexible select. [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
 
 <div style="text-align: center">
   <img src="https://i.imgur.com/z7XdAkb.png?3" width="210px;">
