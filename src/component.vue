@@ -1,11 +1,14 @@
 <template>
   <div
+    @keydown.enter="onEnter"
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
-    @keydown.enter="onEnter"
+    
+    
+    
     @keydown.tab.esc="setBlured"
     @mousedown="onClick"
   >
@@ -131,8 +134,10 @@
 <script>
 import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
-import props from './props'
-import computed from './computed'
+
+
+import props from './props';
+import computed from './computed';
 
 export default {
   name: 'VueSelect',
