@@ -43,7 +43,7 @@ export default {
     //
     // this.fireSelectEvent(this.selectedItem)
 
-    if (!this.arrowsIndex && this.hasMenu) {
+    if (!this.disableDefaultSelection && !this.arrowsIndex && this.hasMenu) {
       const firstItem = this.itemsComputed[0]
 
       if (!firstItem) return
@@ -58,7 +58,8 @@ export default {
       )
     }
 
-    this.searchData = ''
+    if (!this.disableDefaultSelection && this.selectedItem)
+      this.search = ''
     // show / hide menu
     this.hasMenu ? this.hideMenu() : this.showMenu()
   },

@@ -102,6 +102,11 @@ export default {
     default: false,
     note: 'disable auto select when up or down with key arrow'
   },
+  disableDefaultSelection: {
+    type: Boolean,
+    default: false,
+    note: 'disable select by default first item'
+  },
   menuItemsMaxHeight: {
     type: String,
     default: '300px',
