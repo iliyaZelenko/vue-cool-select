@@ -148,8 +148,10 @@ export default {
     focused: false,
     selectedItem: null,
     selectedItemByArrows: null,
+    // TODO create a prop
     itemsLimit: 20,
-    search: '' // null
+    // used only in the "search" computed (setter + getter)
+    searchData: ''
   }),
   computed,
   watch: {
