@@ -67,11 +67,6 @@ export default {
     },
     note: 'filter function for search'
   },
-  searchText: {
-    type: String,
-    default: '',
-    note: 'search string for input, you can use this with ".sync" modifier'
-  },
   inputElCustomAttributes: {
     type: Object,
     default: () => ({}),
