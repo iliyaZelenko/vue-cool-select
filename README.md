@@ -16,7 +16,7 @@
     </a>
   </p>
 
-# [Flexible select](https://iliyazelenko.github.io/vue-cool-select) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
+# Flexible select.
 
 <div style="text-align: center">
   <img src="https://i.imgur.com/z7XdAkb.png?3" width="210px;">
@@ -27,23 +27,22 @@
 
 ## [Demos + Documentation](https://iliyazelenko.github.io/vue-cool-select)
 
-[![](https://i.imgur.com/b7wxLPT.png)](https://iliyazelenko.github.io/vue-cool-select)
+https://iliyazelenko.github.io/vue-cool-select
 
+[![](https://i.imgur.com/XqHoHxM.png)](https://iliyazelenko.github.io/vue-cool-select)
 
 ## Features
 
-- 2 themes: Bootstrap 4, Material Design
-- autocomplete (you can use custom search)
-- control through arrows
-- slots (9)
-- events (7)
-- props (18)
-- loading indicator (helpful for REST requests)
+- 2 themes: bootstrap 4, material design
+- autocomplete
+- asynchronous data
+- slots
+- loading indicator
 - validation
 - support on mobile devices
 - disabled and readonly
-
-Write your suggestions, glad to add.
+- control through arrows
+- many props and events
 
 ## Installation
 
@@ -90,4 +89,4 @@ Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select
 - Large test coverage
 
 I am happy to add something or improve, you can write what you want to see.
-I also have more motivation to work if you give a star.
+I also have more motivation to work if you put a star.
