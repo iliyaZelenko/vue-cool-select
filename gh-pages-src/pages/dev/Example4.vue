@@ -6,11 +6,18 @@
       <b>Selected:</b> {{ selected || 'not chosen' }}.
       <br><br>
 
-      <!--arrows-disable-instant-selection-->
+      <button
+        @click="search = ''"
+      >
+        Set search
+      </button>
+
+      <!--arrows-disable-instant-selection :search.sync="search"-->
       <cool-select
         ref="select"
         v-model="selected"
         :items="items"
+        :search-text.sync="search"
         placeholder="Select name"
         @select="onSelect"
         @focus="onFocus"
@@ -63,9 +70,10 @@ export default {
     }
 
     return {
+      search: '',
       selected: items[1],
       items,
-      displayedItems: []
+      displayedItems: items
     }
   },
   methods: {
