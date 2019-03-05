@@ -1,10 +1,13 @@
 import '~/styles/main.styl'
 import component from '~/component.vue'
+import EventEmitter from '~/eventEmitter'
 
 export default new Singelton()
 export {
+  EventEmitter,
   component,
-  component as CoolSelect
+  component as CoolSelect,
+  component as VueCoolSelect
 }
 
 function Singelton () {

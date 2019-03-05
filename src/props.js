@@ -106,5 +106,9 @@ export default {
     type: String,
     default: '300px',
     note: 'max menu height (any css value)'
+  },
+  eventEmitter: {
+    type: Object,
+    note: 'Observer pattern, helps manage events from parent to child'
   }
 }
