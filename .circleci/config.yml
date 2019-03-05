@@ -4,13 +4,17 @@ defaults: &defaults
 #  working_directory: ~/repo
   docker: # use the docker executor type; machine and macos executors are also supported
     - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
-  branches:
-    ignore:
-      - gh-pages
+#  branches:
+#    ignore:
+#      - gh-pages
 
 workflows:
   version: 2
   master:
+    filter:
+      branches:
+        except:
+          - gh-pages
     jobs:
       - dependencies
       - lint:
