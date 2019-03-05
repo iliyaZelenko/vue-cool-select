@@ -13,9 +13,9 @@ workflows:
   master:
     jobs:
       - dependencies
-      - lint
-        requires:
-          - dependencies
+      - lint:
+          requires:
+            - dependencies
       - test:unit:
           requires:
             - dependencies
@@ -23,8 +23,8 @@ workflows:
           requires:
             - dependencies
       - "Send to Codecov"
-        requires:
-          - test:unit-coverage
+          requires:
+            - test:unit-coverage
       - build:
           requires:
             - dependencies
