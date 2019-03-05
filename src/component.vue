@@ -150,15 +150,13 @@ export default {
     selectedItemByArrows: null,
     // TODO create a prop
     itemsLimit: 20,
+    // readonly
     searchData: ''
   }),
   computed,
   watch: {
     searchText (val) {
-      this.searchData = val
-    },
-    searchData (val) {
-      this.$emit('update:search-text', val)
+      this.setSearchData(val)
     },
     value () {
       this.setSelectedItemByValue()
@@ -176,6 +174,10 @@ export default {
     }
   },
   created () {
+    if (this.eventEmitter) {
+      this.eventEmitter.on('set-search', this.setSearchData)
+    }
+
     // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
 
@@ -190,6 +192,14 @@ export default {
   },
   methods: {
     ...eventsListeners,
+    getSearchData () {
+      return this.searchData
+    },
+    setSearchData (val) {
+      this.searchData = val
+
+      this.$emit('update:search-text', val)
+    },
     setInputFocused () {
       this.$refs['IZ-select__input-for-text'].focus()
     },
@@ -228,7 +238,7 @@ export default {
     },
     setBlured () {
       if (this.resetSearchOnBlur) {
-        this.searchData = ''
+        this.setSearchData('')
       }
       this.focused = false
 
@@ -297,10 +307,10 @@ export default {
     },
     // возвращает отфильтрованные итемы
     filteredBySearchItems (items) {
-      if (!this.searchData || this.disableFilteringBySearch) return items
+      if (!this.getSearchData() || this.disableFilteringBySearch) return items
 
       return items.filter(i =>
-        this.filter(i, this.searchData, this.getItemText(i))
+        this.filter(i, this.getSearchData(), this.getItemText(i))
       )
     },
     isItemSelected (item) {

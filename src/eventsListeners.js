@@ -28,7 +28,7 @@ export default {
     if (this.arrowsDisableInstantSelection) {
       this.selectedItemByArrows = itemByArrowsIndex
     } else {
-      this.searchData = ''
+      this.setSearchData('')
       this.selectedItem = itemByArrowsIndex
 
       this.fireSelectEvent(this.selectedItem)
@@ -58,7 +58,7 @@ export default {
       )
     }
 
-    this.searchData = ''
+    this.setSearchData('')
     // show / hide menu
     this.hasMenu ? this.hideMenu() : this.showMenu()
   },
@@ -72,7 +72,7 @@ export default {
   onClickSelectItem (item) {
     // this.focused = false
     this.selectedItem = item
-    this.searchData = ''
+    this.setSearchData('')
 
     this.setInputFocused()
     this.hideMenu()
@@ -110,8 +110,8 @@ export default {
     //   this.selectedItem = null
     // }
 
-    this.searchData = e.target.value
-    this.$emit('search', this.searchData)
+    this.setSearchData(e.target.value)
+    this.$emit('search', this.getSearchData())
   },
   onScroll (event) {
     this.$emit('scroll', event)
