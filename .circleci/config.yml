@@ -11,9 +11,8 @@ defaults: &defaults
 workflows:
   version: 2
   master:
-    filter:
       branches:
-        except:
+        ignore:
           - gh-pages
     jobs:
       - dependencies
