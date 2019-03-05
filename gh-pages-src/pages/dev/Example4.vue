@@ -12,6 +12,8 @@
         Set search
       </button>
 
+      Search: "{{ search }}"
+
       <!--arrows-disable-instant-selection :search.sync="search"-->
       <cool-select
         ref="select"
