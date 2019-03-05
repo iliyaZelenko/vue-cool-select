@@ -13,7 +13,7 @@ export default {
   itemsLimit: {
     type: Number,
     default: 20,
-    note: 'property in item for text'
+    note: 'items limit'
   },
   itemText: {
     type: String,

@@ -69,7 +69,6 @@
 
           <div
             v-for="(item, i) in itemsComputed"
-            v-if="i < itemsLimit"
             :key="'IZ-item-' + i"
             :class="{
               'IZ-select__item': true,
@@ -77,11 +76,12 @@
             }"
             tabindex="-1"
             @click="onClickSelectItem(item)"
-            :ref="'items'"
+            ref="items"
           >
             <slot
               :item="item"
               name="item"
+              v-if="i < itemsLimit"
             >
               <span>
                 {{ getItemText(item) }}
@@ -150,7 +150,6 @@ export default {
     focused: false,
     selectedItem: null,
     selectedItemByArrows: null,
-    // used only in the "search" computed (setter + getter)
     searchData: ''
   }),
   computed,
