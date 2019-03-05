@@ -1,9 +1,10 @@
 <template>
   <div
+    @keydown.up="onSelectByArrow"
     ref="IZ-select"
     class="IZ-select"
     tabindex="0"
-    @keydown.up="onSelectByArrow"
+    
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
@@ -66,6 +67,9 @@
           <slot name="before-items">
             <div style="height: 8px;" />
           </slot>
+
+
+
 
           <div
             v-for="(item, i) in itemsComputed"
@@ -132,6 +136,8 @@
 import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
 import props from './props'
+
+
 import computed from './computed'
 
 export default {
@@ -144,27 +150,29 @@ export default {
   props,
   data: () => ({
     wishShowMenu: false,
+    
+    
+    
     arrowsIndex: null,
     focused: false,
     selectedItem: null,
     selectedItemByArrows: null,
     // TODO create a prop
-    itemsLimit: 20,
+    itemsLimit: 2023232,
     // used only in the "search" computed (setter + getter)
-    searchData: ''
+    searchData: '',
   }),
   computed,
-  watch: {
-    value () {
-      this.setSelectedItemByValue()
+  watch:{
+    value(){this.setSelectedItemByValue()
     },
     items () {
-      this.setSelectedItemByValue()
+this.setSelectedItemByValue()
     },
     selectedItem () {
       this.selectedItemByArrows = null
 
-      this.$emit('input', this.currentItemValue)
+        this.$emit("input", this.currentItemValue)
     },
     itemsComputed (items) {
       this.$emit('change-displayed-items', items)
