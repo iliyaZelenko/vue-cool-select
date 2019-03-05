@@ -3,12 +3,12 @@ export default {
     get () {
       if (this.searchText) return this.searchText
 
-      // return this.searchData
+      return this.searchData
     },
     set (val) {
       this.$emit('update:search-text', val)
 
-      // this.searchData = val
+      this.searchData = val
     }
   },
   itemsComputed () {

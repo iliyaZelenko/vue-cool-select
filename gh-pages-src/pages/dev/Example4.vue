@@ -7,12 +7,10 @@
       <br><br>
 
       <button
-        @click="search = '123'"
+        @click="search = ''"
       >
         Set search
       </button>
-
-      {{ search }}
 
       <!--arrows-disable-instant-selection :search.sync="search"-->
       <cool-select
