@@ -149,10 +149,17 @@ export default {
     selectedItem: null,
     selectedItemByArrows: null,
     // TODO create a prop
-    itemsLimit: 20
+    itemsLimit: 20,
+    searchData: ''
   }),
   computed,
   watch: {
+    searchText (val) {
+      this.searchData = val
+    },
+    searchData (val) {
+      this.$emit('update:search-text', val)
+    },
     value () {
       this.setSelectedItemByValue()
     },
@@ -221,7 +228,7 @@ export default {
     },
     setBlured () {
       if (this.resetSearchOnBlur) {
-        this.search = ''
+        this.searchData = ''
       }
       this.focused = false
 
@@ -290,10 +297,10 @@ export default {
     },
     // возвращает отфильтрованные итемы
     filteredBySearchItems (items) {
-      if (!this.search || this.disableFilteringBySearch) return items
+      if (!this.searchData || this.disableFilteringBySearch) return items
 
       return items.filter(i =>
-        this.filter(i, this.search, this.getItemText(i))
+        this.filter(i, this.searchData, this.getItemText(i))
       )
     },
     isItemSelected (item) {
