@@ -1,15 +1,16 @@
 export default {
-  // search: {
-  //   get () {
-  //     return this.searchData
-  //     // if (this.searchText) return this.searchText
-  //
-  //     // return this.searchData
-  //   },
-  //   set (val) {
-  //     this.searchData = val
-  //   }
-  // },
+  search: {
+    get () {
+      if (this.searchText) return this.searchText
+
+      // return this.searchData
+    },
+    set (val) {
+      this.$emit('update:search-text', val)
+
+      // this.searchData = val
+    }
+  },
   itemsComputed () {
     let items = this.items
 
@@ -21,9 +22,9 @@ export default {
   },
   inputValue () {
     // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
-    if (this.$scopedSlots.selection && this.searchData === '') return ''
+    if (this.$scopedSlots.selection && this.search === '') return ''
     // если есть строка поиска, то пусть она там будет
-    if (this.searchData !== '') return this.searchData
+    if (this.search !== '') return this.search
 
     // иначе пусть будет текст элемента или его значение
     return this.getItemText(this.selectedItem) || this.currentItemValue
@@ -32,7 +33,7 @@ export default {
     return this.getItemValue(this.selectedItem)
   },
   showSelectionSlot () {
-    return this.$scopedSlots.selection && this.selectedItem && !this.searchData
+    return this.$scopedSlots.selection && this.selectedItem && !this.search
   },
   inputForTextStyles () {
     if (this.loading) {
