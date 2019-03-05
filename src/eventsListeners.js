@@ -111,7 +111,7 @@ export default {
     // }
 
     this.searchData = e.target.value
-    this.$emit('search', this.searchData)
+    this.$emit('search', this.search)
   },
   onScroll (event) {
     this.$emit('scroll', event)
