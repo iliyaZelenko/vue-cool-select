@@ -3,14 +3,11 @@ version: 2
 defaults: &defaults
 #  working_directory: ~/repo
   docker: # use the docker executor type; machine and macos executors are also supported
-    - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
+    - image: circleci/node:8.9.1 # the primary container, where your job's commands are run (image: circleci/node:4.8.2)
 
 jobs:
   build: # install
     <<: *defaults
-    branches:
-      ignore:
-        - gh-pages
     steps:
       - checkout # check out the code in the project directory
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
