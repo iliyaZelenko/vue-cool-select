@@ -6,7 +6,7 @@ export interface VueCoolSelectComponentInterface extends Vue {
   focused: boolean
   wishShowMenu: boolean
   selectedItem: any
-  searchData: string
+  search: string
   selectedItemByArrows: any
 
   // computed
