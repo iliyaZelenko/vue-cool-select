@@ -4,13 +4,43 @@ defaults: &defaults
 #  working_directory: ~/repo
   docker: # use the docker executor type; machine and macos executors are also supported
     - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
+  branches:
+    ignore:
+      - gh-pages
+
+workflows:
+  version: 2
+  master:
+    jobs:
+      - dependencies
+      - lint
+        requires:
+          - dependencies
+      - test:unit:
+          requires:
+            - dependencies
+      - test:unit-coverage:
+          requires:
+            - dependencies
+      - "Send to Codecov"
+        requires:
+          - test:unit-coverage
+      - build:
+          requires:
+            - dependencies
+      - semantic-release:
+          requires:
+            - build
+            - test:unit
+
+#          filters:
+#            branches:
+#              only: master
 
 jobs:
-  build: # install
+  # TODO normal name
+  dependencies:
     <<: *defaults
-    branches:
-      ignore:
-        - gh-pages
     steps:
       - checkout # check out the code in the project directory
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
@@ -26,42 +56,38 @@ jobs:
           paths:
             - ./node_modules
             - ~/.cache/yarn
-#          paths:
-#            - ~/.cache/yarn
-      - run: yarn test:unit
-      - run: yarn test:unit-coverage
-      - run:
-          name: Send to Codecov
-          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
+
+  lint:
+    <<: *defaults
+    steps:
+      #      - run: yarn test:unit
+      #      - run: yarn test:unit-coverage
+      #      - run:
+      #          name: Send to Codecov
+      #          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
       - run: yarn lint-show
+
+  test:unit:
+    <<: *defaults
+    steps:
+      - run: yarn test:unit
+
+  test:unit-coverage:
+    <<: *defaults
+    steps:
+      - run: yarn test:unit-coverage
+
+  "Send to Codecov":
+    <<: *defaults
+    steps:
+      - run: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
+
+  build:
+    <<: *defaults
+    steps:
       - run: yarn build
+
+  semantic-release:
+    <<: *defaults
+    steps:
       - run: yarn semantic-release
-
-
-#  build:
-#    <<: *defaults
-#    steps:
-#      - run: npm run build
-#
-#  tests:
-#    <<: *defaults
-#    steps:
-#      - run: npm run test:unit
-#      - run: echo "Tests are performed!"
-
-#workflows:
-#  version: 2
-#  build_and_test:
-#    jobs:
-#      - install
-#      - tests:
-#          requires:
-#            - install
-##          filters:
-##            branches:
-##              only: master
-#      - build:
-#          requires:
-#            - install
-#            - tests
-
