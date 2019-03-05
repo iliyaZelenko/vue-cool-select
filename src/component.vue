@@ -75,7 +75,9 @@
               'IZ-select__item': true,
               'IZ-select__item--selected': isItemSelected(item)
             }"
+            tabindex="-1"
             @click="onClickSelectItem(item)"
+            :ref="'items'"
           >
             <slot
               :item="item"
@@ -148,8 +150,7 @@ export default {
     focused: false,
     selectedItem: null,
     selectedItemByArrows: null,
-    // TODO create a prop
-    itemsLimit: 20,
+    // used only in the "search" computed (setter + getter)
     searchData: ''
   }),
   computed,

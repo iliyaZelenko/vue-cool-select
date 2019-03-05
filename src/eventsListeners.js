@@ -34,6 +34,9 @@ export default {
       this.fireSelectEvent(this.selectedItem)
     }
 
+    let selectedElement = this.$refs.items[this.arrowsIndex]
+    if (selectedElement) selectedElement.focus()
+
     e.preventDefault()
   },
   onEnter () {

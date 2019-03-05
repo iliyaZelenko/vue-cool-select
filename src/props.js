@@ -10,6 +10,11 @@ export default {
     required: true,
     note: 'array of suggestions (data fetched from backend, etc)'
   },
+  itemsLimit: {
+    type: Number,
+    default: 20,
+    note: 'property in item for text'
+  },
   itemText: {
     type: String,
     default: null, // 'text',
