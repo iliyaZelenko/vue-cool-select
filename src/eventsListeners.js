@@ -59,7 +59,7 @@ export default {
     }
 
     if (!this.disableDefaultSelection && this.selectedItem)
-      this.search = ''
+      this.searchData = ''
     // show / hide menu
     this.hasMenu ? this.hideMenu() : this.showMenu()
   },
