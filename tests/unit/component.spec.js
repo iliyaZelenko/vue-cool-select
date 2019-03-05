@@ -89,7 +89,8 @@ describe('MainComponent.vue', () => {
 
     // Если нет результатов поиска, то selectedItemIndex === null
     wrapper.setData({
-      search: 'u4904g098fdhg0d9f8'
+      // random string
+      searchData: 'u4904g098fdhg0d9f8hff3ghfg2hfgh3gfhfg7hfg'
     })
     expect(
       wrapper.vm.selectedItemIndex
@@ -222,8 +223,8 @@ describe('MainComponent.vue', () => {
       }
     })
 
-    wrapper1.vm.search = firstItemText1
-    wrapper2.vm.search = firstItemText2
+    wrapper1.vm.searchData = firstItemText1
+    wrapper2.vm.searchData = firstItemText2
 
     expect(wrapper1.vm.itemsComputed[0]).toBe(firstItemText1)
     expect(wrapper2.vm.items[0][TEXT]).toBe(firstItemText2)
@@ -248,8 +249,8 @@ describe('MainComponent.vue', () => {
       }
     })
 
-    wrapper1.vm.search = firstItemText1
-    wrapper2.vm.search = firstItemText2
+    wrapper1.vm.searchData = firstItemText1
+    wrapper2.vm.searchData = firstItemText2
 
     expect(wrapper1.vm.itemsComputed).toBe(items1)
     expect(wrapper2.vm.items).toBe(items2)

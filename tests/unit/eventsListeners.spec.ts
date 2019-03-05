@@ -72,7 +72,7 @@ describe('eventsListeners', () => {
     wrapper.vm.onClickSelectItem(selectItem)
 
     expect(wrapper.vm.selectedItem).toBe(selectItem)
-    expect(wrapper.vm.search).toBe('')
+    expect(wrapper.vm.searchData).toBe('')
 
     const inputForText = wrapper.find({
       ref: 'IZ-select__input-for-text'
