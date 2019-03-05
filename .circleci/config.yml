@@ -22,7 +22,7 @@ workflows:
       - test:unit-coverage:
           requires:
             - dependencies
-      - "Send to Codecov"
+      - "Send to Codecov":
           requires:
             - test:unit-coverage
       - build:
