@@ -67,6 +67,8 @@ jobs:
             - ~/.cache/yarn
       - persist_to_workspace:
           root: ~/project
+          paths:
+            - ./node_modules
 
   lint:
     #    <<: *defaults
