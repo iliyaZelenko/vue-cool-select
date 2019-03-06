@@ -58,13 +58,15 @@ jobs:
             - yarn-packages-cache-{{ checksum "yarn.lock" }}
       - run: # used for invoking all command-line programs
           name: Install Dependencies
-          command: yarn install --frozen-lockfile # yarn install --frozen-lockfile
+          command: yarn install --frozen-lockfile --non-interactive --prod=false # yarn install --frozen-lockfile
       - save_cache: # Generates and stores a cache of a file or directory of files
           name: Save Yarn Package Cache
           key: yarn-packages-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
             - ~/.cache/yarn
+      - persist_to_workspace:
+          root: ~/project
 
   lint:
     #    <<: *defaults
@@ -84,39 +86,39 @@ jobs:
     #    <<: *defaults
     executor: my-executor
     steps:
-#      - checkout
-      - attach_workspace:
-          at: ~/project
+      - checkout
+#      - attach_workspace:
+#          at: ~/project
       - run: yarn test:unit
 
   "tests unit coverage":
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/project
+#      - attach_workspace:
+#          at: ~/project
       - run: yarn test:unit-coverage
 
   "Send to Codecov":
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/project
+#      - attach_workspace:
+#          at: ~/project
       - run: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
 
   build:
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/project
+#      - attach_workspace:
+#          at: ~/project
       - run: yarn build
 
   semantic-release:
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/project
+#      - attach_workspace:
+#          at: ~/project
       - run: yarn semantic-release
