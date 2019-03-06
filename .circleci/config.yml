@@ -98,9 +98,9 @@ jobs:
   "Send to Codecov":
     #    <<: *defaults
     executor: my-executor
+    steps:
       - attach_workspace:
           at: ~/data
-    steps:
       - run: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
 
   build:
