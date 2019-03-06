@@ -50,6 +50,7 @@ jobs:
     executor: my-executor
     steps:
       - checkout # check out the code in the project directory
+      - ls
 #      - attach_workspace:
 #          at: ~/data
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
@@ -70,6 +71,7 @@ jobs:
     #    <<: *defaults
     executor: my-executor
     steps:
+      - ls
 #      - attach_workspace:
 #          at: ~/data
       #      - run: yarn test:unit
