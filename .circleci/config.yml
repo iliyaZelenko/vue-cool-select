@@ -50,6 +50,10 @@ jobs:
     executor: my-executor
     steps:
       - checkout # check out the code in the project directory
+      - setup_remote_docker:
+          docker_layer_caching: true
+      # DLC will explicitly cache layers here and try to avoid rebuilding.
+      - run: docker build .
 #      - attach_workspace:
 #          at: ~/data
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
