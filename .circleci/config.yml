@@ -12,7 +12,7 @@ executors:
   my-executor:
     docker:
       - image: circleci/node:8.11.1
-#    working_directory: ~/data # ~/project
+    working_directory: ~/project # ~/data # ~/project
 
 workflows:
   version: 2.1
