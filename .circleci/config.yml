@@ -22,10 +22,10 @@ workflows:
       - lint:
           requires:
             - dependencies
-      - test:unit:
+      - "test:unit":
           requires:
             - dependencies
-      - test:unit-coverage:
+      - "test:unit-coverage:"
           requires:
             - dependencies
       - "Send to Codecov":
@@ -79,7 +79,7 @@ jobs:
       #          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
       - run: yarn lint-show
 
-  test:unit:
+  "test:unit":
     #    <<: *defaults
     executor: my-executor
     steps:
@@ -87,7 +87,7 @@ jobs:
           at: ~/data
       - run: yarn test:unit
 
-  test:unit-coverage:
+  "test:unit-coverage:"
     #    <<: *defaults
     executor: my-executor
     steps:
