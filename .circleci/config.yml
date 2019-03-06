@@ -25,7 +25,7 @@ workflows:
       - "test:unit":
           requires:
             - dependencies
-      - "test:unit-coverage:"
+      - "test:unit-coverage":
           requires:
             - dependencies
       - "Send to Codecov":
@@ -87,7 +87,7 @@ jobs:
           at: ~/data
       - run: yarn test:unit
 
-  "test:unit-coverage:"
+  "test:unit-coverage":
     #    <<: *defaults
     executor: my-executor
     steps:
