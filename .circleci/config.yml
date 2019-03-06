@@ -87,7 +87,7 @@ jobs:
           at: ~/data
       - run: yarn test:unit
 
-  "test unit coverage":
+  "tests unit coverage":
     #    <<: *defaults
     executor: my-executor
     steps:
