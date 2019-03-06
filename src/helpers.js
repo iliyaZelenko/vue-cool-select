@@ -1,5 +1,5 @@
 export function isObject (val) {
-  return (!!val) && (val.constructor === Object)
+  return val && (val.constructor === Object)
 }
 
 export function getOffsetSum (elem) {
