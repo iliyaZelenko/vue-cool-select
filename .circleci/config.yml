@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 defaults: &defaults
 #  working_directory: ~/repo
@@ -8,8 +8,14 @@ defaults: &defaults
 #    ignore:
 #      - gh-pages
 
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:8.11.1
+    working_directory: ~/data
+
 workflows:
-  version: 2
+  version: 2.1
   master:
     jobs:
       - dependencies
@@ -40,9 +46,12 @@ workflows:
 jobs:
   # TODO normal name
   dependencies:
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
     steps:
       - checkout # check out the code in the project directory
+      - attach_workspace:
+          at: ~/data
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
           name: Restore Yarn Package Cache
           keys:
@@ -58,8 +67,11 @@ jobs:
             - ~/.cache/yarn
 
   lint:
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
     steps:
+      - attach_workspace:
+          at: ~/data
       #      - run: yarn test:unit
       #      - run: yarn test:unit-coverage
       #      - run:
@@ -68,26 +80,41 @@ jobs:
       - run: yarn lint-show
 
   test:unit:
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
     steps:
+      - attach_workspace:
+          at: ~/data
       - run: yarn test:unit
 
   test:unit-coverage:
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
     steps:
+      - attach_workspace:
+          at: ~/data
       - run: yarn test:unit-coverage
 
   "Send to Codecov":
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
+      - attach_workspace:
+          at: ~/data
     steps:
       - run: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
 
   build:
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
     steps:
+      - attach_workspace:
+          at: ~/data
       - run: yarn build
 
   semantic-release:
-    <<: *defaults
+    #    <<: *defaults
+    executor: my-executor
     steps:
+      - attach_workspace:
+          at: ~/data
       - run: yarn semantic-release
