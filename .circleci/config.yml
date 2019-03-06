@@ -22,22 +22,22 @@ workflows:
       - lint:
           requires:
             - dependencies
-      - "test:unit":
+      - "tests unit":
           requires:
             - dependencies
-      - "test:unit-coverage":
+      - "tests unit coverage":
           requires:
             - dependencies
       - "Send to Codecov":
           requires:
-            - test:unit-coverage
+            - "tests unit coverage"
       - build:
           requires:
             - dependencies
       - semantic-release:
           requires:
             - build
-            - test:unit
+            - "tests unit"
 
 #          filters:
 #            branches:
@@ -79,7 +79,7 @@ jobs:
       #          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
       - run: yarn lint-show
 
-  "test:unit":
+  "tests unit":
     #    <<: *defaults
     executor: my-executor
     steps:
@@ -87,7 +87,7 @@ jobs:
           at: ~/data
       - run: yarn test:unit
 
-  "test:unit-coverage":
+  "test unit coverage":
     #    <<: *defaults
     executor: my-executor
     steps:
