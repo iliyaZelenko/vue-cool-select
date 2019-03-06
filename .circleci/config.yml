@@ -12,7 +12,7 @@ executors:
   my-executor:
     docker:
       - image: circleci/node:8.11.1
-    working_directory: ~/data
+#    working_directory: ~/data # ~/project
 
 workflows:
   version: 2.1
@@ -50,8 +50,8 @@ jobs:
     executor: my-executor
     steps:
       - checkout # check out the code in the project directory
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
           name: Restore Yarn Package Cache
           keys:
@@ -70,8 +70,8 @@ jobs:
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       #      - run: yarn test:unit
       #      - run: yarn test:unit-coverage
       #      - run:
@@ -83,38 +83,38 @@ jobs:
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       - run: yarn test:unit
 
   "tests unit coverage":
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       - run: yarn test:unit-coverage
 
   "Send to Codecov":
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       - run: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
 
   build:
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       - run: yarn build
 
   semantic-release:
     #    <<: *defaults
     executor: my-executor
     steps:
-      - attach_workspace:
-          at: ~/data
+#      - attach_workspace:
+#          at: ~/data
       - run: yarn semantic-release
