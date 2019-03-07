@@ -151,7 +151,9 @@ export default {
       selectedItemByArrows: null,
       // readonly
       searchData: '',
-      scrollItemsLimitCurrent: this.scrollItemsLimit
+      scrollItemsLimitCurrent: this.scrollItemsLimit,
+      // addEventListener identifier
+      mousedownListener: null
     }
   },
   computed,
@@ -182,14 +184,17 @@ export default {
     // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
 
-    // listener for window
-    window.addEventListener('mousedown', ({ target }) => {
+    // listener for window (see removeEventListener on beforeDestroy hook)
+    this.mousedownListener = window.addEventListener('mousedown', ({ target }) => {
       const select = this.$refs['IZ-select']
 
       if (this.focused && select && !select.contains(target)) {
         this.setBlured()
       }
     })
+  },
+  beforeDestroy () {
+    window.removeEventListener('mousedown', this.mousedownListener)
   },
   methods: {
     ...eventsListeners,
