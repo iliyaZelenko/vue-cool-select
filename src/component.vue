@@ -148,8 +148,6 @@ export default {
     focused: false,
     selectedItem: null,
     selectedItemByArrows: null,
-    // TODO create a prop
-    itemsLimit: 20,
     // readonly
     searchData: ''
   }),

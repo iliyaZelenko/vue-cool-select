@@ -21,6 +21,11 @@ export default {
     default: null, // значит вернуть весь объект, 'value'
     note: 'property in item for value'
   },
+  itemsLimit: {
+    type: Number,
+    default: 20, // значит вернуть весь объект, 'value'
+    note: 'maximum number of items showing in the selectt'
+  },
   placeholder: {
     type: String,
     default: null,
