@@ -50,8 +50,8 @@ jobs:
     executor: my-executor
     steps:
       - checkout # check out the code in the project directory
-#      - attach_workspace:
-#          at: ~/data
+      #      - attach_workspace:
+      #          at: ~/data
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
           name: Restore Yarn Package Cache
           keys:
@@ -68,13 +68,13 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-#            - . #/node_modules
+  #            - . #/node_modules
 
   lint:
     #    <<: *defaults
     executor: my-executor
     steps:
-#      - checkout
+      #      - checkout
       - attach_workspace:
           at: ~/project
       - run: yarn lint-show

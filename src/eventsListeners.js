@@ -116,7 +116,7 @@ export default {
   onScroll (event) {
     this.$emit('scroll', event)
 
-    if (this.itemsLimit >= this.itemsComputed.length) return
+    if (this.scrollItemsLimit >= this.itemsComputed.length) return
 
     const content = event.target
     const showMoreItems = (
@@ -126,7 +126,7 @@ export default {
 
     // если проскролил вниз то показать больше итемов
     if (showMoreItems) {
-      this.itemsLimit += 20
+      this.scrollItemsLimitCurrent += this.scrollItemsLimitAddAfterScroll
     }
   }
 }

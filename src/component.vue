@@ -53,7 +53,6 @@
           'IZ-select__menu': true,
           'IZ-select__menu--disable-search': disableSearch
         }"
-        @scroll="onScroll"
       >
         <slot name="before-items-fixed" />
 
@@ -62,6 +61,7 @@
             'max-height': menuItemsMaxHeight
           }"
           class="IZ-select__menu-items"
+          @scroll="onScroll"
         >
           <slot name="before-items">
             <div style="height: 8px;" />
@@ -69,7 +69,7 @@
 
           <div
             v-for="(item, i) in itemsComputed"
-            v-if="i < itemsLimit"
+            v-if="i < scrollItemsLimitCurrent"
             :key="'IZ-item-' + i"
             :class="{
               'IZ-select__item': true,
@@ -142,15 +142,18 @@ export default {
   `,
   token: `<cool-select v-model="selected" :items="items" />`,
   props,
-  data: () => ({
-    wishShowMenu: false,
-    arrowsIndex: null,
-    focused: false,
-    selectedItem: null,
-    selectedItemByArrows: null,
-    // readonly
-    searchData: ''
-  }),
+  data () {
+    return {
+      wishShowMenu: false,
+      arrowsIndex: null,
+      focused: false,
+      selectedItem: null,
+      selectedItemByArrows: null,
+      // readonly
+      searchData: '',
+      scrollItemsLimitCurrent: this.scrollItemsLimit
+    }
+  },
   computed,
   watch: {
     searchText (val) {
