@@ -3,15 +3,26 @@ import Vue from 'vue'
 import { Wrapper } from '@vue/test-utils'
 
 export interface VueCoolSelectComponentInterface extends Vue {
-  focused: boolean
+  /* Data */
   wishShowMenu: boolean
+  arrowsIndex: number | null
+  focused: boolean
   selectedItem: any
-  searchData: string
   selectedItemByArrows: any
+  searchData: string
+  scrollItemsLimitCurrent: number
+  // addEventListener identifier
+  mousedownListener: any
 
-  // computed
+  /* Props */
+  arrowsDisableInstantSelection: boolean
+  scrollItemsLimitAddAfterScroll: number
+
+  /* Computed */
   hasMenu: boolean
+  itemsComputed: any[]
 
+  /* Methods */
   onSelectByArrow (e)
   onEnter ()
   onClick ()

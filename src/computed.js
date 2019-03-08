@@ -8,9 +8,6 @@ export default {
 
     return this.filteredBySearchItems(items)
   },
-  itemsComputedWithScrollLimit () {
-    return this.itemsComputed.slice(0, this.scrollItemsLimitCurrent)
-  },
   inputValue () {
     // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
     if (this.$scopedSlots.selection && this.getSearchData() === '') return ''
