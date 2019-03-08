@@ -68,8 +68,7 @@
           </slot>
 
           <div
-            v-for="(item, i) in itemsComputed"
-            v-if="i < scrollItemsLimitCurrent"
+            v-for="(item, i) in itemsComputedWithScrollLimit"
             :key="'IZ-item-' + i"
             :class="{
               'IZ-select__item': true,
