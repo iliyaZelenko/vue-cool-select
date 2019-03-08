@@ -3,8 +3,15 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    ["@semantic-release/changelog", {
+      "changelogFile": "CHANGELOG.md"
+    }],
     ["@semantic-release/github", {
-      "assets": ["dist/**"]
+      "assets": [
+        {"path": "dist/vue-cool-select.common.js", "label": "CommonJS module"},
+        {"path": "dist/vue-cool-select.umd.js", "label": "UMD module"},
+        {"path": "dist/vue-cool-select.umd.min.js", "label": "UMD module minified"}
+      ]
     }],
     "@semantic-release/git",
     "@semantic-release/npm"
