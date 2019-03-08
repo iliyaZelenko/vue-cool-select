@@ -120,5 +120,10 @@ export default {
     type: Number,
     default: 10,
     note: 'the number of items added to the scrollItemsLimit prop after scrolling to the end of the scroll. Also see scrollItemsLimitAddAfterScroll prop.'
+  },
+  disableFirstItemSelectOnEnter: {
+    type: Boolean,
+    default: false,
+    note: 'disable the selection of the first item from the list of items in menu when to press enter (when no item is selected)'
   }
 }
