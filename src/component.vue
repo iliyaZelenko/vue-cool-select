@@ -53,7 +53,6 @@
           'IZ-select__menu': true,
           'IZ-select__menu--disable-search': disableSearch
         }"
-        @scroll="onScroll"
       >
         <slot name="before-items-fixed" />
 
@@ -62,14 +61,14 @@
             'max-height': menuItemsMaxHeight
           }"
           class="IZ-select__menu-items"
+          @scroll="onScroll"
         >
           <slot name="before-items">
             <div style="height: 8px;" />
           </slot>
 
           <div
-            v-for="(item, i) in itemsComputed"
-            v-if="i < itemsLimit"
+            v-for="(item, i) in itemsComputedWithScrollLimit"
             :key="'IZ-item-' + i"
             :class="{
               'IZ-select__item': true,
@@ -142,17 +141,20 @@ export default {
   `,
   token: `<cool-select v-model="selected" :items="items" />`,
   props,
-  data: () => ({
-    wishShowMenu: false,
-    arrowsIndex: null,
-    focused: false,
-    selectedItem: null,
-    selectedItemByArrows: null,
-    // TODO create a prop
-    itemsLimit: 20,
-    // readonly
-    searchData: ''
-  }),
+  data () {
+    return {
+      wishShowMenu: false,
+      arrowsIndex: null,
+      focused: false,
+      selectedItem: null,
+      selectedItemByArrows: null,
+      // readonly
+      searchData: '',
+      scrollItemsLimitCurrent: this.scrollItemsLimit,
+      // addEventListener identifier
+      mousedownListener: null
+    }
+  },
   computed,
   watch: {
     searchText (val) {
@@ -181,14 +183,17 @@ export default {
     // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
 
-    // listener for window
-    window.addEventListener('mousedown', ({ target }) => {
+    // listener for window (see removeEventListener on beforeDestroy hook)
+    this.mousedownListener = window.addEventListener('mousedown', ({ target }) => {
       const select = this.$refs['IZ-select']
 
       if (this.focused && select && !select.contains(target)) {
         this.setBlured()
       }
     })
+  },
+  beforeDestroy () {
+    window.removeEventListener('mousedown', this.mousedownListener)
   },
   methods: {
     ...eventsListeners,

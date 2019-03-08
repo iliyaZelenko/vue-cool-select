@@ -110,5 +110,15 @@ export default {
   eventEmitter: {
     type: Object,
     note: 'Observer pattern, helps manage events from parent to child'
+  },
+  scrollItemsLimit: {
+    type: Number,
+    default: 20,
+    note: 'the initial limit of the displayed items to scroll. So that there are not many elements in the scrolling at the beginning. Also see scrollItemsLimitAddAfterScroll prop.'
+  },
+  scrollItemsLimitAddAfterScroll: {
+    type: Number,
+    default: 10,
+    note: 'the number of items added to the scrollItemsLimit prop after scrolling to the end of the scroll. Also see scrollItemsLimitAddAfterScroll prop.'
   }
 }
