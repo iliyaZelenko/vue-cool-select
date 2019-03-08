@@ -3,7 +3,6 @@ import { Wrapper } from '@vue/test-utils/types'
 
 import MainComponent from '~/component.vue'
 import { VueCoolSelectComponentInterface } from '../../types/types'
-import {async} from 'q'
 
 const comp: VueCoolSelectComponentInterface & any = MainComponent
 
