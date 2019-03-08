@@ -11,9 +11,6 @@ version: 2.1
 
 
 
-
-
-
 #executors:
 #  my-executor:
 #    docker:
@@ -119,8 +116,6 @@ version: 2.1
 #      - attach_workspace:
 #          at: ~/project
 #      - run: yarn semantic-release
-
-
 
 
 
