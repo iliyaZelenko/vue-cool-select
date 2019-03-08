@@ -29,7 +29,6 @@
 
 [![](https://i.imgur.com/b7wxLPT.png)](https://iliyazelenko.github.io/vue-cool-select)
 
-
 ## Features
 
 - 2 themes: Bootstrap 4, Material Design
@@ -37,7 +36,7 @@
 - control through arrows
 - slots (9)
 - events (7)
-- props (18)
+- props (20)
 - loading indicator (helpful for REST requests)
 - validation
 - support on mobile devices
