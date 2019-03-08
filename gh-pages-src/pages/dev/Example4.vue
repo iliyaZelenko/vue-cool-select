@@ -14,12 +14,13 @@
 
       Search: "{{ search }}"
 
-      <!--arrows-disable-instant-selection :search.sync="search"-->
+      <!--disable-first-item-select-on-enter :search.sync="search"-->
       <cool-select
         ref="select"
         v-model="selected"
         :items="items"
         :search-text.sync="search"
+        arrows-disable-instant-selection
         placeholder="Select name"
         @select="onSelect"
         @focus="onFocus"

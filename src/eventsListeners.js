@@ -37,28 +37,30 @@ export default {
     e.preventDefault()
   },
   onEnter () {
-    // if (this.arrowsIndex === null) {
-    //   this.selectedItem = this.itemsComputed[0]
-    // }
-    //
-    // this.fireSelectEvent(this.selectedItem)
+    if (this.hasMenu) {
+      let needToResetSearch = false
+      // если не выбрано через стрелки, то выбирать первый элемент
+      if (!this.arrowsIndex && !this.disableFirstItemSelectOnEnter) {
+        const firstItem = this.itemsComputed[0]
 
-    if (!this.arrowsIndex && this.hasMenu) {
-      const firstItem = this.itemsComputed[0]
+        if (!firstItem) return
 
-      if (!firstItem) return
+        this.fireSelectEvent(
+          this.selectedItem = firstItem
+        )
+        needToResetSearch = true
+      }
+      // если arrowsDisableInstantSelection и выбран элемент через стрелки (подсвечен), то сделать его выбранным
+      if (this.arrowsDisableInstantSelection && this.selectedItemByArrows) {
+        this.fireSelectEvent(
+          this.selectedItem = this.selectedItemByArrows
+        )
+        needToResetSearch = true
+      }
 
-      this.fireSelectEvent(
-        this.selectedItem = firstItem
-      )
+      if (needToResetSearch) this.setSearchData('')
     }
-    if (this.arrowsDisableInstantSelection && this.selectedItemByArrows) {
-      this.fireSelectEvent(
-        this.selectedItem = this.selectedItemByArrows
-      )
-    }
 
-    this.setSearchData('')
     // show / hide menu
     this.hasMenu ? this.hideMenu() : this.showMenu()
   },
