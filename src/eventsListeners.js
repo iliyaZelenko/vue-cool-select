@@ -1,5 +1,9 @@
+import { scrollIfNeeded } from '~/helpers'
+
 export default {
   onSelectByArrow (e) {
+    e.preventDefault()
+
     if (this.disabled || this.readonly) return
 
     this.showMenu()
@@ -15,6 +19,7 @@ export default {
       this.arrowsIndex--
     }
 
+    // Переход на противоположную сторону
     const end = this.itemsComputed.length - 1
     if (this.arrowsIndex < 0) {
       this.arrowsIndex = end
@@ -25,16 +30,25 @@ export default {
 
     const itemByArrowsIndex = this.itemsComputed[this.arrowsIndex]
 
-    if (this.arrowsDisableInstantSelection) {
+    if (this.arrowsDisableInstantSelection) { // подсвечивает элемент
       this.selectedItemByArrows = itemByArrowsIndex
-    } else {
+    } else { // сразу выбирает элемент
       this.setSearchData('')
       this.selectedItem = itemByArrowsIndex
 
       this.fireSelectEvent(this.selectedItem)
     }
 
-    e.preventDefault()
+    if (this.scrollToItemIfNeeded) { // Прокурутка к элементу
+      this.$nextTick(() => {
+        const selectedElement = this.$refs.items[this.arrowsIndex]
+
+        // на всякий случай (это не ожидаемое поведение)
+        if (!selectedElement) return
+
+        scrollIfNeeded(selectedElement, this.$refs['IZ-select__menu-items'])
+      })
+    }
   },
   onEnter () {
     if (this.hasMenu) {

@@ -125,5 +125,10 @@ export default {
     type: Boolean,
     default: false,
     note: 'disable the selection of the first item from the list of items in menu when to press enter (when no item is selected)'
+  },
+  scrollToItemIfNeeded: {
+    type: Boolean,
+    default: true,
+    note: 'to scroll to an item if it has moved beyond the scroll bar'
   }
 }

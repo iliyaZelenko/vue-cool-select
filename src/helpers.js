@@ -14,3 +14,15 @@ export function getOffsetSum (elem) {
 
   return { top: Math.round(top), left: Math.round(left) }
 }
+
+export function scrollIfNeeded (element, container) {
+  if (element.offsetTop < container.scrollTop) {
+    container.scrollTop = element.offsetTop
+  } else {
+    const offsetBottom = element.offsetTop + element.offsetHeight
+    const scrollBottom = container.scrollTop + container.offsetHeight
+    if (offsetBottom > scrollBottom) {
+      container.scrollTop = offsetBottom - container.offsetHeight
+    }
+  }
+}

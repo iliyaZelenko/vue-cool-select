@@ -57,6 +57,7 @@
         <slot name="before-items-fixed" />
 
         <div
+          ref="IZ-select__menu-items"
           :style="{
             'max-height': menuItemsMaxHeight
           }"
@@ -67,8 +68,11 @@
             <div style="height: 8px;" />
           </slot>
 
+          <!--itemsComputedWithScrollLimit-->
           <div
-            v-for="(item, i) in itemsComputedWithScrollLimit"
+            v-for="(item, i) in itemsComputed"
+            v-show="i < scrollItemsLimitCurrent || (arrowsIndex && i <= arrowsIndex)"
+            ref="items"
             :key="'IZ-item-' + i"
             :class="{
               'IZ-select__item': true,
