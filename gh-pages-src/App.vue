@@ -1,27 +1,17 @@
 <template>
   <div id="app">
     <p style="text-align: center; font-size: 20px;">
-      <router-link :to="{ name: 'Example3' }">
-        Simple example
-      </router-link>
-      |
-      <router-link :to="{ name: 'Example2' }">
-        Async search example
-      </router-link>
-      |
-      <router-link :to="{ name: 'Example1' }">
-        Timezones example
-      </router-link>
-      |
-      <router-link :to="{ name: 'Example4' }">
-        Validation example
-      </router-link>
-
-      <br>
-
-      <router-link :to="{ name: 'Docs' }">
-        Documentation 🗎
-      </router-link>
+      <span
+        v-for="(route, i) of prodRoutes"
+        :key="route.text"
+      >
+        <router-link :to="{ name: route.name }">
+          {{ route.text }}
+        </router-link>
+        <template v-if="i < prodRoutes.length - 1">
+          |
+        </template>
+      </span>
     </p>
 
     <!--Роуты для разработки-->
@@ -29,25 +19,17 @@
       v-if="env === 'development'"
       style="text-align: center; font-size: 20px;"
     >
-      <router-link to="/dev/">
-        Dev 1
-      </router-link>
-      |
-      <router-link to="/dev/2">
-        Dev 2
-      </router-link>
-      |
-      <router-link to="/dev/3">
-        Dev 3
-      </router-link>
-      |
-      <router-link to="/dev/4">
-        Dev 4
-      </router-link>
-      |
-      <router-link to="/dev/5">
-        Dev 5
-      </router-link>
+      <span
+        v-for="(route, i) of devRoutes"
+        :key="route.text"
+      >
+        <router-link :to="route.path">
+          {{ route.text }}
+        </router-link>
+        <template v-if="i < prodRoutes.length - 1">
+          |
+        </template>
+      </span>
 
       <switch-theme v-if="$route.fullPath.includes('dev')" />
     </p>
@@ -58,11 +40,14 @@
 
 <script>
 import SwitchTheme from './SwitchTheme.vue'
+import { prodRoutes, devRoutes } from './router'
 
 export default {
   components: { SwitchTheme },
   data: () => ({
-    env: process.env.NODE_ENV
+    env: process.env.NODE_ENV,
+    prodRoutes,
+    devRoutes
   })
 }
 </script>
@@ -70,7 +55,7 @@ export default {
 <style>
   .example-frame {
     width: 100%;
-    height: 800px;
+    height: 850px;
     border:0;
     border-radius: 4px;
     overflow: hidden;

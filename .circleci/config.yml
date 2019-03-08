@@ -1,62 +1,157 @@
-version: 2
+version: 2.1
 
-defaults: &defaults
-#  working_directory: ~/repo
-  docker: # use the docker executor type; machine and macos executors are also supported
-    - image: circleci/node:8.9.1 # the primary container, where your job's commands are run (image: circleci/node:4.8.2)
+#defaults: &defaults
+##  working_directory: ~/repo
+#  docker: # use the docker executor type; machine and macos executors are also supported
+#    - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
+#  branches:
+#    ignore:
+#      - gh-pages
+
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:8.11.1
+    working_directory: ~/project
+
+workflows:
+  version: 2.1
+  master:
+    jobs:
+      - dependencies
+      - lint:
+          requires:
+            - dependencies
+      - "tests unit":
+          requires:
+            - dependencies
+      - "tests unit coverage":
+          requires:
+            - dependencies
+      - "Send to Codecov":
+          requires:
+            - "tests unit coverage"
+      - build:
+          requires:
+            - dependencies
+      - semantic-release:
+          requires:
+            - build
+            - "tests unit"
+
+#          filters:
+#            branches:
+#              only: master
 
 jobs:
-  build: # install
-    <<: *defaults
+  # TODO normal name
+  dependencies:
+    #    <<: *defaults
+    executor: my-executor
     steps:
       - checkout # check out the code in the project directory
+      #      - attach_workspace:
+      #          at: ~/data
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-packages-cache-{{ checksum "yarn.lock" }}
       - run: # used for invoking all command-line programs
           name: Install Dependencies
-          command: npm install # yarn install --frozen-lockfile
+          command: yarn install --frozen-lockfile --non-interactive --prod=false # yarn install --frozen-lockfile
       - save_cache: # Generates and stores a cache of a file or directory of files
           name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          key: yarn-packages-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-#          paths:
-#            - ~/.cache/yarn
-      - run: npm run test:unit
-      - run: npm run test:unit-coverage
-      - run:
-          name: Send to Codecov
-          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
-      - run: npm run lint-show
-      - run: npm run build
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: .
+          paths: .
+  #            - . #/node_modules
+
+  lint:
+    #    <<: *defaults
+    executor: my-executor
+    steps:
+      #      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run: yarn lint-show
+
+  "tests unit":
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: yarn test:unit
+
+  "tests unit coverage":
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: yarn test:unit-coverage
+
+  "Send to Codecov":
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
+
+  build:
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: yarn build
+
+  semantic-release:
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: yarn semantic-release
 
 
-#  build:
-#    <<: *defaults
-#    steps:
-#      - run: npm run build
+
+
+#version: 2
 #
-#  tests:
+#defaults: &defaults
+#  #  working_directory: ~/repo
+#  docker: # use the docker executor type; machine and macos executors are also supported
+#    - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
+#
+#jobs:
+#  build: # install
 #    <<: *defaults
+#    branches:
+#      ignore:
+#        - gh-pages
 #    steps:
-#      - run: npm run test:unit
-#      - run: echo "Tests are performed!"
-
-#workflows:
-#  version: 2
-#  build_and_test:
-#    jobs:
-#      - install
-#      - tests:
-#          requires:
-#            - install
-##          filters:
-##            branches:
-##              only: master
-#      - build:
-#          requires:
-#            - install
-#            - tests
-
+#      - checkout # check out the code in the project directory
+#      - restore_cache: # Restores a previously saved cache based on a key (or keys)
+#          name: Restore Yarn Package Cache
+#          keys:
+#            - yarn-packages-cache-{{ checksum "yarn.lock" }}
+#      - run: # used for invoking all command-line programs
+#          name: Install Dependencies
+#          command: yarn install --frozen-lockfile # yarn install --frozen-lockfile
+#      - save_cache: # Generates and stores a cache of a file or directory of files
+#          name: Save Yarn Package Cache
+#          key: yarn-packages-cache-{{ checksum "yarn.lock" }}
+#          paths:
+#            - ./node_modules
+#            - ~/.cache/yarn
+#      #          paths:
+#      #            - ~/.cache/yarn
+#      - run: yarn test:unit
+#      - run: yarn test:unit-coverage
+#      - run:
+#          name: Send to Codecov
+#          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
+#      - run: yarn lint-show
+#      - run: yarn build
+#      - run: yarn semantic-release

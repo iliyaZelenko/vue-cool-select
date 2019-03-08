@@ -10,9 +10,9 @@ export default {
   },
   inputValue () {
     // если указан слот selection, то не надо отображать текст в инпуте, он только мешает
-    if (this.$scopedSlots.selection && this.search === '') return ''
+    if (this.$scopedSlots.selection && this.getSearchData() === '') return ''
     // если есть строка поиска, то пусть она там будет
-    if (this.search !== '') return this.search
+    if (this.getSearchData() !== '') return this.getSearchData()
 
     // иначе пусть будет текст элемента или его значение
     return this.getItemText(this.selectedItem) || this.currentItemValue
@@ -21,7 +21,7 @@ export default {
     return this.getItemValue(this.selectedItem)
   },
   showSelectionSlot () {
-    return this.$scopedSlots.selection && this.selectedItem && !this.search
+    return this.$scopedSlots.selection && this.selectedItem && !this.getSearchData()
   },
   inputForTextStyles () {
     if (this.loading) {

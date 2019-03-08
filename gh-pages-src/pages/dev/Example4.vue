@@ -6,17 +6,55 @@
       <b>Selected:</b> {{ selected || 'not chosen' }}.
       <br><br>
 
-      <!--arrows-disable-instant-selection-->
+      <button
+        @click="search = ''"
+      >
+        Set search
+      </button>
+
+      Search: "{{ search }}"
+
+      <!--arrows-disable-instant-selection :search.sync="search"-->
       <cool-select
+        ref="select"
         v-model="selected"
         :items="items"
-        item-value="id"
-        item-text="name"
+        :search-text.sync="search"
         placeholder="Select name"
         @select="onSelect"
         @focus="onFocus"
         @blur="onBlur"
-      />
+        @change-displayed-items="onChangeDisplayedItems"
+      >
+        <div
+          v-if="displayedItems.length"
+          slot="before-items-fixed"
+          style="background: red;"
+        >
+          before-items-fixed
+        </div>
+        <div
+          v-if="displayedItems.length"
+          slot="before-items"
+          style="background: red;"
+        >
+          before-items
+        </div>
+        <div
+          v-if="displayedItems.length"
+          slot="after-items"
+          style="background: blue;"
+        >
+          after-items
+        </div>
+        <div
+          v-if="displayedItems.length"
+          slot="after-items-fixed"
+          style="background: blue;"
+        >
+          after-items-fixed
+        </div>
+      </cool-select>
     </div>
   </div>
 </template>
@@ -27,35 +65,23 @@ import { CoolSelect } from '~/main'
 export default {
   components: { CoolSelect },
   data () {
-    const items = [
-      {
-        id: '1',
-        name: 'Product 1',
-        price: '30.0'
-      },
-      {
-        id: '2',
-        name: 'Product 2',
-        price: '100.0'
-      },
-      {
-        id: '3',
-        name: 'Product 3',
-        price: '150.0'
-      },
-      {
-        id: '4',
-        name: 'Product 4',
-        price: '120.0'
-      }
-    ]
+    const items = []
+
+    for (let i = 1; i <= 42; i++) {
+      items.push('Item ' + i)
+    }
 
     return {
+      search: '',
       selected: items[1],
-      items
+      items,
+      displayedItems: items
     }
   },
   methods: {
+    onChangeDisplayedItems (items) {
+      this.displayedItems = items
+    },
     onSelect (selected) {
       console.log('onSelect', selected, this.selected)
     },

@@ -108,17 +108,17 @@
   position: absolute;
   z-index: 8;
   transform-origin: left top 0; // на всякий случай
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
   background-color: #fff;
-  padding: 8px 0 8px;
   border: 1px solid #ced4da;
+  // не забудь поменять для &.IZ-select__menu--disable-search (ниже) стили рамки
   border-radius: .25rem;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 
+  .IZ-select__menu-items
+    overflow-y: auto;
+    overflow-x: hidden;
 
   .IZ-select__no-data
     margin: 0 10px;

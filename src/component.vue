@@ -53,36 +53,61 @@
           'IZ-select__menu': true,
           'IZ-select__menu--disable-search': disableSearch
         }"
-        @scroll="onScroll"
       >
+        <slot name="before-items-fixed" />
+
         <div
-          v-for="(item, i) in itemsComputed"
-          v-if="i < itemsLimit"
-          :key="'IZ-item-' + i"
-          :class="{
-            'IZ-select__item': true,
-            'IZ-select__item--selected': isItemSelected(item)
+          :style="{
+            'max-height': menuItemsMaxHeight
           }"
-          @click="onClickSelectItem(item)"
+          class="IZ-select__menu-items"
+          @scroll="onScroll"
         >
-          <slot
-            :item="item"
-            name="item"
+          <slot name="before-items">
+            <div style="height: 8px;" />
+          </slot>
+
+          <div
+            v-for="(item, i) in itemsComputed"
+            v-if="i < scrollItemsLimitCurrent"
+            :key="'IZ-item-' + i"
+            :class="{
+              'IZ-select__item': true,
+              'IZ-select__item--selected': isItemSelected(item)
+            }"
+            @click="onClickSelectItem(item)"
           >
-            <span>
-              {{ getItemText(item) }}
-            </span>
+            <slot
+              :item="item"
+              name="item"
+            >
+              <span>
+                {{ getItemText(item) }}
+              </span>
+            </slot>
+          </div>
+
+          <div
+            v-if="!itemsComputed.length && !loading"
+            class="IZ-select__no-data"
+          >
+            <slot name="no-data">
+              No data available
+            </slot>
+          </div>
+
+          <slot name="after-items">
+            <div style="height: 8px;" />
           </slot>
         </div>
-        <slot name="after-items" />
-        <!-- TODO до этого тут был span, не проверил на div'e -->
-        <div
-          v-if="!itemsComputed.length && !loading"
-          class="IZ-select__no-data"
-        >
-          <slot name="no-data">
-            No data available
-          </slot>
+
+        <slot name="after-items-fixed" />
+
+        <div style="position: absolute; top: 0; left: 0; right: 0;">
+          <slot name="before-items-fixed-absolute" />
+        </div>
+        <div style="position: absolute; bottom: 0; left: 0; right: 0;">
+          <slot name="after-items-fixed-absolute" />
         </div>
       </div>
     </transition>
@@ -117,17 +142,25 @@ export default {
   `,
   token: `<cool-select v-model="selected" :items="items" />`,
   props,
-  data: () => ({
-    wishShowMenu: false,
-    arrowsIndex: null,
-    focused: false,
-    selectedItem: null,
-    selectedItemByArrows: null,
-    itemsLimit: 20,
-    search: '' // null
-  }),
+  data () {
+    return {
+      wishShowMenu: false,
+      arrowsIndex: null,
+      focused: false,
+      selectedItem: null,
+      selectedItemByArrows: null,
+      // readonly
+      searchData: '',
+      scrollItemsLimitCurrent: this.scrollItemsLimit,
+      // addEventListener identifier
+      mousedownListener: null
+    }
+  },
   computed,
   watch: {
+    searchText (val) {
+      this.setSearchData(val)
+    },
     value () {
       this.setSelectedItemByValue()
     },
@@ -138,14 +171,21 @@ export default {
       this.selectedItemByArrows = null
 
       this.$emit('input', this.currentItemValue)
+    },
+    itemsComputed (items) {
+      this.$emit('change-displayed-items', items)
     }
   },
   created () {
+    if (this.eventEmitter) {
+      this.eventEmitter.on('set-search', this.setSearchData)
+    }
+
     // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
 
-    // listener for window
-    window.addEventListener('mousedown', ({ target }) => {
+    // listener for window (see removeEventListener on beforeDestroy hook)
+    this.mousedownListener = window.addEventListener('mousedown', ({ target }) => {
       const select = this.$refs['IZ-select']
 
       if (this.focused && select && !select.contains(target)) {
@@ -153,8 +193,19 @@ export default {
       }
     })
   },
+  beforeDestroy () {
+    window.removeEventListener('mousedown', this.mousedownListener)
+  },
   methods: {
     ...eventsListeners,
+    getSearchData () {
+      return this.searchData
+    },
+    setSearchData (val) {
+      this.searchData = val
+
+      this.$emit('update:search-text', val)
+    },
     setInputFocused () {
       this.$refs['IZ-select__input-for-text'].focus()
     },
@@ -193,7 +244,7 @@ export default {
     },
     setBlured () {
       if (this.resetSearchOnBlur) {
-        this.search = ''
+        this.setSearchData('')
       }
       this.focused = false
 
@@ -262,10 +313,10 @@ export default {
     },
     // возвращает отфильтрованные итемы
     filteredBySearchItems (items) {
-      if (!this.search || this.disableFilteringBySearch) return items
+      if (!this.getSearchData() || this.disableFilteringBySearch) return items
 
       return items.filter(i =>
-        this.filter(i, this.search, this.getItemText(i))
+        this.filter(i, this.getSearchData(), this.getItemText(i))
       )
     },
     isItemSelected (item) {

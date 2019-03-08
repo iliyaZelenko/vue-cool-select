@@ -1,7 +1,8 @@
 {
   "name": "vue-cool-select",
-  "version": "2.0.3",
+  "version": "2.4.1",
   "scripts": {
+    "commit": "git-cz",
     "serve": "vue-cli-service serve ./gh-pages-src/main.js",
     "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
     "lint": "vue-cli-service lint",
@@ -16,6 +17,10 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/npm": "^5.1.4",
+    "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/jest": "^24.0.6",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-e2e-cypress": "^3.4.1",
@@ -27,8 +32,10 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "clone": "^2.1.2",
+    "commitizen": "^3.0.7",
     "jest": "^24.1.0",
     "propdoc": "^0.9.3",
+    "semantic-release": "^15.13.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^24.0.0",
@@ -44,6 +51,11 @@
     "> 0.3%",
     "not op_mini all"
   ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "keywords": [
     "vue",
     "select",

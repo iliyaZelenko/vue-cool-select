@@ -67,6 +67,11 @@ export default {
     },
     note: 'filter function for search'
   },
+  searchText: {
+    type: String,
+    default: '',
+    note: 'search string for input, you can use this with ".sync" modifier'
+  },
   inputElCustomAttributes: {
     type: Object,
     default: () => ({}),
@@ -96,5 +101,24 @@ export default {
     type: Boolean,
     default: false,
     note: 'disable auto select when up or down with key arrow'
+  },
+  menuItemsMaxHeight: {
+    type: String,
+    default: '300px',
+    note: 'max menu height (any css value)'
+  },
+  eventEmitter: {
+    type: Object,
+    note: 'Observer pattern, helps manage events from parent to child'
+  },
+  scrollItemsLimit: {
+    type: Number,
+    default: 20,
+    note: 'the initial limit of the displayed items to scroll. So that there are not many elements in the scrolling at the beginning. Also see scrollItemsLimitAddAfterScroll prop.'
+  },
+  scrollItemsLimitAddAfterScroll: {
+    type: Number,
+    default: 10,
+    note: 'the number of items added to the scrollItemsLimit prop after scrolling to the end of the scroll. Also see scrollItemsLimitAddAfterScroll prop.'
   }
 }

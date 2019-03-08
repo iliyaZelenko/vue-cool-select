@@ -100,6 +100,11 @@ export default {
         name: '@scroll',
         params: 'scroll event (UIEvent, derives from Event)',
         notes: 'invoked when user scrolls in menu'
+      },
+      {
+        name: '@change-displayed-items',
+        params: 'current items displayed (filtered)',
+        notes: 'invoked when the displayed items change'
       }
     ],
     slots: [
@@ -123,11 +128,34 @@ export default {
         description: 'Define a custom item appearance'
       },
       {
-        name: 'error',
-        scopeProperties: {
-          errorMessage: 'error message string'
-        },
-        description: 'Define a custom error appearance'
+        name: 'before-items',
+        scopeProperties: {},
+        description: 'Content before items'
+      },
+      {
+        name: 'after-items',
+        scopeProperties: {},
+        description: 'Content after items'
+      },
+      {
+        name: 'before-items-fixed',
+        scopeProperties: {},
+        description: 'Content after items (fixed)'
+      },
+      {
+        name: 'after-items-fixed',
+        scopeProperties: {},
+        description: 'Content after items (fixed)'
+      },
+      {
+        name: 'before-items-fixed-absolute',
+        scopeProperties: {},
+        description: 'Content after items (fixed, absolute)'
+      },
+      {
+        name: 'after-items-fixed-absolute',
+        scopeProperties: {},
+        description: 'Define a custom error appearance (fixed, absolute)'
       }
     ]
   })

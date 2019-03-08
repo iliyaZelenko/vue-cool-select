@@ -28,7 +28,7 @@ export default {
     if (this.arrowsDisableInstantSelection) {
       this.selectedItemByArrows = itemByArrowsIndex
     } else {
-      this.search = ''
+      this.setSearchData('')
       this.selectedItem = itemByArrowsIndex
 
       this.fireSelectEvent(this.selectedItem)
@@ -58,7 +58,7 @@ export default {
       )
     }
 
-    this.search = ''
+    this.setSearchData('')
     // show / hide menu
     this.hasMenu ? this.hideMenu() : this.showMenu()
   },
@@ -72,7 +72,7 @@ export default {
   onClickSelectItem (item) {
     // this.focused = false
     this.selectedItem = item
-    this.search = ''
+    this.setSearchData('')
 
     this.setInputFocused()
     this.hideMenu()
@@ -110,13 +110,13 @@ export default {
     //   this.selectedItem = null
     // }
 
-    this.search = e.target.value
-    this.$emit('search', this.search)
+    this.setSearchData(e.target.value)
+    this.$emit('search', this.getSearchData())
   },
   onScroll (event) {
     this.$emit('scroll', event)
 
-    if (this.itemsLimit >= this.itemsComputed.length) return
+    if (this.scrollItemsLimit >= this.itemsComputed.length) return
 
     const content = event.target
     const showMoreItems = (
@@ -126,7 +126,7 @@ export default {
 
     // если проскролил вниз то показать больше итемов
     if (showMoreItems) {
-      this.itemsLimit += 20
+      this.scrollItemsLimitCurrent += this.scrollItemsLimitAddAfterScroll
     }
   }
 }
