@@ -86,7 +86,9 @@ export default {
 Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select).
 
 #### TODO
-- Large test coverage
+- multi-select
+- rebuild build system (rollup)
+- 100% tests coverage
 
 I am happy to add something or improve, you can write what you want to see.
 I also have more motivation to work if you give a star.
