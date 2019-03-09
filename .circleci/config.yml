@@ -127,7 +127,7 @@ version: 2.1
 defaults: &defaults
   #  working_directory: ~/repo
   docker: # use the docker executor type; machine and macos executors are also supported
-    - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
+    - image: circleci/node:10 # the primary container, where your job's commands are run
 
 jobs:
   build: # install
