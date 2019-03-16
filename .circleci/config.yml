@@ -132,9 +132,9 @@ defaults: &defaults
 jobs:
   build: # install
     <<: *defaults
-#    branches:
-#      ignore:
-#        - gh-pages
+    branches:
+      ignore:
+        - gh-pages
     steps:
       - checkout # check out the code in the project directory
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
