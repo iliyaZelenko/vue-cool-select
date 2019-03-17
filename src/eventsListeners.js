@@ -132,7 +132,7 @@ export default {
   onScroll (event) {
     this.$emit('scroll', event)
 
-    if (this.scrollItemsLimit >= this.itemsComputed.length) return
+    if (this.scrollItemsLimitCurrent >= this.itemsComputed.length) return
 
     const content = event.target
     const showMoreItems = (

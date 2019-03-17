@@ -1,0 +1,9 @@
+{
+  "name": "vue-cool-select-github-pages",
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "vue-analytics": "^5.16.4"
+  },
+  "devDependencies": {}
+}

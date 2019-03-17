@@ -21,6 +21,7 @@ export function scrollIfNeeded (element, container) {
   } else {
     const offsetBottom = element.offsetTop + element.offsetHeight
     const scrollBottom = container.scrollTop + container.offsetHeight
+
     if (offsetBottom > scrollBottom) {
       container.scrollTop = offsetBottom - container.offsetHeight
     }

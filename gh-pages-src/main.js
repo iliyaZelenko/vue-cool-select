@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import VueAnalytics from 'vue-analytics'
+
 import App from './App'
 import router from './router'
 
@@ -9,6 +11,11 @@ const theme = getTheme()
 
 Vue.use(CoolSelect, {
   theme: theme // 'bootstrap' or 'material-design'
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-127403551-2',
+  router
 })
 
 Vue.config.productionTip = false

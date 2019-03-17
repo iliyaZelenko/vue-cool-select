@@ -130,5 +130,10 @@ export default {
     type: Boolean,
     default: true,
     note: 'to scroll to an item if it has moved beyond the scroll bar'
+  },
+  inputStyles: {
+    type: Object,
+    default: () => ({}),
+    note: 'custom styles for the input field. You can specify dynamic styles.'
   }
 }

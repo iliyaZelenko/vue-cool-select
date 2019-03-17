@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.0 # 2.1
 
 #defaults: &defaults
 ##  working_directory: ~/repo
@@ -20,6 +20,7 @@ version: 2.1
 #workflows:
 #  version: 2.1
 #  master:
+# TODO https://circleci.com/docs/2.0/configuration-reference/#filters-1
 #    jobs:
 #      - dependencies
 #      - lint:
@@ -127,14 +128,14 @@ version: 2.1
 defaults: &defaults
   #  working_directory: ~/repo
   docker: # use the docker executor type; machine and macos executors are also supported
-    - image: circleci/node:8.11.1 # the primary container, where your job's commands are run
+    - image: circleci/node:10 # the primary container, where your job's commands are run
 
 jobs:
   build: # install
     <<: *defaults
-#    branches:
-#      ignore:
-#        - gh-pages
+    branches:
+      ignore:
+        - gh-pages
     steps:
       - checkout # check out the code in the project directory
       - restore_cache: # Restores a previously saved cache based on a key (or keys)
