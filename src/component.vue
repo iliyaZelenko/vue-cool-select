@@ -70,6 +70,7 @@
             <div style="height: 8px;" />
           </slot>
 
+          <!--itemsComputedWithScrollLimit-->
           <div
             v-for="(item, i) in itemsComputed"
             v-show="i < scrollItemsLimitCurrent || (arrowsIndex && i <= arrowsIndex)"
