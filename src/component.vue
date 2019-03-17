@@ -34,6 +34,7 @@
         :value="inputValue"
         :placeholder="placeholder"
         :style="inputForTextStyles"
+        :class="inputForTextClass"
         :disabled="disableSearch || disabled"
         :readonly="readonly"
         type="text"
