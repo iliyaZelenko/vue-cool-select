@@ -20,6 +20,7 @@
         'IZ-select__input--disabled': disabled,
         'IZ-select__input--readonly': readonly
       }"
+      :style="inputStyles"
     >
       <slot
         v-if="showSelectionSlot"

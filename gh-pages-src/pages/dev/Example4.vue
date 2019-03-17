@@ -20,6 +20,10 @@
         v-model="selected"
         :items="items"
         :search-text.sync="search"
+        :input-styles="{
+          border: '1px solid red',
+          backgroundColor: 'yellow'
+        }"
         arrows-disable-instant-selection
         placeholder="Select name"
         @select="onSelect"
