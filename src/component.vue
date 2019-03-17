@@ -298,7 +298,11 @@ export default {
     },
     // ставит выбраный элемент по значению
     setSelectedItemByValue () {
-      if (!this.items.length) return
+      if (!this.items.length) {
+        this.selectedItem = null
+
+        return
+      }
 
       this.selectedItem = this.itemsComputed.find(i => {
         // TODO вынести получение this.value в computed (оно только в этом методе пока)
