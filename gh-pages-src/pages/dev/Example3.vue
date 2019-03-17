@@ -66,6 +66,7 @@ export default {
     resetSearchAndSelected () {
       this.selectEventEmitter.emit('set-search', '')
       this.selected = null
+      this.items = []
     }
   }
 }

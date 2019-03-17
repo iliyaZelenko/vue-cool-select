@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 60px;">
+  <div class="example-frame-wrapper">
     <iframe
       class="example-frame"
       src="https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Fbefore-after-slots&module=%2Fsrc%2Fexamples%2FBeforeAfterSlots.vue"

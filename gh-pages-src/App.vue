@@ -1,64 +1,192 @@
 <template>
-  <div id="app">
-    <p style="text-align: center; font-size: 20px;">
-      <span
-        v-for="(route, i) of prodRoutes"
-        :key="route.text"
-      >
-        <router-link :to="{ name: route.name }">
-          {{ route.text }}
-        </router-link>
-        <template v-if="i < prodRoutes.length - 1">
-          |
-        </template>
-      </span>
-    </p>
-
-    <!--Роуты для разработки-->
-    <p
-      v-if="env === 'development'"
-      style="text-align: center; font-size: 20px;"
+  <div>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons"
+      rel="stylesheet"
     >
-      <span
-        v-for="(route, i) of devRoutes"
-        :key="route.text"
-      >
-        <router-link :to="route.path">
-          {{ route.text }}
-        </router-link>
-        <template v-if="i < prodRoutes.length - 1">
-          |
-        </template>
-      </span>
 
-      <switch-theme v-if="$route.fullPath.includes('dev')" />
-    </p>
+    <div id="app">
+      <v-app>
+        <!--
+        <v-app-bar
+          fixed
+          color="#43a047"
+          dark
+          shrink-on-scroll
+          prominent
+          src="https://picsum.photos/1920/1080?random"
+          fade-img-on-scroll
+          scroll-threshold="500"
+        >
+          <template v-slot:img="{ props }">
+            <v-img
+              v-bind="props"
+              gradient="to top right, rgba(55,236,186,.7), rgba(25,32,72,.7)"
+            ></v-img>
+          </template>
 
-    <router-view/>
+          <template v-slot:extension>
+            <v-tabs
+              v-model="tab"
+              color="basil"
+              grow
+            >
+              <v-tab
+                v-for="route in prodRoutes"
+                :key="route.text"
+                :to="route.path"
+                exact
+              >
+                {{ route.text }}
+              </v-tab>
+            </v-tabs>
+          </template>
+
+          <v-spacer />
+
+          <h1 class="font-weight-bold display-3 basil--text text-xs-center mt-2">
+            Vue Cool Select
+          </h1>
+
+          <v-spacer />
+        </v-app-bar>
+        -->
+
+        <v-content>
+          <v-card color="basil">
+            <div
+              style="position: absolute; right: 0;"
+              class="ma-2"
+            >
+              <v-btn
+                color="black"
+                dark
+              >
+                <v-icon left>insert_link</v-icon>
+
+                Github
+              </v-btn>
+
+              <v-btn
+                :to="docsRoute"
+                class="ml-4"
+                color="primary"
+                large
+                dark
+              >
+                <v-icon left>book</v-icon>
+
+                Documentation
+              </v-btn>
+            </div>
+
+            <v-card-title class="py-4 justify-center">
+              <h1 class="font-weight-bold display-3 basil--text">
+                Vue Cool Select
+              </h1>
+            </v-card-title>
+
+            <h3 class="text-xs-center mt-3">
+              Examples
+            </h3>
+
+            <v-tabs
+              color="basil"
+              icons-and-text
+              centered
+              optional
+            >
+              <v-tab
+                v-for="route in examplesRoutes"
+                :key="route.text"
+                :to="route.path"
+                exact
+              >
+                {{ route.text }}
+
+                <v-icon>{{ route.icon }}</v-icon>
+              </v-tab>
+            </v-tabs>
+          </v-card>
+
+          <!--Роуты для разработки-->
+          <p
+            v-if="env === 'development'"
+            class="my-4 text-xs-center"
+          >
+            <span
+              v-for="(route, i) of devRoutes"
+              :key="route.text"
+            >
+              <router-link :to="route.path">
+                {{ route.text }}
+              </router-link>
+              <template v-if="i < examplesRoutes.length - 1">
+                |
+              </template>
+            </span>
+
+            <switch-theme v-if="$route.fullPath.includes('dev')" />
+          </p>
+
+          <v-container>
+            <v-alert
+              type="info"
+            >
+              Give a  <v-icon color="yellow">star</v-icon> on github if you want to motivate me to develop this project.
+
+              <v-btn
+                to="https://github.com/iliyaZelenko/vue-cool-select"
+                class="ml-2"
+                round
+              >
+                Visit github
+              </v-btn>
+            </v-alert>
+          </v-container>
+
+          <router-view />
+        </v-content>
+      </v-app>
+    </div>
   </div>
 </template>
 
 <script>
 import SwitchTheme from './SwitchTheme.vue'
-import { prodRoutes, devRoutes } from './router'
+import { docsRoute, examplesRoutes, devRoutes } from './router'
 
 export default {
   components: { SwitchTheme },
   data: () => ({
     env: process.env.NODE_ENV,
-    prodRoutes,
+    tab: null,
+    docsRoute,
+    examplesRoutes,
     devRoutes
   })
 }
 </script>
 
 <style>
+  .basil {
+    background-color: #FFFBE6 !important;
+  }
+
+  .basil--text {
+    color: #356859 !important;
+  }
+
   .example-frame {
     width: 100%;
     height: 850px;
     border:0;
     border-radius: 4px;
     overflow: hidden;
+  }
+
+  .example-frame-wrapper {
+    padding: 30px;
   }
 
   /* Page styles (no need) */
