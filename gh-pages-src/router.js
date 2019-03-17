@@ -4,17 +4,23 @@ import SimpleEx from './pages/Simple'
 
 Vue.use(Router)
 
-export const prodRoutes = [
+export const docsRoute = {
+  path: '/docs',
+  name: 'Docs',
+  text: 'Documentation 🗎',
+  component: () => import(/* webpackChunkName: "DocsPage" */ './pages/Docs')
+}
+export const examplesRoutes = [
   {
     path: '/',
     name: 'SimpleEx',
-    text: 'Simple example',
+    text: 'Simple',
     component: SimpleEx
   },
   {
     path: '/ex1',
     name: 'TimezonesEx',
-    text: 'Timezones example',
+    text: 'Item Slot',
     component: () => import(/* webpackChunkName: "Example1" */ './pages/Timezones')
   },
   {
@@ -26,7 +32,7 @@ export const prodRoutes = [
   {
     path: '/ex4',
     name: 'ValidationEx',
-    text: 'Validation example',
+    text: 'Validation',
     component: () => import(/* webpackChunkName: "Example4" */ './pages/Validation')
   },
   {
@@ -34,15 +40,12 @@ export const prodRoutes = [
     name: 'BeforeAfterEx',
     text: 'Before and After Slots',
     component: () => import(/* webpackChunkName: "Example4" */ './pages/BeforeAfter')
-  },
-  {
-    path: '/docs',
-    name: 'Docs',
-    text: 'Documentation 🗎',
-    component: () => import(/* webpackChunkName: "DocsPage" */ './pages/Docs')
   }
 ]
-
+export const prodRoutes = [
+  docsRoute,
+  ...examplesRoutes
+]
 export const devRoutes = [
   {
     path: '/',

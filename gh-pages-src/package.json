@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
-    "vue-analytics": "^5.16.4"
+    "vue-analytics": "^5.16.4",
+    "vuetify": "2.0.0-alpha.9"
   },
   "devDependencies": {}
 }

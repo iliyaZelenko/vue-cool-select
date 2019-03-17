@@ -6,3 +6,8 @@ vue-analytics@^5.16.4:
   version "5.16.4"
   resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.16.4.tgz#7f9e197cbc64afac96884a05214b17efaf8e9d09"
   integrity sha512-M67cUqpPeyk2rftrvlx2uU+BQ/C4E8SkF2Ct9LizOYUoTccZtCCJwhMJfQ3XL8xep6p3K8KYz58FzRWvx5zlPw==
+
+vuetify@2.0.0-alpha.9:
+  version "2.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.0-alpha.9.tgz#5aca564f9ed374f87af77823047d49a05c7c127e"
+  integrity sha512-Lqc6xA3mmAb/iKWT6N0P/XEcRBdPcbRnimTmBjQPo3uCfmFo9MT3lyTFoNWh38B3piqvm2idq7ktA1ZHuIpHRg==

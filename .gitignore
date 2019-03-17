@@ -3,7 +3,8 @@
 /dist/
 
 .DS_Store
-/node_modules/
+# all node_modules folders
+node_modules/
 /dist/demo.html
 #/dist/
 #/gh-pages-src/
