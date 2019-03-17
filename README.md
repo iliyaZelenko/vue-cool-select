@@ -36,7 +36,7 @@
 - control through arrows
 - slots (9)
 - events (7)
-- props (22)
+- props (24)
 - loading indicator (helpful for REST requests)
 - validation
 - support on mobile devices
