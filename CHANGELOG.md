@@ -1,3 +1,15 @@
+# [2.9.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.8.0...v2.9.0) (2019-03-17)
+
+
+### Bug Fixes
+
+* **component:** when you clear the elements, the selected element is not cleared ([381ddcd](https://github.com/iliyaZelenko/vue-cool-select/commit/381ddcd)), closes [#42](https://github.com/iliyaZelenko/vue-cool-select/issues/42)
+
+
+### Features
+
+* **props:** added inputForTextClass prop ([3be99d8](https://github.com/iliyaZelenko/vue-cool-select/commit/3be99d8)), closes [#90](https://github.com/iliyaZelenko/vue-cool-select/issues/90)
+
 # [2.8.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.7.0...v2.8.0) (2019-03-17)
 
 
