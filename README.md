@@ -20,6 +20,9 @@
     <a href="https://codebeat.co/projects/github-com-iliyazelenko-vue-cool-select-master">
       <img alt="codebeat badge" src="https://codebeat.co/badges/a6d9cfc8-529e-48c7-ae04-7d69fe6b1239" />
     </a>
+    <a href="https://standardjs.com/">
+      <img alt="codebeat badge" src="https://badgen.net/badge/code%20style/standard/f2a" />
+    </a>
   </p>
 
 # [Flexible select](https://iliyazelenko.github.io/vue-cool-select) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
