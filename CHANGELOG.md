@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.0...v2.10.1) (2019-03-29)
+
+
+### Bug Fixes
+
+* **component:** fixed opening the menu when you click again ([046689f](https://github.com/iliyaZelenko/vue-cool-select/commit/046689f))
+
 # [2.10.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.9.0...v2.10.0) (2019-03-29)
 
 
