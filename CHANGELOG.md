@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.1...v2.10.2) (2019-03-29)
+
+
+### Bug Fixes
+
+* **component:** set tabindex to 0 instead of 1 ([ebe593e](https://github.com/iliyaZelenko/vue-cool-select/commit/ebe593e)), closes [#98](https://github.com/iliyaZelenko/vue-cool-select/issues/98)
+
 ## [2.10.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.0...v2.10.1) (2019-03-29)
 
 
