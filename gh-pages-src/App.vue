@@ -141,7 +141,7 @@
                 href="https://github.com/iliyaZelenko/vue-cool-select"
                 target="_blank"
                 class="ml-2"
-                round
+                rounded
               >
                 Visit github
               </v-btn>

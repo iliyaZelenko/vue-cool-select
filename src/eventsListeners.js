@@ -1,6 +1,9 @@
 import { scrollIfNeeded } from '~/helpers'
 
 export default {
+  onFocus () {
+    this.setFocused()
+  },
   onSelectByArrow (e) {
     e.preventDefault()
 

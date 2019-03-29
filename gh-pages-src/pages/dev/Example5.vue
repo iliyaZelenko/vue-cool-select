@@ -39,7 +39,6 @@
         :readonly="readonly"
         :disable-search="disableSearch"
         placeholder="Select name"
-        @blur="validate"
       />
 
       <br>
@@ -72,9 +71,14 @@ export default {
     items: '[{"first_name":"one"}, {"first_name":"two"}, {"first_name":"three"}, {"first_name":"four"}, {"first_name":"five"}]',
     errorMessage: null
   }),
+  watch: {
+    selected () {
+      this.validate()
+    }
+  },
   methods: {
     validate () {
-      this.errorMessage = !this.selected ? 'This is required field!' : null
+      this.errorMessage = this.selected ? null : 'This is required field!'
     }
   }
 }

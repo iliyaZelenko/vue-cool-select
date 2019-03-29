@@ -1,13 +1,15 @@
 <template>
+  <!---->
   <div
     ref="IZ-select"
+    :tabindex="disableSearch ? 1 : -1"
     class="IZ-select"
-    tabindex="0"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
     @mousedown="onClick"
+    @focus="onFocus"
   >
     <div
       ref="IZ-select__input"
@@ -37,12 +39,14 @@
         :class="inputForTextClass"
         :disabled="disableSearch || disabled"
         :readonly="readonly"
+        :tabindex="disableSearch ? -1 : 1"
         type="text"
         role="combobox"
         autocomplete="off"
         @keyup="onSearchKeyUp"
         @keydown="onSearchKeyDown"
         @input="onSearch"
+        @focus="onFocus"
       >
     </div>
 
