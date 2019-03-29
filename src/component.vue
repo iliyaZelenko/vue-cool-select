@@ -56,6 +56,7 @@
           @keyup="onSearchKeyUp"
           @keydown="onSearchKeyDown"
           @input="onSearch"
+          @mousedown="onClick"
           @focus="setFocused(true)"
         >
 

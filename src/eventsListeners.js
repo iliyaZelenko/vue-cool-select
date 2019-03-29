@@ -82,6 +82,7 @@ export default {
     if (this.disabled || this.readonly) return
 
     this.setFocused()
+    this.showMenu()
   },
   // on click on item
   onClickSelectItem (item) {
