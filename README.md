@@ -34,9 +34,9 @@
 - 2 themes: Bootstrap 4, Material Design
 - autocomplete (you can use custom search)
 - control through arrows
-- slots (9)
+- slots (13)
 - events (7)
-- props (22)
+- props (23)
 - loading indicator (helpful for REST requests)
 - validation
 - support on mobile devices

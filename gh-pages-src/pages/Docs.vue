@@ -128,6 +128,22 @@ export default {
         description: 'Define a custom item appearance'
       },
       {
+        name: 'input-before',
+        description: 'Before input (text field)'
+      },
+      {
+        name: 'input-start',
+        description: 'Inside the input at the start'
+      },
+      {
+        name: 'input-end',
+        description: 'Inside the input at the end'
+      },
+      {
+        name: 'input-after',
+        description: 'After input'
+      },
+      {
         name: 'before-items',
         scopeProperties: {},
         description: 'Content before items'

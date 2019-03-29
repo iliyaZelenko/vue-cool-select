@@ -11,43 +11,62 @@
     @mousedown="onClick"
     @focus="onFocus"
   >
-    <div
-      ref="IZ-select__input"
-      :class="{
-        'IZ-select__input': true,
-        'IZ-select__input--focused': focused,
-        'IZ-select__input--has-menu': hasMenu,
-        'IZ-select__input--has-error': hasError,
-        'IZ-select__input--selection-slot': showSelectionSlot,
-        'IZ-select__input--disabled': disabled,
-        'IZ-select__input--readonly': readonly
-      }"
-      :style="inputStyles"
-    >
+    <div class="IZ-select__input-wrap">
       <slot
-        v-if="showSelectionSlot"
-        :item="selectedItem"
-        name="selection"
+        name="input-before"
       />
 
-      <input
-        ref="IZ-select__input-for-text"
-        v-bind="inputElCustomAttributes"
-        :value="inputValue"
-        :placeholder="placeholder"
-        :style="inputForTextStyles"
-        :class="inputForTextClass"
-        :disabled="disableSearch || disabled"
-        :readonly="readonly"
-        :tabindex="disableSearch ? -1 : 1"
-        type="text"
-        role="combobox"
-        autocomplete="off"
-        @keyup="onSearchKeyUp"
-        @keydown="onSearchKeyDown"
-        @input="onSearch"
-        @focus="onFocus"
+      <div
+        ref="IZ-select__input"
+        :class="{
+          'IZ-select__input': true,
+          'IZ-select__input--focused': focused,
+          'IZ-select__input--has-menu': hasMenu,
+          'IZ-select__input--has-error': hasError,
+          'IZ-select__input--successful': successful,
+          'IZ-select__input--selection-slot': showSelectionSlot,
+          'IZ-select__input--disabled': disabled,
+          'IZ-select__input--readonly': readonly
+        }"
+        :style="inputStyles"
       >
+        <slot
+          name="input-start"
+        />
+
+        <slot
+          v-if="showSelectionSlot"
+          :item="selectedItem"
+          name="selection"
+        />
+
+        <input
+          ref="IZ-select__input-for-text"
+          v-bind="inputElCustomAttributes"
+          :value="inputValue"
+          :placeholder="placeholder"
+          :style="inputForTextStyles"
+          :class="inputForTextClass"
+          :disabled="disableSearch || disabled"
+          :readonly="readonly"
+          :tabindex="disableSearch ? -1 : 1"
+          type="text"
+          role="combobox"
+          autocomplete="off"
+          @keyup="onSearchKeyUp"
+          @keydown="onSearchKeyDown"
+          @input="onSearch"
+          @focus="onFocus"
+        >
+
+        <slot
+          name="input-end"
+        />
+      </div>
+
+      <slot
+        name="input-after"
+      />
     </div>
 
     <transition name="fade">
