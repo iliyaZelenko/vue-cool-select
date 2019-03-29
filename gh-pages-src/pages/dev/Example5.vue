@@ -14,7 +14,6 @@
         :readonly="readonly"
         :disable-search="disableSearch"
         placeholder="Select name"
-        @blur="validate"
       />
 
       <br>
@@ -28,7 +27,6 @@
         :readonly="readonly"
         :disable-search="disableSearch"
         placeholder="Select name"
-        @blur="validate"
       >
         <template
           v-if="!errorMessage && selected"
