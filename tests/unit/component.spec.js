@@ -383,7 +383,7 @@ describe('MainComponent.vue', () => {
     let styles = wrapper.vm.menuDynamicStyles
 
     expect(
-      !!(styles.width && styles['pointer-events'] && !styles.top)
+      !!(styles.width && styles.left && styles['pointer-events'] && !styles.top)
     ).toBe(true)
 
     wrapper.setProps({
@@ -393,7 +393,7 @@ describe('MainComponent.vue', () => {
     styles = wrapper.vm.menuDynamicStyles
 
     expect(
-      !!(styles.width && styles['pointer-events'] && styles.top)
+      !!(styles.width && styles.left && styles['pointer-events'] && styles.top)
     ).toBe(true)
   })
 })

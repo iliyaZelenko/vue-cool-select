@@ -23,24 +23,48 @@
         v-model="selected"
         :items="items"
         :error-message="errorMessage"
+        :successful="!!(!errorMessage && selected)"
         :disabled="disabled"
         :readonly="readonly"
         :disable-search="disableSearch"
         placeholder="Select name"
         @blur="validate"
-      />
+      >
+        <template
+          v-if="!errorMessage && selected"
+          #input-end
+        >
+          <span style="color: green; margin-right: 8px;">
+            ✔
+          </span>
+        </template>
+      </cool-select>
 
       <br>
 
       <cool-select
-        v-model="selected2"
+        v-model="selected"
         :items="items"
+        :error-message="errorMessage"
         :disabled="disabled"
         :readonly="readonly"
         :disable-search="disableSearch"
         placeholder="Select name"
-        @blur="validate"
-      />
+      >
+        <template #input-before>
+          before
+        </template>
+        <template #input-start>
+          start
+        </template>
+
+        <template #input-end>
+          end
+        </template>
+        <template #input-after>
+          after
+        </template>
+      </cool-select>
 
       <br>
       <button @click="disabled = !disabled">
@@ -68,13 +92,17 @@ export default {
     readonly: false,
     disableSearch: false,
     selected: null,
-    selected2: null,
     items: '[{"first_name":"one"}, {"first_name":"two"}, {"first_name":"three"}, {"first_name":"four"}, {"first_name":"five"}]',
     errorMessage: null
   }),
+  watch: {
+    selected () {
+      this.validate()
+    }
+  },
   methods: {
     validate () {
-      this.errorMessage = !this.selected ? 'This is required field!' : null
+      this.errorMessage = this.selected ? null : 'This is required field!'
     }
   }
 }

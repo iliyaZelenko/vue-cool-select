@@ -43,14 +43,16 @@ export default {
     return window.innerWidth <= 900 && window.innerHeight <= 900
   },
   menuDynamicStyles () {
-    let obj = {
-      // ширина такая же как и у поля ввода
-      'width': this.$refs['IZ-select__input'].offsetWidth + 'px',
+    const input = this.$refs['IZ-select__input']
+    const obj = {
+      // ширина и смещение слева такие же как и у поля ввода
+      width: input.offsetWidth + 'px',
+      left: input.offsetLeft + 'px',
       'pointer-events': this.hasMenu ? 'auto' : 'none'
     }
 
     if (this.disableSearch) {
-      obj.top = this.$refs['IZ-select__input'].offsetTop + 'px'
+      obj.top = input.offsetTop + 'px'
     }
 
     return obj

@@ -58,6 +58,7 @@ describe('eventsListeners', () => {
 
     wrapper.vm.onClick()
 
+    expect(wrapper.vm.wishShowMenu).toBeTruthy()
     expect(wrapper.vm.hasMenu).toBeTruthy()
 
     const selectMenu = wrapper.find({

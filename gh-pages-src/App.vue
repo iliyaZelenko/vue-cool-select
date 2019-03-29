@@ -59,6 +59,8 @@
               class="ma-2"
             >
               <v-btn
+                href="https://github.com/iliyaZelenko/vue-cool-select"
+                target="_blank"
                 color="black"
                 dark
               >
@@ -136,9 +138,10 @@
               Give a  <v-icon color="yellow">star</v-icon> on github if you want to motivate me to develop this project.
 
               <v-btn
-                to="https://github.com/iliyaZelenko/vue-cool-select"
+                href="https://github.com/iliyaZelenko/vue-cool-select"
+                target="_blank"
                 class="ml-2"
-                round
+                rounded
               >
                 Visit github
               </v-btn>

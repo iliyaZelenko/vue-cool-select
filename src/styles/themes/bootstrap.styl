@@ -42,6 +42,10 @@
     input
       color: #ff5252 !important;
 
+  &.IZ-select__input--successful
+    border: 1px solid #28a745 !important;
+    caret-color: #28c346 !important;
+
   &.IZ-select__input--focused
     border-color: #80bdff;
     outline: 0;
@@ -49,6 +53,9 @@
 
     &.IZ-select__input--has-error
       box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+
+    &.IZ-select__input--successful
+      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
 
   &.IZ-select__input--disabled
     pointer-events: none;

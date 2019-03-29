@@ -140,5 +140,10 @@ export default {
     type: [Array, String, Object],
     default: () => '',
     note: 'custom "class" attribute for the input field. You can specify dynamic class.'
+  },
+  successful: {
+    type: Boolean,
+    default: false,
+    note: 'does the component have a successful state. If true, then apply green colors.'
   }
 }
