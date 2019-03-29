@@ -1,3 +1,18 @@
+# [2.10.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.9.0...v2.10.0) (2019-03-29)
+
+
+### Bug Fixes
+
+* **component:** fix circular call for methods ([03053bd](https://github.com/iliyaZelenko/vue-cool-select/commit/03053bd))
+* **component:** fix tab navigation ([a03694b](https://github.com/iliyaZelenko/vue-cool-select/commit/a03694b)), closes [#98](https://github.com/iliyaZelenko/vue-cool-select/issues/98)
+* **component:** when you clear the elements, the selected element is not cleared ([b184378](https://github.com/iliyaZelenko/vue-cool-select/commit/b184378)), closes [#42](https://github.com/iliyaZelenko/vue-cool-select/issues/42)
+
+
+### Features
+
+* **props:** added inputForTextClass prop ([ddb2c32](https://github.com/iliyaZelenko/vue-cool-select/commit/ddb2c32)), closes [#90](https://github.com/iliyaZelenko/vue-cool-select/issues/90)
+* **slots:** added 4 new slots for input ([3f892e0](https://github.com/iliyaZelenko/vue-cool-select/commit/3f892e0)), closes [#98](https://github.com/iliyaZelenko/vue-cool-select/issues/98)
+
 # [2.9.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.8.0...v2.9.0) (2019-03-17)
 
 
