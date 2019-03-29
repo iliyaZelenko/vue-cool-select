@@ -9,7 +9,7 @@
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
     @mousedown="onClick"
-    @focus="onFocus"
+    @focus="setFocused"
   >
     <div class="IZ-select__input-wrap">
       <slot
@@ -56,7 +56,7 @@
           @keyup="onSearchKeyUp"
           @keydown="onSearchKeyDown"
           @input="onSearch"
-          @focus="onFocus"
+          @focus="setFocused(true)"
         >
 
         <slot
@@ -237,11 +237,11 @@ export default {
     setInputFocused () {
       this.$refs['IZ-select__input-for-text'].focus()
     },
-    setFocused () {
+    setFocused (byInput = false) {
       if (this.focused || this.disabled || this.readonly) return
 
       // if search enabled
-      if (!this.disableSearch) {
+      if (!this.disableSearch && !byInput) {
         // focus text input
         this.setInputFocused()
       }
@@ -253,7 +253,7 @@ export default {
       //   block: this.isMobile ? 'start' : 'end'
       // })
 
-      if (this.allowMobileScroll && this.isMobile) {
+      if (window.scrollTo && this.allowMobileScroll && this.isMobile) {
         const { top } = getOffsetSum(this.$refs['IZ-select__input'])
 
         // scroll to component input el

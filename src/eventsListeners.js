@@ -1,9 +1,6 @@
 import { scrollIfNeeded } from '~/helpers'
 
 export default {
-  onFocus () {
-    this.setFocused()
-  },
   onSelectByArrow (e) {
     e.preventDefault()
 
@@ -85,7 +82,6 @@ export default {
     if (this.disabled || this.readonly) return
 
     this.setFocused()
-    this.showMenu()
   },
   // on click on item
   onClickSelectItem (item) {

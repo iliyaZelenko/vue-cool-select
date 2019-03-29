@@ -23,7 +23,7 @@
         v-model="selected"
         :items="items"
         :error-message="errorMessage"
-        :successful="!errorMessage && selected"
+        :successful="!!(!errorMessage && selected)"
         :disabled="disabled"
         :readonly="readonly"
         :disable-search="disableSearch"
