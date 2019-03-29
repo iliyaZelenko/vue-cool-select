@@ -2,7 +2,7 @@
   <!---->
   <div
     ref="IZ-select"
-    :tabindex="disableSearch ? 1 : -1"
+    :tabindex="disableSearch ? 0 : -1"
     class="IZ-select"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
@@ -49,7 +49,7 @@
           :class="inputForTextClass"
           :disabled="disableSearch || disabled"
           :readonly="readonly"
-          :tabindex="disableSearch ? -1 : 1"
+          :tabindex="disableSearch ? -1 : 0"
           type="text"
           role="combobox"
           autocomplete="off"

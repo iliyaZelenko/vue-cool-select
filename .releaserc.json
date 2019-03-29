@@ -13,7 +13,7 @@
         {"path": "dist/vue-cool-select.umd.min.js", "label": "UMD module minified"}
       ]
     }],
-    "@semantic-release/git",
-    "@semantic-release/npm"
+    "@semantic-release/npm",
+    "@semantic-release/git"
   ]
 }
