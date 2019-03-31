@@ -133,17 +133,19 @@
 
           <v-container>
             <v-alert
-              type="info"
+              v-if="showCodesanboxWarning"
+              type="warning"
             >
-              Give a  <v-icon color="yellow">star</v-icon> on github if you want to motivate me to develop this project.
+              If you do not see the <code>iframe</code> (block) with examples under this message,
+              then try clicking the button to the right.
 
               <v-btn
-                href="https://github.com/iliyaZelenko/vue-cool-select"
+                href="https://codesandbox.io/s/4zlkjr9xow"
                 target="_blank"
                 class="ml-2"
                 rounded
               >
-                Visit github
+                Visit codesandbox.io examples
               </v-btn>
             </v-alert>
           </v-container>
@@ -167,7 +169,12 @@ export default {
     docsRoute,
     examplesRoutes,
     devRoutes
-  })
+  }),
+  computed: {
+    showCodesanboxWarning () {
+      return this.examplesRoutes.some(i => i.name === this.$route.name)
+    }
+  }
 }
 </script>
 

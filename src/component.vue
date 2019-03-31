@@ -165,7 +165,7 @@ import computed from './computed'
 
 export default {
   name: 'VueSelect',
-  introduction: 'an amazing select',
+  // introduction: 'an amazing select',
   description: `
   This \`select\` is amazing, you should _check_ it out 😊.
   `,

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SimpleEx from './pages/Simple'
+// import SimpleEx from './pages/Simple'
+import CodesanboxExample from './pages/CodesanboxExample'
 
 Vue.use(Router)
 
@@ -15,33 +16,60 @@ export const examplesRoutes = [
     path: '/',
     name: 'SimpleEx',
     text: 'Simple',
-    component: SimpleEx
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Fsimple&module=%2Fsrc%2Fexamples%2FSimple.vue' }
   },
   {
     path: '/ex1',
     name: 'TimezonesEx',
     text: 'Item Slot',
-    component: () => import(/* webpackChunkName: "Example1" */ './pages/Timezones')
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Ftimezones&module=%2Fsrc%2Fexamples%2FItemSlot.vue' }
   },
   {
     path: '/ex2',
     name: 'RESTEx',
     text: 'REST API',
-    component: () => import(/* webpackChunkName: "Example2" */ './pages/REST')
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Frest-api&module=%2Fsrc%2Fexamples%2FREST_API.vue' }
   },
   {
     path: '/ex4',
     name: 'ValidationEx',
     text: 'Validation',
-    component: () => import(/* webpackChunkName: "Example4" */ './pages/Validation')
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Fvalidation&module=%2Fsrc%2Fexamples%2FValidation.vue' }
+  },
+  {
+    path: '/input-slots',
+    name: 'InputSlotsEx',
+    text: 'Input Slots',
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Finput-slots&module=%2Fsrc%2Fexamples%2FInputSlots.vue' }
   },
   {
     path: '/before-after-slots',
     name: 'BeforeAfterEx',
     text: 'Before and After Slots',
-    component: () => import(/* webpackChunkName: "Example4" */ './pages/BeforeAfter')
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Fbefore-after-slots&module=%2Fsrc%2Fexamples%2FBeforeAfterSlots.vue' }
+  },
+  {
+    path: '/no-search',
+    name: 'NoSearchEx',
+    text: 'No Search',
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Fno-seach&module=%2Fsrc%2Fexamples%2FNoSearch.vue' }
+  },
+  {
+    path: '/disabled-readonly',
+    name: 'DisabledReadonlyEx',
+    text: 'Disabled / Readonly',
+    component: CodesanboxExample,
+    meta: { codesanbox: 'https://codesandbox.io/embed/4zlkjr9xow?fontsize=14&initialpath=%2Fdisabled-readonly&module=%2Fsrc%2Fexamples%2FDisabledReadonly.vue' }
   }
 ]
+
 export const prodRoutes = [
   docsRoute,
   ...examplesRoutes
