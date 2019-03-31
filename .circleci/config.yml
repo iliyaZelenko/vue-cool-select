@@ -1,4 +1,43 @@
-version: 2.0 # 2.1
+version: 2.0
+
+defaults: &defaults
+  #  working_directory: ~/repo
+  docker: # use the docker executor type; machine and macos executors are also supported
+    - image: circleci/node:10 # the primary container, where your job's commands are run
+
+jobs:
+  build: # install
+    <<: *defaults
+    branches:
+      ignore:
+        - gh-pages
+    steps:
+      - checkout # check out the code in the project directory
+      - restore_cache: # Restores a previously saved cache based on a key (or keys)
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-cache-{{ checksum "yarn.lock" }}
+      - run: # used for invoking all command-line programs
+          name: Install Dependencies
+          command: yarn # --frozen-lockfile
+      - save_cache: # Generates and stores a cache of a file or directory of files
+          name: Save Yarn Package Cache
+          key: yarn-packages-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+            - ~/.cache/yarn
+      #          paths:
+      #            - ~/.cache/yarn
+      - run: yarn test:unit
+      - run: yarn test:unit-coverage
+      - run:
+          name: Send to Codecov
+          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
+      - run: yarn lint-show
+      - run: yarn build
+      - run: yarn semantic-release
+
+# version: 2.1
 
 #defaults: &defaults
 ##  working_directory: ~/repo
@@ -119,45 +158,3 @@ version: 2.0 # 2.1
 #      - run: yarn semantic-release
 
 
-
-
-
-
-#version: 2
-
-defaults: &defaults
-  #  working_directory: ~/repo
-  docker: # use the docker executor type; machine and macos executors are also supported
-    - image: circleci/node:10 # the primary container, where your job's commands are run
-
-jobs:
-  build: # install
-    <<: *defaults
-    branches:
-      ignore:
-        - gh-pages
-    steps:
-      - checkout # check out the code in the project directory
-      - restore_cache: # Restores a previously saved cache based on a key (or keys)
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-cache-{{ checksum "yarn.lock" }}
-      - run: # used for invoking all command-line programs
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile # yarn install --frozen-lockfile
-      - save_cache: # Generates and stores a cache of a file or directory of files
-          name: Save Yarn Package Cache
-          key: yarn-packages-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
-            - ~/.cache/yarn
-      #          paths:
-      #            - ~/.cache/yarn
-      - run: yarn test:unit
-      - run: yarn test:unit-coverage
-      - run:
-          name: Send to Codecov
-          command: "bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN"
-      - run: yarn lint-show
-      - run: yarn build
-      - run: yarn semantic-release
