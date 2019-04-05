@@ -1,4 +1,4 @@
-import '~/styles/main.styl'
+// import '~/styles/main.styl'
 // import '~/styles/themes/bootstrap.styl'
 // import '~/styles/themes/material-design.styl'
 import component from '~/component.vue'

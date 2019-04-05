@@ -1,10 +1,18 @@
 {
   "name": "vue-cool-select-github-pages",
   "version": "1.0.0",
-  "scripts": {},
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve ./main.js",
+    "deploy": "push-dir --dir=gh-pages-build --branch=gh-pages --cleanup",
+    "build": "vue-cli-service build ./main.js --dest=gh-pages-build",
+    "build-with-deploy": "yarn build && yarn deploy"
+  },
   "dependencies": {
     "vue-analytics": "^5.16.4",
     "vuetify": "2.0.0-alpha.9"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@mdi/font": "^3.5.95"
+  }
 }
