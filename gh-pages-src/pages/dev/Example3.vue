@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { CoolSelect, EventEmitter } from '~/main'
+import { CoolSelect, EventEmitter } from '../../main'
 
 const initSeconds = 5
 

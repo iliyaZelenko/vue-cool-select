@@ -24,25 +24,23 @@ async function generateThemeCSS (input, output) {
   const outputAbsPath = join(DIST_DIR, output)
 
   const stylusContent = await fs.readFile(inputAbsPath, 'utf8')
+  const css = await new Promise((resolve, reject) =>
+    stylus(stylusContent)
+      .set('filename', inputAbsPath)
+      .set('paths', [
+        join(STYLES_DIR, 'common')
+      ])
+      .render(function (err, css) {
+        if (err) reject(err)
 
-  // , { filename: 'nesting.css' }
-  const css = await new Promise((resolve, reject) => stylus.render(stylusContent, function (err, css) {
-    if (err) reject(err)
-
-    resolve(css)
-  }))
-
+        resolve(css)
+      })
+  )
   const result = await postcss(postcssPlugins).process(css, {
     from: inputAbsPath,
     to: outputAbsPath
-    // parser: sugarss
   })
 
   await fs.ensureFile(outputAbsPath)
   await fs.writeFile(outputAbsPath, result.css)
-
-  // console.log(outputAbsPath)
-  // if (result.map) {
-  //   fs.writeFile('dest/app.css.map', result.map, () => true)
-  // }
 }

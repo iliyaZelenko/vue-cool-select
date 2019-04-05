@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { CoolSelect } from '~/main'
+import { CoolSelect } from '../../main'
 
 export default {
   components: { CoolSelect },
