@@ -1,138 +1,139 @@
 .IZ-select
-  outline: none;
+  outline: none
 
 //.IZ-select *
-//  font-size: 16px;
-//  font-weight: 400;
-//  font-family: sans-serif;
+//  font-size: 16px
+//  font-weight: 400
+//  font-family: sans-serif
 
 .IZ-select__input
-  -webkit-box-align: center;
-  align-items: center;
-  display: flex;
-  -webkit-box-flex: 1;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
+  -webkit-box-align: center
+  align-items: center
+  display: flex
+  -webkit-box-flex: 1
+  flex: 1 1 auto
+  flex-wrap: wrap
 
-  width: 100%;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  width: 100%
+  font-size: 1rem
+  line-height: 1.5
+  color: #495057
+  background-color: #fff
+  background-clip: padding-box
+  border: 1px solid #ced4da
+  border-radius: .25rem
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 
   &.IZ-select__input--has-menu
-    //border-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    //border-bottom: 0
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
 
   &.IZ-select__input--selection-slot
-    padding-left: .75rem;
+    padding-left: .75rem
 
     input
-      padding-left: 10px;
+      padding-left: 10px
 
   &.IZ-select__input--has-error
-    border: 1px solid #dc3545 !important;
-    caret-color: #ff5252 !important;
+    border: 1px solid #dc3545 !important
+    caret-color: #ff5252 !important
 
     input
-      color: #ff5252 !important;
+      color: #ff5252 !important
 
   &.IZ-select__input--successful
-    border: 1px solid #28a745 !important;
-    caret-color: #28c346 !important;
+    border: 1px solid #28a745 !important
+    caret-color: #28c346 !important
 
   &.IZ-select__input--focused
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(128, 189, 255, 0.5);
+    border-color: #80bdff
+    outline: 0
+    box-shadow: 0 0 0 0.2rem rgba(128, 189, 255, 0.5)
 
     &.IZ-select__input--has-error
-      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important
 
     &.IZ-select__input--successful
-      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important
 
   &.IZ-select__input--disabled
-    pointer-events: none;
-    background-color: #e9ecef;
-    opacity: 1;
+    pointer-events: none
+    background-color: #e9ecef
+    opacity: 1
 
     input
-      color: #6c737a !important;
+      color: #6c737a !important
 
     &::placeholder
-      color: #6c737a !important;
+      color: #6c737a !important
 
   input
-    font-size: 1rem;
+    font-size: 1rem
     /* Loading indicator */
-    background-size: 25px 25px;
-    background-position: right 10px center;
-    background-repeat: no-repeat;
-    color: #495057 !important;
+    background-size: 25px 25px
+    background-position: right 10px center
+    background-repeat: no-repeat
+    color: #495057 !important
 
-    background-color: transparent;
-    padding: .375rem .75rem; // поменять и в другом месте .75rem (сделать поиск)
-    border-style: none;
-    pointer-events: auto;
-    flex: 1 1;
-    margin-top: 0;
-    min-width: 0;
-    position: relative;
-    line-height: 20px;
-    //padding: 8px 0;
-    max-width: 100%;
-    width: 100%;
+    background-color: transparent
+    padding: .375rem .75rem // поменять и в другом месте .75rem (сделать поиск)
+    border-style: none
+    pointer-events: auto
+    flex: 1 1
+    margin-top: 0
+    min-width: 0
+    position: relative
+    line-height: 20px
+    //padding: 8px 0
+    max-width: 100%
+    width: 100%
 
     &:focus
-      outline: none;
+      outline: none
 
     &:disabled
-      pointer-events: none;
+      pointer-events: none
 
 .IZ-select__menu
-  position: absolute;
-  z-index: 8;
-  transform-origin: left top 0; // на всякий случай
-  background-color: #fff;
-  border: 1px solid #ced4da;
+  position: absolute
+  z-index: 8
+  transform-origin: left top 0 // на всякий случай
+  background-color: #fff
+  border: 1px solid #ced4da
   // не забудь поменять для &.IZ-select__menu--disable-search (ниже) стили рамки
-  border-radius: .25rem;
-  border-top: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  box-shadow: 0 2px 11px -2px rgba(0,0,0,0.19);
+  border-radius: .25rem
+  border-top: 0
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+  box-shadow: 0 2px 11px -2px rgba(0,0,0,0.19)
 
   .IZ-select__menu-items
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto
+    overflow-x: hidden
 
   .IZ-select__no-data
-    margin: 0 10px;
+    margin: 0 10px
 
   &.IZ-select__menu--disable-search
-    border-top: 1;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
+    // TODO check with "px" postfix
+    border-top: 1
+    border-top-left-radius: .25rem
+    border-top-right-radius: .25rem
 
 .IZ-select__item
-  cursor: pointer;
-  padding: 10px 14px;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  cursor: pointer
+  padding: 10px 14px
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1)
 
   &:hover
-    background-color: #f2f2f2;
+    background-color: #f2f2f2
 
   &.IZ-select__item--selected
-    color: #1976d2 !important;
-    //background-color: lightgrey;
+    color: #1976d2 !important
+    //background-color: lightgrey
 
 .IZ-select__error
-  margin-top: .55rem;
-  font-size: 85%;
-  color: #dc3545;
+  margin-top: .55rem
+  font-size: 85%
+  color: #dc3545

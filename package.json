@@ -4,7 +4,8 @@
   "scripts": {
     "commit": "git-cz",
     "serve": "vue-cli-service serve ./gh-pages-src/main.js",
-    "build": "vue-cli-service build --target lib --name vue-cool-select ./src/main.js",
+    "build": "rollup --c ./build/rollup.config.js --environment BUILD:production",
+    "build-watch": "rollup -w -c",
     "lint": "vue-cli-service lint",
     "lint-show": "vue-cli-service lint --no-fix",
     "gp": "vue-cli-service build ./gh-pages-src/main.js --dest=gh-pages-build",
@@ -16,8 +17,11 @@
     "test:unit-coverage": "vue-cli-service test:unit --coverage",
     "test:e2e": "vue-cli-service test:e2e"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rollup-plugin-babel": "^4.3.2"
+  },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/commit-analyzer": "^6.1.0",
     "@semantic-release/git": "^7.0.8",
@@ -35,12 +39,24 @@
     "babel-jest": "^24.1.0",
     "clone": "^2.1.2",
     "commitizen": "^3.0.7",
+    "core-js": "3",
+    "cssnano": "^4.1.10",
+    "fs-extra": "^7.0.1",
     "jest": "^24.1.0",
+    "postcss-preset-env": "^6.6.0",
     "propdoc": "^0.9.3",
     "push-dir": "^0.4.1",
+    "rollup": "^1.8.0",
+    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.1.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-vue": "^4.7.2",
     "semantic-release": "^15.13.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "sugarss": "^2.0.0",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
     "tslint": "^5.13.0",
@@ -50,10 +66,7 @@
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"
   },
-  "browserslist": [
-    "> 0.3%",
-    "not op_mini all"
-  ],
+  "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -83,9 +96,14 @@
     "vue": "^2.5.17"
   },
   "author": "Ilya Zelenko",
-  "main": "dist/vue-cool-select.umd.min.js",
+  "main": "dist/bundle-cjs.js",
+  "module": "dist/bundle-esm.js",
+  "unpkg": "dist/bundle-umd.js",
+  "jsdelivr": "dist/bundle-umd.js",
+  "typings": "types/types.d.ts",
   "files": [
     "dist/*",
-    "src/*"
+    "src/*",
+    "types/*"
   ]
 }

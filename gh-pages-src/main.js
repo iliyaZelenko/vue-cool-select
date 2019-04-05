@@ -6,15 +6,16 @@ import 'vuetify/dist/vuetify.min.css'
 import App from './App'
 import router from './router'
 
-import CoolSelect from '~/main'
+import { CoolSelectPlugin } from '~/main'
 import { getTheme } from './themeHelpers'
 
 const theme = getTheme()
 
+// require(`../dist/themes/${theme}.css`)
+import(`../dist/themes/${theme}.css`)
+
 Vue.use(Vuetify)
-Vue.use(CoolSelect, {
-  theme: theme // 'bootstrap' or 'material-design'
-})
+Vue.use(CoolSelectPlugin)
 
 Vue.use(VueAnalytics, {
   id: 'UA-127403551-2',
