@@ -2,7 +2,15 @@
   <div class="demo-page-wrap">
     <div>
       <cool-select
-        ref="select"
+        v-model="selected"
+        :items="items"
+        :style="{
+          height: '50px'
+        }"
+        placeholder="Select name"
+      />
+
+      <cool-select
         v-model="selected"
         :items="items"
         placeholder="Select name"

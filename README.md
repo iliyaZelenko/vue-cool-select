@@ -50,6 +50,8 @@
 - validation
 - support on mobile devices
 - disabled and readonly
+- the ability to set the size of the field and other styles
+- TypeScript support
 
 Write your suggestions, glad to add.
 

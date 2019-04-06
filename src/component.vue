@@ -42,17 +42,19 @@
 
         <input
           ref="IZ-select__input-for-text"
-          v-bind="inputElCustomAttributes"
-          :value="inputValue"
-          :placeholder="placeholder"
-          :style="inputForTextStyles"
-          :class="inputForTextClass"
-          :disabled="disableSearch || disabled"
-          :readonly="readonly"
-          :tabindex="disableSearch ? -1 : 0"
-          type="text"
-          role="combobox"
-          autocomplete="off"
+          v-bind="{
+            value: inputValue,
+            placeholder,
+            class: inputForTextClass,
+            disabled: disableSearch || disabled,
+            readonly,
+            tabindex: disableSearch ? -1 : 0,
+            type: 'text',
+            role: 'combobox',
+            autocomplete: 'off',
+            ...inputElCustomAttributes,
+            style: inputForTextStyles,
+          }"
           @keyup="onSearchKeyUp"
           @keydown="onSearchKeyDown"
           @input="onSearch"

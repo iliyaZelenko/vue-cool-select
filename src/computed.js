@@ -24,13 +24,19 @@ export default {
     return this.$scopedSlots.selection && this.selectedItem && !this.getSearchData()
   },
   inputForTextStyles () {
+    let styles = {}
+
     if (this.loading) {
-      return {
-        'background-image': `url(${this.loadingIndicator})`
+      styles['background-image'] = `url(${this.loadingIndicator})`
+    }
+    if (this.inputElCustomAttributes) {
+      styles = {
+        ...styles,
+        ...this.inputElCustomAttributes
       }
     }
 
-    return {}
+    return styles
   },
   hasMenu () {
     return this.wishShowMenu && !this.loading // this.focused && !this.loading
