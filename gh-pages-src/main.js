@@ -14,9 +14,8 @@ export { CoolSelect, EventEmitter } from '~/main' // '../dist/bundle-umd'
 
 const theme = getTheme()
 
-// require(`../dist/themes/${theme}.css`)
-import(`../dist/themes/${theme}.css`)
-// import(`../dist/main.css`)
+import(`../src/styles/themes/${theme}.styl`)
+// import(`../dist/themes/${theme}.css`)
 
 Vue.use(Vuetify)
 Vue.use(CoolSelectPlugin)

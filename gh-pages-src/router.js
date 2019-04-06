@@ -99,6 +99,11 @@ export const devRoutes = [
     path: '/5',
     text: 'Dev 5',
     component: () => import(/* webpackChunkName: "DevExample5" */ './pages/dev/Example5')
+  },
+  {
+    path: '/6',
+    text: 'Dev 6',
+    component: () => import(/* webpackChunkName: "DevExample5" */ './pages/dev/Example6')
   }
 ]
 

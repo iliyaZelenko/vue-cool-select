@@ -64,18 +64,32 @@
         </template>
       </cool-select>
 
-      <br>
-      <button @click="disabled = !disabled">
-        Toggle disable
-      </button>
+      <v-layout
+        class="mt-5"
+        justify-center
+        wrap
+      >
+        <v-btn
+          class="ma-2"
+          @click="disabled = !disabled"
+        >
+          Toggle disable
+        </v-btn>
 
-      <button @click="readonly = !readonly">
-        Toggle readonly
-      </button>
+        <v-btn
+          class="ma-2"
+          @click="readonly = !readonly"
+        >
+          Toggle readonly
+        </v-btn>
 
-      <button @click="disableSearch = !disableSearch">
-        Toggle disable search
-      </button>
+        <v-btn
+          class="ma-2"
+          @click="disableSearch = !disableSearch"
+        >
+          Toggle disable search
+        </v-btn>
+      </v-layout>
     </div>
   </div>
 </template>

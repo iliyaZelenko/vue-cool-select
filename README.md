@@ -61,12 +61,15 @@ Write your suggestions, glad to add.
 
 1. Import and select a theme:
 ```js
-import VueSelect from 'vue-cool-select'
+import { CoolSelectPlugin } from 'vue-cool-select'
 
-Vue.use(VueSelect, {
-  theme: 'bootstrap' // or 'material-design'
-})
-  ```
+// paste the line below only if you need theme "bootstrap"
+import 'vue-cool-select/dist/themes/bootstrap.css'
+// paste the line below only if you need theme "material-design"
+import 'vue-cool-select/dist/themes/material-design.css'
+
+Vue.use(CoolSelectPlugin)
+```
 
 2. Use inside inside another component:
 ```js
@@ -76,7 +79,7 @@ export default {
   components: { CoolSelect },
   data () {
     return {
-      items: [...],
+      items: ['Item 1', 'Item 2', 'Item 3'],
       selected: null
     }
   }
@@ -96,7 +99,6 @@ Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select
 
 #### TODO
 - multi-select
-- rebuild build system (rollup)
 - 100% tests coverage
 
 I am happy to add something or improve, you can write what you want to see.

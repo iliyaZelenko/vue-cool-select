@@ -1,5 +1,8 @@
 @import "../common/main.styl"
 
+inputRadius = 2px
+menuRadius = inputRadius
+
 .IZ-select
   outline: none
 
@@ -25,7 +28,7 @@
   color: #495057
   background-color: #fff
   background-clip: padding-box
-  border-radius: 2px
+  border-radius: inputRadius
   box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)
   transition: background 0.8s
 
@@ -111,7 +114,7 @@
   background-color: #fff
   border: 1px solid #ced4da
   // не забудь поменять для &.IZ-select__menu--disable-search (ниже) стили рамки
-  border-radius: .25rem
+  border-radius: menuRadius
   border-top-left-radius: 0
   border-top-right-radius: 0
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)
@@ -125,8 +128,8 @@
 
   &.IZ-select__menu--disable-search
     border-top: 1
-    border-top-left-radius: .25rem
-    border-top-right-radius: .25rem
+    border-top-left-radius: menuRadius
+    border-top-right-radius: menuRadius
 
 .IZ-select__item
   cursor: pointer
