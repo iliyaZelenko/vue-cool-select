@@ -1,22 +1,66 @@
 <template>
   <div class="demo-page-wrap">
-    <div>
-      <cool-select
-        v-model="selected"
-        :items="items"
-        :style="{
-          height: '50px'
-        }"
-        placeholder="Select name"
-      />
+    <v-layout>
+      <v-flex xs6>
+        <input
+          class="form-control form-control-lg"
+          type="text"
+          placeholder=".form-control-lg"
+        >
 
-      <cool-select
-        v-model="selected"
-        :items="items"
-        placeholder="Select name"
-        disable-search
-      />
-    </div>
+        <br>
+
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Default input"
+        >
+
+        <br>
+
+        <input
+          class="form-control form-control-sm"
+          type="text"
+          placeholder=".form-control-sm"
+        >
+      </v-flex>
+      <v-flex xs6>
+        <!--
+        <cool-select
+          v-model="selected"
+          :items="items"
+          :style="{
+            height: '50px'
+          }"
+          placeholder="Select name"
+        />
+        -->
+
+        <cool-select
+          v-model="selected"
+          :items="items"
+          placeholder="lg"
+          size-lg
+        />
+
+        <br>
+
+        <cool-select
+          v-model="selected"
+          :items="items"
+          placeholder="md"
+        />
+
+        <br>
+
+        <cool-select
+          v-model="selected"
+          :items="items"
+          placeholder="sm"
+          size-sm
+        />
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 

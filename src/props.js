@@ -145,5 +145,15 @@ export default {
     type: Boolean,
     default: false,
     note: 'does the component have a successful state. If true, then apply green colors.'
+  },
+  sizeSm: {
+    type: Boolean,
+    default: false,
+    note: 'sets a small size'
+  },
+  sizeLg: {
+    type: Boolean,
+    default: false,
+    note: 'sets a large size'
   }
 }

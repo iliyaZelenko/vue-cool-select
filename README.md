@@ -40,17 +40,18 @@
 
 ## Features
 
-- 2 themes: Bootstrap 4, Material Design
+- 2 themes: Bootstrap 4 (equal styles), Material Design
 - autocomplete (you can use custom search)
-- control through arrows
-- slots (13)
-- events (7)
-- props (24)
+- keyboard controls (not only through the arrows)
+- slots (13) allow content to be changed anywhere
+- events (7) will let you know about everything
+- props (24) allow you to customize a component in a variety of ways
 - loading indicator (helpful for REST requests)
-- validation
+- validation, state of error and success
 - support on mobile devices
 - disabled and readonly
-- the ability to set the size of the field and other styles
+- smile and large sizes (as in bootstrap)
+- ability to set styles for a component
 - TypeScript support
 
 Write your suggestions, glad to add.

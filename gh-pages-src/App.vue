@@ -5,6 +5,13 @@
       rel="stylesheet"
     >
 
+    <!--
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    >
+    -->
+
     <div id="app">
       <v-app>
         <!--

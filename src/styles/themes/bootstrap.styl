@@ -2,9 +2,39 @@
 
 inputRadius = .25rem
 menuRadius = inputRadius
+inputPaddingLeft = .75rem
 
 .IZ-select
   outline: none
+
+  .IZ-select__input
+    font-weight: 400
+    font-size: 1rem
+    line-height: 1.5
+
+    input
+      height: calc(1.5em + .75rem)
+      padding: .375rem inputPaddingLeft
+
+  &--sm
+    .IZ-select__input
+      border-radius: .2rem
+
+      input
+        height: calc(1.5em + .5rem)
+        padding: .25rem .5rem
+        font-size: .875rem
+        line-height: 1.5
+
+  &--lg
+    .IZ-select__input
+      border-radius: .3rem
+
+      input
+        height: calc(1.5em + 1rem)
+        padding: .5rem 1rem
+        font-size: 1.25rem
+        line-height: 1.5
 
 //.IZ-select *
 //  font-size: 16px
@@ -18,10 +48,7 @@ menuRadius = inputRadius
   -webkit-box-flex: 1
   flex: 1 1 auto
   flex-wrap: wrap
-
   width: 100%
-  font-size: 1rem
-  line-height: 1.5
   color: #495057
   background-color: #fff
   background-clip: padding-box
@@ -35,7 +62,7 @@ menuRadius = inputRadius
     //border-bottom-right-radius: 0
 
   &.IZ-select__input--selection-slot
-    padding-left: .75rem
+    padding-left: inputPaddingLeft
 
     input
       padding-left: 10px
@@ -80,9 +107,7 @@ menuRadius = inputRadius
     background-position: right 10px center
     background-repeat: no-repeat
     color: #495057 !important
-
     background-color: transparent
-    padding: .375rem .75rem // поменять и в другом месте .75rem (сделать поиск)
     border-style: none
     pointer-events: auto
     flex: 1 1

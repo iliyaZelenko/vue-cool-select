@@ -1,9 +1,12 @@
 <template>
-  <!---->
   <div
     ref="IZ-select"
     :tabindex="disableSearch ? 0 : -1"
-    class="IZ-select"
+    :class="{
+      'IZ-select': true,
+      'IZ-select--sm': sizeSm,
+      'IZ-select--lg': sizeLg
+    }"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
