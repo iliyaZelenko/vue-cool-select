@@ -2,7 +2,7 @@ import '~/styles/main.styl'
 import component from '~/component.vue'
 import EventEmitter from '~/eventEmitter'
 
-export default new Singelton()
+export default new Singleton()
 export {
   EventEmitter,
   component,
@@ -10,7 +10,7 @@ export {
   component as VueCoolSelect
 }
 
-function Singelton () {
+function Singleton () {
   const self = this
 
   self.themes = ['bootstrap', 'material-design']
