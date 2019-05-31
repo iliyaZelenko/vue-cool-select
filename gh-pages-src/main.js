@@ -27,6 +27,5 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  vuetify: new Vuetify(),
   render: h => h(App)
 })
