@@ -25,8 +25,6 @@
     </a>
   </p>
 
-News (07.06.2019): I plan to extend the component and make the possibility of multiple selection, you can support me in this if you give a star.
-
 # [Flexible select](https://iliyazelenko.github.io/vue-cool-select) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
 
 <div style="text-align: center">
