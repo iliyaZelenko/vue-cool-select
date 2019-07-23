@@ -34,7 +34,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "clone": "^2.1.2",
-    "commitizen": "^3.0.7",
+    "commitizen": "^4.0.0",
     "jest": "^24.1.0",
     "propdoc": "^0.9.3",
     "push-dir": "^0.4.1",
