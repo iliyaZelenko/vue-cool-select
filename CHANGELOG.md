@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.2...v2.11.0) (2019-09-12)
+
+
+### Features
+
+* **input:** update component to ignore chrome autofill ([b64671f](https://github.com/iliyaZelenko/vue-cool-select/commit/b64671f))
+
 ## [2.10.2](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.1...v2.10.2) (2019-03-29)
 
 
