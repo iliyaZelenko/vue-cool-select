@@ -2,6 +2,22 @@
   <section class="docs">
     <h1 id="docs-title">Documentation</h1>
 
+    <v-alert
+      type="info"
+      class="mt-3"
+    >
+      Give a  <v-icon color="yellow">star</v-icon> on github if you want to motivate me to develop this project.
+
+      <v-btn
+        href="https://github.com/iliyaZelenko/vue-cool-select"
+        target="_blank"
+        class="ml-2"
+        rounded
+      >
+        Visit github
+      </v-btn>
+    </v-alert>
+
     <prop-doc :component="CoolSelect">
       <template slot="pre-props">
         <h2>Slots</h2>

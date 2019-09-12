@@ -34,7 +34,7 @@
   <img src="https://i.imgur.com/38xQWCg.png" width="210px;">
 </div>
 
-## [Demos + Documentation](https://iliyazelenko.github.io/vue-cool-select)
+## [Demo + Documentation](https://iliyazelenko.github.io/vue-cool-select)
 
 [![](https://i.imgur.com/b7wxLPT.png)](https://iliyazelenko.github.io/vue-cool-select)
 

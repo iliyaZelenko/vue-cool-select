@@ -1,7 +1,6 @@
 export default {
   value: {
     type: [Array, Object, String, Number, Boolean], // TODO set to null (any type) after issue fix
-    // required: true,
     default: () => null,
     note: 'value for "v-model".'
   },
