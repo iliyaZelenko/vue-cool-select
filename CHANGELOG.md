@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.11.0...v2.11.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* **input:** do not submit the form if there was a menu choice (if the component is inside the form) ([50bc64d](https://github.com/iliyaZelenko/vue-cool-select/commit/50bc64d)), closes [#196](https://github.com/iliyaZelenko/vue-cool-select/issues/196)
+
 # [2.11.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.2...v2.11.0) (2019-09-12)
 
 
