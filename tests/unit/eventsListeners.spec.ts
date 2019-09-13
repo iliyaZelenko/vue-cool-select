@@ -368,23 +368,27 @@ describe('eventsListeners', () => {
     expect(wrapper.vm.scrollItemsLimitCurrent).toBe(beforeVal + wrapper.vm.scrollItemsLimitAddAfterScroll)
   })
 
+  const onEnterEvent = {
+    preventDefault () {}
+  }
+
   it('checks onEnter menu', async () => {
     const wrapper = mount<VueCoolSelectComponentInterface>(comp, {
       propsData: { items: itemsDefault }
     })
 
     expect(
-      wrapper.vm.onEnter()
+      wrapper.vm.onEnter(onEnterEvent)
     ).toBeUndefined()
     expect(wrapper.vm.wishShowMenu).toBe(true)
 
     expect(
-      wrapper.vm.onEnter()
+      wrapper.vm.onEnter(onEnterEvent)
     ).toBeUndefined()
     expect(wrapper.vm.wishShowMenu).toBe(false)
 
     expect(
-      wrapper.vm.onEnter()
+      wrapper.vm.onEnter(onEnterEvent)
     ).toBeUndefined()
     expect(wrapper.vm.wishShowMenu).toBe(true)
   })
@@ -395,11 +399,11 @@ describe('eventsListeners', () => {
     })
 
     expect(
-      wrapper.vm.onEnter()
+      wrapper.vm.onEnter(onEnterEvent)
     ).toBeUndefined()
     expect(wrapper.vm.wishShowMenu).toBe(true)
     expect(
-      wrapper.vm.onEnter()
+      wrapper.vm.onEnter(onEnterEvent)
     ).toBeUndefined()
     expect(wrapper.vm.selectedItem).toBe(wrapper.vm.itemsComputed[0])
     expect(wrapper.vm.selectedItemByArrows).toBe(null)
