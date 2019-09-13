@@ -50,8 +50,10 @@ export default {
       })
     }
   },
-  onEnter () {
+  onEnter (e) {
     if (this.hasMenu) {
+      e.preventDefault()
+
       let needToResetSearch = false
       // если не выбрано через стрелки, то выбирать первый элемент
       if (!this.arrowsIndex && !this.disableFirstItemSelectOnEnter) {
