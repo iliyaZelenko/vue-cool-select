@@ -4,8 +4,12 @@
     :tabindex="disableSearch ? 0 : -1"
     :class="{
       'IZ-select': true,
-      'IZ-select--sm': size === SIZES.SMALL,
-      'IZ-select--lg': size === SIZES.LARGE
+      'IZ-select--with-value': inputValue,
+      // ставит класс размера если prop size не дефолтное
+      ...(size === SIZES.DEFAULT
+        ? null
+        : ({ ['IZ-select--' + size]: true })
+      )
     }"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
