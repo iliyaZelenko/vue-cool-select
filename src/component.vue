@@ -311,7 +311,8 @@ export default {
       return item
     },
     getItemValue (item) {
-      if (!item) return null
+      // if null or undefined
+      if (item == null) return null
       if (this.itemValue) return item[this.itemValue]
 
       if (isObject(item)) {

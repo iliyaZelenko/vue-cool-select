@@ -25,6 +25,7 @@
         >
       </v-flex>
       <v-flex xs6>
+        {{ selected }}
         <!--
         <cool-select
           v-model="selected"
