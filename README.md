@@ -51,7 +51,6 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 - slots (13) allow content to be changed anywhere
 - events (8) will let you know about everything
 - props (28) allow you to customize a component in a various ways
-- loading indicator (helpful for REST requests)
 - validation, state of error and success
 - support on mobile devices
 - disabled and readonly
