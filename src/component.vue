@@ -323,7 +323,7 @@ export default {
     },
     // ставит выбраный элемент по значению
     setSelectedItemByValue () {
-      if (!this.items.length) {
+      if (!this.getItems.length) {
         this.selectedItem = null
 
         return

@@ -1,10 +1,15 @@
 export default {
-  itemsComputed () {
+  getItems () {
     let items = this.items
 
-    if (typeof this.items === 'string') {
+    if (typeof items === 'string') {
       items = JSON.parse(this.items)
     }
+
+    return items
+  },
+  itemsComputed () {
+    let items = this.getItems
 
     return this.filteredBySearchItems(items)
   },

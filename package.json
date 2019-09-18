@@ -47,8 +47,10 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.3.3333",
     "vue": "^2.5.17",
+    "vue-analytics": "^5.17.0",
     "vue-router": "^3.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "vuetify": "^1.5.14"
   },
   "browserslist": [
     "> 0.3%",
