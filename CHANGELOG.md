@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.0.1...v3.0.2) (2019-09-18)
+
+
+### Bug Fixes
+
+* **ssr:** access window only on client ([84c042b](https://github.com/iliyaZelenko/vue-cool-select/commit/84c042b))
+
 ## [3.0.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.0.0...v3.0.1) (2019-09-18)
 
 
