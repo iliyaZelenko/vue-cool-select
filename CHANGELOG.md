@@ -1,3 +1,32 @@
+# [3.0.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.11.1...v3.0.0) (2019-09-18)
+
+
+### Bug Fixes
+
+* **getitemvalue:** improve comparison to null and undefined ([a53dfe4](https://github.com/iliyaZelenko/vue-cool-select/commit/a53dfe4)), closes [#199](https://github.com/iliyaZelenko/vue-cool-select/issues/199)
+
+
+### Features
+
+* **build:** added rollup, postcss ([d901fd9](https://github.com/iliyaZelenko/vue-cool-select/commit/d901fd9))
+* **classes:** iZ-select--with-value class if select has value ([c978a76](https://github.com/iliyaZelenko/vue-cool-select/commit/c978a76))
+* **component:** different sizes ([1e498e5](https://github.com/iliyaZelenko/vue-cool-select/commit/1e498e5))
+* **component:** improve the `inputStyles` logic and height style ([1aeb01d](https://github.com/iliyaZelenko/vue-cool-select/commit/1aeb01d))
+* **plugin's options:** the text option to set custom no data text ([9698298](https://github.com/iliyaZelenko/vue-cool-select/commit/9698298))
+* **props:** arrowsDisableInstantSelection prop ([59e9af4](https://github.com/iliyaZelenko/vue-cool-select/commit/59e9af4)), closes [#9](https://github.com/iliyaZelenko/vue-cool-select/issues/9)
+* **props:** discard the loadingIndicator prop ([0c18790](https://github.com/iliyaZelenko/vue-cool-select/commit/0c18790))
+* **sizes:** changed the idea about different sizes ([1abdf8d](https://github.com/iliyaZelenko/vue-cool-select/commit/1abdf8d))
+
+
+### BREAKING CHANGES
+
+* **props:** this prop no longer exists
+* **props:** previously there was the false vlue, which led to the immediate selection of a menu
+item. I decided that this was not the best practice.
+* **component:** the sizes are adjusted to fit the bootstrap styles perfectly, maybe they changed a
+little
+* **build:** new build system (styles separated)
+
 ## [2.11.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.11.0...v2.11.1) (2019-09-13)
 
 
