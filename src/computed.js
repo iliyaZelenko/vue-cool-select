@@ -42,6 +42,7 @@ export default {
     return !!this.errorMessage
   },
   isMobile () {
+    if (process.server) return false
     // return window.innerWidth + window.innerHeight <= 1800
     return window.innerWidth <= 900 && window.innerHeight <= 900
   },
