@@ -223,7 +223,8 @@ export default {
 
     // TODO возможно стоит убрать чтобы не вызывался лишний setSelectedItemByValue
     this.setSelectedItemByValue()
-
+  },
+  mounted () {
     // listener for window (see removeEventListener on beforeDestroy hook)
     this.mousedownListener = window.addEventListener('mousedown', ({ target }) => {
       const select = this.$refs['IZ-select']
