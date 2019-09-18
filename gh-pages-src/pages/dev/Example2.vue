@@ -31,15 +31,10 @@
         disable-filtering-by-search
         @search="onSearch"
       >
-        <template
-          slot="no-data"
-        >
+        <template #no-data>
           {{ noData ? 'No information found by request.' : 'We need at least 2 letters to search.' }}
         </template>
-        <template
-          slot="item"
-          slot-scope="{ item }"
-        >
+        <template #item="{ item }">
           <div style="display: flex; align-items: center;">
             <img
               :src="item.logo"
@@ -57,7 +52,10 @@
             </div>
           </div>
         </template>
-        <template slot="input-end">
+        <template
+          v-if="loading"
+          #input-end
+        >
           <!--
           http://loadinggif.com/images/image-selection/3.gif
           https://loading.io/
