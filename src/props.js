@@ -35,9 +35,6 @@ export default {
     default: 'https://i.imgur.com/fLYd7PN.gif',
     note: 'sets custom loading spinner/indicator. https://loading.io/'
   },
-  // invalid: {
-  //   type: Boolean,
-  // },
   errorMessage: {
     type: String,
     default: null
@@ -98,7 +95,7 @@ export default {
   },
   arrowsDisableInstantSelection: {
     type: Boolean,
-    default: false,
+    default: true,
     note: 'disable auto select when up or down with key arrow.'
   },
   menuItemsMaxHeight: {
