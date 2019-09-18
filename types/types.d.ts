@@ -1,9 +1,24 @@
-// 1. Make sure to import 'vue' before declaring augmented types
-import Vue from 'vue'
-import { Wrapper } from '@vue/test-utils'
+import Vue, { Component, PluginFunction } from 'vue'
+
+// TODO чтобы у Component была связь с VueCoolSelectComponentInterface
+export const component: Component
+export const CoolSelect: Component
+export const VueCoolSelect: Component
+export const CoolSelectPlugin: PluginFunction<CoolSelectUseOptionsInterface>
+export const EventEmitter: {
+  on: (event, listener) => any
+  onOnce: (event, listener) => any
+  emit: (event, data) => any
+}
+
+export interface CoolSelectUseOptionsInterface {
+  text: {
+    noData: string
+  }
+}
 
 export interface VueCoolSelectComponentInterface extends Vue {
-  /* Data */
+  [key: string]: any
   wishShowMenu: boolean
   arrowsIndex: number | null
   focused: boolean
@@ -33,19 +48,4 @@ export interface VueCoolSelectComponentInterface extends Vue {
   onScroll (event)
 
   setBlured ()
-}
-
-declare module '@vue/test-utils' {
-  interface Wrapper  {
-    readonly vm: any
-  }
-}
-
-// 2. Specify a file with the types you want to augment
-//    Vue has the constructor type in types/vue.d.ts
-declare module 'vue/types/vue' {
-  // 3. Declare augmentation for Vue
-  interface Vue {
-
-  }
 }
