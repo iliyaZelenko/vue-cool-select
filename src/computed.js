@@ -26,9 +26,6 @@ export default {
   inputForTextStyles () {
     let styles = {}
 
-    if (this.loading) {
-      styles['background-image'] = `url(${this.loadingIndicator})`
-    }
     if (this.inputElCustomAttributes && this.inputElCustomAttributes.style) {
       styles = {
         ...styles,

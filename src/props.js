@@ -32,11 +32,6 @@ export default {
     default: false,
     note: 'display the loading indicator.'
   },
-  loadingIndicator: { // http://loadinggif.com/images/image-selection/3.gif
-    type: String,
-    default: 'https://i.imgur.com/fLYd7PN.gif',
-    note: 'sets custom loading spinner/indicator. https://loading.io/'
-  },
   disabled: {
     type: Boolean,
     default: false,

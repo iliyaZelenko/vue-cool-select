@@ -57,6 +57,17 @@
             </div>
           </div>
         </template>
+        <template slot="input-end">
+          <!--
+          http://loadinggif.com/images/image-selection/3.gif
+          https://loading.io/
+          -->
+          <img
+            src="https://i.imgur.com/fLYd7PN.gif"
+            class="loading-indicator"
+            alt="loading"
+          >
+        </template>
       </cool-select>
     </div>
   </div>
@@ -114,5 +125,10 @@ export default {
     max-width: 60px;
     margin-right: 10px;
     border: 1px solid #eaecf0;
+  }
+
+  .loading-indicator {
+    width: 24px;
+    margin-right: 5px;
   }
 </style>
