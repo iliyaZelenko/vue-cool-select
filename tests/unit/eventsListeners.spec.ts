@@ -93,7 +93,6 @@ describe('eventsListeners', () => {
     ).toBe(selectItem)
   })
 
-
   it('checks onClick with disabled', async () => {
     const wrapperWithDisabled = mount<VueCoolSelectComponentInterface>(comp, {
       propsData: {

@@ -28,7 +28,7 @@
     </a>
   </p>
 
-The current version is `3.x`, if you are looking for `2.x`, you can find [it here](README_2VERSION.md).
+The current version is `3.x`, if you are looking for `2.x`, you can find [it here](README_2VERSION.md) (also, see [breaking changes](https://github.com/iliyaZelenko/vue-cool-select/blob/master/CHANGELOG.md#300-2019-09-18)).
 
 # [Flexible select](https://iliyazelenko.github.io/vue-cool-select) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
 
@@ -45,18 +45,17 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 
 ## Features
 
-- 2 themes: Bootstrap 4 (equal styles), Material Design
+- 2 themes: Bootstrap 4 (equal styles), Material Design, you can also create your own theme
 - autocomplete (you can use custom search, you can also disable the search input)
 - keyboard controls (not only through the arrows)
 - slots (13) allow content to be changed anywhere
 - events (8) will let you know about everything
 - props (28) allow you to customize a component in a various ways
-- loading indicator (helpful for REST requests)
 - validation, state of error and success
 - support on mobile devices
 - disabled and readonly
 - smile and large sizes (as in bootstrap)
-- the ability to set your styles, you can write them from scratch
+- the ability to set your styles, you can write theme from scratch
 - TypeScript support
 - tab navigation
 

@@ -60,17 +60,14 @@ Write your suggestions, glad to add.
 
 1. Import and select a theme:
 ```js
-import { CoolSelectPlugin } from 'vue-cool-select'
+import VueSelect from 'vue-cool-select'
 
-// paste the line below only if you need theme "bootstrap"
-import 'vue-cool-select/dist/themes/bootstrap.css'
-// paste the line below only if you need theme "material-design"
-import 'vue-cool-select/dist/themes/material-design.css'
-
-Vue.use(CoolSelectPlugin)
+Vue.use(VueSelect, {
+  theme: 'bootstrap' // or 'material-design'
+})
 ```
 
-2. Use inside inside another component:
+2. Use inside another component:
 ```js
 import { CoolSelect } from 'vue-cool-select'
 
@@ -78,7 +75,9 @@ export default {
   components: { CoolSelect },
   data () {
     return {
+      // simple example of items
       items: ['Item 1', 'Item 2', 'Item 3'],
+      // there will be a selected item
       selected: null
     }
   }

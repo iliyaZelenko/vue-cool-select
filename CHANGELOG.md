@@ -20,8 +20,8 @@
 
 ### BREAKING CHANGES
 
-* **props:** this prop no longer exists
-* **props:** previously there was the false vlue, which led to the immediate selection of a menu
+* **props:** `loadingIndicator` prop no longer exists
+* **props:** `arrowsDisableInstantSelection` now is `true`, previously there was the `false` value, which led to the immediate selection of a menu
 item. I decided that this was not the best practice.
 * **component:** the sizes are adjusted to fit the bootstrap styles perfectly, maybe they changed a
 little
