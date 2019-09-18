@@ -1,3 +1,5 @@
+import { SIZES } from './constants'
+
 export default {
   value: {
     type: [Array, Object, String, Number, Boolean], // TODO set to null (any type) after issue fix
@@ -29,18 +31,6 @@ export default {
     type: Boolean,
     default: false,
     note: 'display the loading indicator.'
-  },
-  loadingIndicator: { // http://loadinggif.com/images/image-selection/3.gif
-    type: String,
-    default: 'https://i.imgur.com/fLYd7PN.gif',
-    note: 'sets custom loading spinner/indicator. https://loading.io/'
-  },
-  // invalid: {
-  //   type: Boolean,
-  // },
-  errorMessage: {
-    type: String,
-    default: null
   },
   disabled: {
     type: Boolean,
@@ -98,7 +88,7 @@ export default {
   },
   arrowsDisableInstantSelection: {
     type: Boolean,
-    default: false,
+    default: true,
     note: 'disable auto select when up or down with key arrow.'
   },
   menuItemsMaxHeight: {
@@ -140,9 +130,18 @@ export default {
     default: () => '',
     note: 'custom "class" attribute for the input field. You can specify dynamic class.'
   },
+  errorMessage: {
+    type: String,
+    default: null
+  },
   successful: {
     type: Boolean,
     default: false,
     note: 'does the component have a successful state. If true, then apply green colors.'
+  },
+  size: {
+    type: String,
+    default: SIZES.DEFAULT,
+    note: 'sets size'
   }
 }

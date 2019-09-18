@@ -31,15 +31,10 @@
         disable-filtering-by-search
         @search="onSearch"
       >
-        <template
-          slot="no-data"
-        >
+        <template #no-data>
           {{ noData ? 'No information found by request.' : 'We need at least 2 letters to search.' }}
         </template>
-        <template
-          slot="item"
-          slot-scope="{ item }"
-        >
+        <template #item="{ item }">
           <div style="display: flex; align-items: center;">
             <img
               :src="item.logo"
@@ -57,13 +52,27 @@
             </div>
           </div>
         </template>
+        <template
+          v-if="loading"
+          #input-end
+        >
+          <!--
+          http://loadinggif.com/images/image-selection/3.gif
+          https://loading.io/
+          -->
+          <img
+            src="https://i.imgur.com/fLYd7PN.gif"
+            class="loading-indicator"
+            alt="loading"
+          >
+        </template>
       </cool-select>
     </div>
   </div>
 </template>
 
 <script>
-import { CoolSelect } from '~/main'
+import { CoolSelect } from '../../main'
 
 export default {
   components: { CoolSelect },
@@ -114,5 +123,10 @@ export default {
     max-width: 60px;
     margin-right: 10px;
     border: 1px solid #eaecf0;
+  }
+
+  .loading-indicator {
+    width: 24px;
+    margin-right: 5px;
   }
 </style>

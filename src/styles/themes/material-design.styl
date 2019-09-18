@@ -1,143 +1,165 @@
+@import "../common/main.styl"
+
+inputRadius = 2px
+menuRadius = inputRadius
+inputPaddingLeft = 15px
+
 .IZ-select
-  outline: none;
+  outline: none
+
+  .IZ-select__input
+    font-weight: 400
+    font-size: 1rem
+    line-height: 1.5
+
+    input
+      height: calc(2.3em + .75rem)
+      padding: 12px inputPaddingLeft
+
+  &--sm
+    .IZ-select__input input
+      height: calc(2.3em + .5rem)
+      padding: .25rem .8rem
+      font-size: .875rem
+      line-height: 1.5
+
+  &--lg
+    .IZ-select__input input
+      height: calc(2.3em + 1rem)
+      padding: .5rem 1rem
+      font-size: 1.25rem
+      line-height: 1.5
 
 .IZ-select *
-  font-size: 16px;
-  font-weight: 400;
-  webkit-font-smoothing: antialiased;
-  font-family: Roboto, sans-serif;
+  font-size: 16px
+  font-weight: 400
+  webkit-font-smoothing: antialiased
+  font-family: Roboto, sans-serif
 
 .IZ-select__input
-  -webkit-box-align: center;
-  align-items: center;
-  display: flex;
-  -webkit-box-flex: 1;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
-
-  //padding: 12px 20px;
-  width: 100%;
-  //padding: 0 12px;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border-radius: 2px;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
-  transition: background 0.8s;
+  -webkit-box-align: center
+  align-items: center
+  display: flex
+  -webkit-box-flex: 1
+  flex: 1 1 auto
+  flex-wrap: wrap
+  width: 100%
+  color: #495057
+  background-color: #fff
+  background-clip: padding-box
+  border-radius: inputRadius
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)
+  transition: background 0.8s
 
   &:not(.IZ-select__input--disabled)&:not(.IZ-select__input--readonly)
     /* Ripple effect */
-    background-position: center;
+    background-position: center
 
     &:hover
-      background: #fbfbfb radial-gradient(circle, transparent 1%, #fbfbfb 1%) center/15000%;
+      background: #fbfbfb radial-gradient(circle, transparent 1%, #fbfbfb 1%) center/15000%
 
     &:active
-      background-color: #f5f5f5;
-      background-size: 100%;
-      transition: background 0s;
+      background-color: #f5f5f5
+      background-size: 100%
+      transition: background 0s
     /* End Ripple effect */
 
   &.IZ-select__input--has-menu
-    //border-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    //border-bottom: 0
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
 
   &.IZ-select__input--selection-slot
-    padding-left: 20px;
+    padding-left: inputPaddingLeft
 
     input
-      padding-left: 10px;
+      padding-left: 10px
 
   &.IZ-select__input--has-error
-    box-shadow: 0 3px 1px -2px rgba(255,0,0,0.2), 0px 2px 2px 0px rgba(255,0,0,0.14), 0px 1px 5px 0px rgba(255,0,0,0.12);
-    border: 1px solid #ff5252 !important;
-    caret-color: #ff5252 !important;
+    box-shadow: 0 3px 1px -2px rgba(255,0,0,0.2), 0px 2px 2px 0px rgba(255,0,0,0.14), 0px 1px 5px 0px rgba(255,0,0,0.12)
+    border: 1px solid #ff5252 !important
+    caret-color: #ff5252 !important
 
     input
-      color: #ff5252 !important;
+      color: #ff5252 !important
 
   &.IZ-select__input--successful
-    border: 1px solid #28a745 !important;
-    caret-color: #28c346 !important;
+    border: 1px solid #28a745 !important
+    caret-color: #28c346 !important
 
   // focused состояние не нужно
 
   &.IZ-select__input--disabled
-    pointer-events: none;
-    background: rgba(0,0,0,0.01);
+    pointer-events: none
+    background: rgba(0,0,0,0.01)
 
     input
-      color: #c8c8c8 !important;
+      color: #c8c8c8 !important
 
       &::placeholder
-        color: #c8c8c8;
+        color: #c8c8c8
 
   input
     /* Loading indicator */
-    background-size: 25px 25px;
-    background-position: right 10px center;
-    background-repeat: no-repeat;
-    color: #495057 !important;
+    background-size: 25px 25px
+    background-position: right 10px center
+    background-repeat: no-repeat
+    color: #495057 !important
 
-    background-color: transparent;
-    padding: 12px 20px; // поменять и в другом месте 20px (сделать поиск)
-    border-style: none;
-    pointer-events: auto;
-    flex: 1 1;
-    margin-top: 0;
-    min-width: 0;
-    //pointer-events: none;
-    position: relative;
-    line-height: 20px;
-    //padding: 8px 0;
-    max-width: 100%;
-    width: 100%;
+    background-color: transparent
+    border-style: none
+    pointer-events: auto
+    flex: 1 1
+    margin-top: 0
+    min-width: 0
+    //pointer-events: none
+    position: relative
+    line-height: 20px
+    //padding: 8px 0
+    max-width: 100%
+    width: 100%
 
     &:focus
-      outline: none;
+      outline: none
 
     &:disabled
-      pointer-events: none;
+      pointer-events: none
 
 .IZ-select__menu
-  position: absolute;
-  z-index: 8;
-  transform-origin: left top 0; // на всякий случай
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  // не забудь поменять для &.IZ-select__menu--disable-search (ниже) стили рамки
-  border-radius: .25rem;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+  position: absolute
+  z-index: 8
+  transform-origin: left top 0 // на всякий случай
+  background-color: #fff
+  border: 1px solid #ced4da
+  border-radius: menuRadius
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)
 
   .IZ-select__menu-items
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto
+    overflow-x: hidden
 
   .IZ-select__no-data
-    margin: 0 10px;
+    margin: 0 10px
 
   &.IZ-select__menu--disable-search
-    border-top: 1;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
+    border-top: 1
+    border-top-left-radius: menuRadius
+    border-top-right-radius: menuRadius
 
 .IZ-select__item
-  cursor: pointer;
-  padding: 18px 20px;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  cursor: pointer
+  padding: 18px inputPaddingLeft
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1)
 
   &:hover
-    background-color: #f2f2f2;
+    background-color: #f2f2f2
 
   &.IZ-select__item--selected
-    color: #1976d2 !important;
+    color: #1976d2 !important
 
 .IZ-select__error
-  margin-top: .55rem;
-  font-size: 85%;
-  color: #ff5252;
+  margin-top: .55rem
+  font-size: 85%
+  color: #ff5252

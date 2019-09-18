@@ -23,12 +23,7 @@
     <a href="https://standardjs.com/">
       <img alt="codebeat badge" src="https://badgen.net/badge/code%20style/standard/f2a" />
     </a>
-    <a href="https://www.npmjs.com/package/vue-cool-select">
-      <img src="https://img.shields.io/npm/dt/vue-cool-select?color=red&label=total%20downloads" alt="Downloads">
-    </a>
   </p>
-
-The current version is `3.x`, if you are looking for `2.x`, you can find [it here](README_2VERSION.md).
 
 # [Flexible select](https://iliyazelenko.github.io/vue-cool-select) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
 
@@ -39,49 +34,43 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
   <img src="https://i.imgur.com/38xQWCg.png" width="210px;">
 </div>
 
-## [Demo + Documentation](https://iliyazelenko.github.io/vue-cool-select)
-
-[![](https://i.imgur.com/b7wxLPT.png)](https://iliyazelenko.github.io/vue-cool-select)
-
 ## Features
 
 - 2 themes: Bootstrap 4 (equal styles), Material Design
-- autocomplete (you can use custom search, you can also disable the search input)
+- autocomplete (you can use custom search)
 - keyboard controls (not only through the arrows)
 - slots (13) allow content to be changed anywhere
-- events (8) will let you know about everything
-- props (28) allow you to customize a component in a various ways
+- events (7) will let you know about everything
+- props (24) allow you to customize a component in a variety of ways
 - loading indicator (helpful for REST requests)
 - validation, state of error and success
 - support on mobile devices
 - disabled and readonly
 - smile and large sizes (as in bootstrap)
-- the ability to set your styles, you can write them from scratch
+- ability to set styles for a component
 - TypeScript support
-- tab navigation
 
 Write your suggestions, glad to add.
 
 ## Installation
 
-`yarn add vue-cool-select` or `npm install --save vue-cool-select`
+`yarn add vue-cool-select@^2.0.0` or `npm install --save vue-cool-select@^2.0.0`
 
 ## Get started
 
-1. Import this plugin, css (theme) and add plugin via `Vue.use`:
+1. Import and select a theme:
 ```js
 import { CoolSelectPlugin } from 'vue-cool-select'
 
-// paste the line below only if you need "bootstrap" theme
+// paste the line below only if you need theme "bootstrap"
 import 'vue-cool-select/dist/themes/bootstrap.css'
-// paste the line below only if you need "material-design" theme
+// paste the line below only if you need theme "material-design"
 import 'vue-cool-select/dist/themes/material-design.css'
-// you can also import your theme
 
 Vue.use(CoolSelectPlugin)
 ```
 
-2. Use inside another component:
+2. Use inside inside another component:
 ```js
 import { CoolSelect } from 'vue-cool-select'
 
@@ -89,9 +78,7 @@ export default {
   components: { CoolSelect },
   data () {
     return {
-      // simple example of items
       items: ['Item 1', 'Item 2', 'Item 3'],
-      // there will be a selected item
       selected: null
     }
   }
@@ -108,10 +95,3 @@ export default {
 ```
 
 Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select).
-
-#### TODO
-- multi-select
-- 100% tests coverage
-
-I am happy to add something or improve, you can write what you want to see.
-I also have more motivation to work if you give a star, thanks! :smile:

@@ -1,8 +1,11 @@
-import '~/styles/main.styl'
+// import '~/styles/main.styl'
+// import '~/styles/themes/bootstrap.styl'
+// import '~/styles/themes/material-design.styl'
 import component from '~/component.vue'
 import EventEmitter from '~/eventEmitter'
+import mergeDeep from '~/helpers'
 
-export default new Singleton()
+export const CoolSelectPlugin = new Singleton()
 export {
   EventEmitter,
   component,
@@ -11,32 +14,18 @@ export {
 }
 
 function Singleton () {
-  const self = this
-
-  self.themes = ['bootstrap', 'material-design']
-  self.currentTheme = null // будет определено в install
-  self.currentLocale = null // будет определено в install
-
-  // public object
   return {
-    install (Vue, options = {}) {
-      const {
-        theme: optTheme = 'bootstrap'
-      } = options
+    install (Vue, optionsInput = {}) {
+      const optionsDefault = {
+        text: {
+          noData: 'No data available'
+        }
+      }
+      const options = mergeDeep(optionsDefault, optionsInput)
 
-      requireTheme(optTheme, self.themes)
-    },
-
-    get theme () {
-      return self.currentTheme
+      Vue.prototype.$coolSelect = {
+        options
+      }
     }
   }
-}
-
-function requireTheme (theme, themes) {
-  const errorMessage = `Theme ${theme} is not supported! Available Themes: ${themes.join(', ')}.`
-
-  if (!themes.includes(theme)) throw Error(errorMessage)
-
-  require(`./styles/themes/${theme}.styl`)
 }

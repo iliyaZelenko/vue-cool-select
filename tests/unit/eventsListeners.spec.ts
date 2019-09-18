@@ -152,7 +152,8 @@ describe('eventsListeners', () => {
   it('checks onSelectByArrow ', async () => {
     const wrapper = mount<VueCoolSelectComponentInterface>(comp, {
       propsData: {
-        items: itemsDefault
+        items: itemsDefault,
+        arrowsDisableInstantSelection: false
       }
     })
 
