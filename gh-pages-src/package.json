@@ -9,6 +9,7 @@
     "build-with-deploy": "yarn build && yarn deploy"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "vue-analytics": "^5.16.4",
     "vuetify": "2.0.0-alpha.9"
   },

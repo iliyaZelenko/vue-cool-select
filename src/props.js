@@ -1,3 +1,5 @@
+import { SIZES } from './constants'
+
 export default {
   value: {
     type: [Array, Object, String, Number, Boolean], // TODO set to null (any type) after issue fix
@@ -142,14 +144,9 @@ export default {
     default: false,
     note: 'does the component have a successful state. If true, then apply green colors.'
   },
-  sizeSm: {
-    type: Boolean,
-    default: false,
-    note: 'sets a small size'
-  },
-  sizeLg: {
-    type: Boolean,
-    default: false,
-    note: 'sets a large size'
+  size: {
+    type: String,
+    default: SIZES.DEFAULT,
+    note: 'sets size'
   }
 }

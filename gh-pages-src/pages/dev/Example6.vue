@@ -25,7 +25,6 @@
         >
       </v-flex>
       <v-flex xs6>
-        {{ selected }}
         <!--
         <cool-select
           v-model="selected"
@@ -41,7 +40,7 @@
           v-model="selected"
           :items="items"
           placeholder="lg"
-          size-lg
+          size="lg"
         />
 
         <br>
@@ -54,11 +53,13 @@
 
         <br>
 
+        <!-- TODO вместо size-* использовать size="size-name" -->
+
         <cool-select
           v-model="selected"
           :items="items"
           placeholder="sm"
-          size-sm
+          size="sm"
         />
       </v-flex>
     </v-layout>
@@ -67,6 +68,7 @@
 
 <script>
 import { CoolSelect } from '../../main'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const initSeconds = 5
 

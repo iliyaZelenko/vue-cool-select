@@ -4,8 +4,8 @@
     :tabindex="disableSearch ? 0 : -1"
     :class="{
       'IZ-select': true,
-      'IZ-select--sm': sizeSm,
-      'IZ-select--lg': sizeLg
+      'IZ-select--sm': size === SIZES.SMALL,
+      'IZ-select--lg': size === SIZES.LARGE
     }"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
@@ -167,6 +167,7 @@ import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
 import props from './props'
 import computed from './computed'
+import { SIZES } from '~/constants'
 
 export default {
   name: 'VueSelect',
@@ -178,6 +179,7 @@ export default {
   props,
   data () {
     return {
+      SIZES,
       wishShowMenu: false,
       arrowsIndex: null,
       focused: false,
@@ -251,13 +253,6 @@ export default {
         // focus text input
         this.setInputFocused()
       }
-
-      // scroll to component input el
-      // this.$refs['IZ-select__input'].scrollIntoView({
-      //   behavior: 'smooth',
-      //   // to top or bottom border
-      //   block: this.isMobile ? 'start' : 'end'
-      // })
 
       if (window.scrollTo && this.allowMobileScroll && this.isMobile) {
         const { top } = getOffsetSum(this.$refs['IZ-select__input'])

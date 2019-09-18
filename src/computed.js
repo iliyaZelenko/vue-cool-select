@@ -29,10 +29,10 @@ export default {
     if (this.loading) {
       styles['background-image'] = `url(${this.loadingIndicator})`
     }
-    if (this.inputElCustomAttributes) {
+    if (this.inputElCustomAttributes && this.inputElCustomAttributes.style) {
       styles = {
         ...styles,
-        ...this.inputElCustomAttributes
+        ...this.inputElCustomAttributes.style
       }
     }
 
