@@ -58,17 +58,13 @@ Write your suggestions, glad to add.
 
 ## Get started
 
-1. Import this plugin, css (theme) and add plugin via `Vue.use`:
+1. Import and select a theme:
 ```js
-import { CoolSelectPlugin } from 'vue-cool-select'
+import VueSelect from 'vue-cool-select'
 
-// paste the line below only if you need "bootstrap" theme
-import 'vue-cool-select/dist/themes/bootstrap.css'
-// paste the line below only if you need "material-design" theme
-import 'vue-cool-select/dist/themes/material-design.css'
-// you can also import your theme
-
-Vue.use(CoolSelectPlugin)
+Vue.use(VueSelect, {
+  theme: 'bootstrap' // or 'material-design'
+})
 ```
 
 2. Use inside another component:
