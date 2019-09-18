@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.0.0...v3.0.1) (2019-09-18)
+
+
+### Bug Fixes
+
+* **types:** incorrect type setting fixed ([e13ba79](https://github.com/iliyaZelenko/vue-cool-select/commit/e13ba79))
+
 # [3.0.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.11.1...v3.0.0) (2019-09-18)
 
 
