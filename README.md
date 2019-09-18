@@ -28,7 +28,7 @@
     </a>
   </p>
 
-The current version is `3.x`, if you are looking for `2.x`, you can find [it here](README_2VERSION.md).
+The current version is `3.x`, if you are looking for `2.x`, you can find [it here](README_2VERSION.md) (also, see [breaking changes](https://github.com/iliyaZelenko/vue-cool-select/blob/master/CHANGELOG.md#300-2019-09-18)).
 
 # [Flexible select](https://iliyazelenko.github.io/vue-cool-select) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Vue%20select%20component%20with%20autocomplete,%20slots,%20bootstrap%20and%20material%20design%20themes.&url=https://github.com/iliyaZelenko/vue-cool-select&via=IlyaZelenko&hashtags=vue,bootstrap,developers,github,html,js,web,npm,material-design)
 
