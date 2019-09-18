@@ -45,7 +45,7 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 
 ## Features
 
-- 2 themes: Bootstrap 4 (equal styles), Material Design
+- 2 themes: Bootstrap 4 (equal styles), Material Design, you can also create your own theme
 - autocomplete (you can use custom search, you can also disable the search input)
 - keyboard controls (not only through the arrows)
 - slots (13) allow content to be changed anywhere
@@ -56,7 +56,7 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 - support on mobile devices
 - disabled and readonly
 - smile and large sizes (as in bootstrap)
-- the ability to set your styles, you can write them from scratch
+- the ability to set your styles, you can write theme from scratch
 - TypeScript support
 - tab navigation
 
