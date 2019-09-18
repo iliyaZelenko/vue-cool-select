@@ -1,9 +1,16 @@
 <template>
-  <!---->
   <div
     ref="IZ-select"
     :tabindex="disableSearch ? 0 : -1"
-    class="IZ-select"
+    :class="{
+      'IZ-select': true,
+      'IZ-select--with-value': inputValue,
+      // ставит класс размера если prop size не дефолтное
+      ...(size === SIZES.DEFAULT
+        ? null
+        : ({ ['IZ-select--' + size]: true })
+      )
+    }"
     @keydown.up="onSelectByArrow"
     @keydown.down="onSelectByArrow"
     @keydown.enter="onEnter"
@@ -42,17 +49,19 @@
 
         <input
           ref="IZ-select__input-for-text"
-          v-bind="inputElCustomAttributes"
-          :value="inputValue"
-          :placeholder="placeholder"
-          :style="inputForTextStyles"
-          :class="inputForTextClass"
-          :disabled="disableSearch || disabled"
-          :readonly="readonly"
-          :tabindex="disableSearch ? -1 : 0"
-          type="text"
-          role="combobox"
-          autocomplete="new-password"
+          v-bind="{
+            value: inputValue,
+            placeholder,
+            class: inputForTextClass,
+            disabled: disableSearch || disabled,
+            readonly,
+            tabindex: disableSearch ? -1 : 0,
+            type: 'text',
+            role: 'combobox',
+            autocomplete: 'new-password',
+            ...inputElCustomAttributes,
+            style: inputForTextStyles,
+          }"
           @keyup="onSearchKeyUp"
           @keydown="onSearchKeyDown"
           @input="onSearch"
@@ -121,7 +130,7 @@
             class="IZ-select__no-data"
           >
             <slot name="no-data">
-              No data available
+              {{ $coolSelect.options.text.noData }}
             </slot>
           </div>
 
@@ -162,6 +171,7 @@ import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
 import props from './props'
 import computed from './computed'
+import { SIZES } from '~/constants'
 
 export default {
   name: 'VueSelect',
@@ -173,6 +183,7 @@ export default {
   props,
   data () {
     return {
+      SIZES,
       wishShowMenu: false,
       arrowsIndex: null,
       focused: false,
@@ -247,13 +258,6 @@ export default {
         this.setInputFocused()
       }
 
-      // scroll to component input el
-      // this.$refs['IZ-select__input'].scrollIntoView({
-      //   behavior: 'smooth',
-      //   // to top or bottom border
-      //   block: this.isMobile ? 'start' : 'end'
-      // })
-
       if (window.scrollTo && this.allowMobileScroll && this.isMobile) {
         const { top } = getOffsetSum(this.$refs['IZ-select__input'])
 
@@ -306,7 +310,8 @@ export default {
       return item
     },
     getItemValue (item) {
-      if (!item) return null
+      // if null or undefined
+      if (item == null) return null
       if (this.itemValue) return item[this.itemValue]
 
       if (isObject(item)) {
@@ -368,3 +373,5 @@ export default {
   }
 }
 </script>
+
+<!--Стили не писать в тег <style>, вместо этого в .styl файлы, всеравно используется BEM.-->

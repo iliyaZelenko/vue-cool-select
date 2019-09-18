@@ -5,6 +5,13 @@
       rel="stylesheet"
     >
 
+    <!--
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    >
+    -->
+
     <div id="app">
       <v-app>
         <!--
@@ -64,7 +71,7 @@
                 color="black"
                 dark
               >
-                <v-icon left>insert_link</v-icon>
+                <v-icon left>mdi-github-circle</v-icon>
 
                 Github
               </v-btn>
@@ -131,11 +138,8 @@
             <switch-theme v-if="$route.fullPath.includes('dev')" />
           </p>
 
-          <v-container>
-            <v-alert
-              v-if="showCodesanboxWarning"
-              type="warning"
-            >
+          <v-container v-if="showCodesanboxWarning">
+            <v-alert type="warning">
               If you do not see the <code>iframe</code> (block) with examples under this message,
               then try clicking the button to the right.
 

@@ -1,0 +1,26 @@
+.IZ-select
+  *
+    box-sizing: border-box
+
+.IZ-select__input-wrap
+  display: flex
+  align-items: center
+  height: 100%
+
+.IZ-select__input
+  height: 100%;
+
+  input
+    height: 100%;
+
+.fade
+  &-leave-active
+    position: absolute
+
+  &-enter-active, &-leave, &-leave-to
+    transition: opacity .2s
+
+  &-enter, &-leave-to
+    opacity: 0
+
+

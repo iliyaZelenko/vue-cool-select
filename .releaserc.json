@@ -8,9 +8,12 @@
     }],
     ["@semantic-release/github", {
       "assets": [
-        {"path": "dist/vue-cool-select.common.js", "label": "CommonJS module"},
-        {"path": "dist/vue-cool-select.umd.js", "label": "UMD module"},
-        {"path": "dist/vue-cool-select.umd.min.js", "label": "UMD module minified"}
+        { "path": "dist/themes/bootstrap.css", "label": "Bootstrap Theme" },
+        { "path": "dist/themes/material-design.css", "label": "Material Design Theme" },
+        { "path": "dist/bundle-cjs.js", "label": "CommonJS module" },
+        { "path": "dist/bundle-umd.js", "label": "UMD module" },
+        { "path": "dist/bundle-cjs.js", "label": "ECMAScript 6 module" },
+        { "path": "dist/bundle-iife.js", "label": "Browser IIFE module for <script> tag" }
       ]
     }],
     "@semantic-release/npm",
