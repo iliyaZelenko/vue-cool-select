@@ -3,6 +3,7 @@
 // import '~/styles/themes/material-design.styl'
 import component from '~/component.vue'
 import EventEmitter from '~/eventEmitter'
+import mergeDeep from '~/helpers'
 
 export const CoolSelectPlugin = new Singleton()
 export {
@@ -14,8 +15,17 @@ export {
 
 function Singleton () {
   return {
-    install (Vue, options = {}) {
+    install (Vue, optionsInput = {}) {
+      const optionsDefault = {
+        text: {
+          noData: 'No data available'
+        }
+      }
+      const options = mergeDeep(optionsDefault, optionsInput)
 
+      Vue.prototype.$coolSelect = {
+        options
+      }
     }
   }
 }

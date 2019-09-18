@@ -126,7 +126,7 @@
             class="IZ-select__no-data"
           >
             <slot name="no-data">
-              No data available
+              {{ $coolSelect.options.text.noData }}
             </slot>
           </div>
 

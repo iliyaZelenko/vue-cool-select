@@ -37,10 +37,6 @@ export default {
     default: 'https://i.imgur.com/fLYd7PN.gif',
     note: 'sets custom loading spinner/indicator. https://loading.io/'
   },
-  errorMessage: {
-    type: String,
-    default: null
-  },
   disabled: {
     type: Boolean,
     default: false,
@@ -138,6 +134,10 @@ export default {
     type: [Array, String, Object],
     default: () => '',
     note: 'custom "class" attribute for the input field. You can specify dynamic class.'
+  },
+  errorMessage: {
+    type: String,
+    default: null
   },
   successful: {
     type: Boolean,

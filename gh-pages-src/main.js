@@ -18,7 +18,11 @@ import(`../src/styles/themes/${theme}.styl`)
 // import(`../dist/themes/${theme}.css`)
 
 Vue.use(Vuetify)
-Vue.use(CoolSelectPlugin)
+Vue.use(CoolSelectPlugin, {
+  text: {
+    noData: 'Нет доступных данных'
+  }
+})
 
 Vue.use(VueAnalytics, {
   id: 'UA-127403551-2',
