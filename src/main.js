@@ -1,14 +1,10 @@
-import component from '~/component.vue'
-import EventEmitter from '~/eventEmitter'
 import mergeDeep from '~/helpers'
 
 export const CoolSelectPlugin = new Singleton()
-export {
-  EventEmitter,
-  component,
-  component as CoolSelect,
-  component as VueCoolSelect
-}
+export { default as EventEmitter } from '~/eventEmitter'
+export { default as component } from '~/component.vue'
+export { default as CoolSelect } from '~/component.vue'
+export { default as VueCoolSelect } from '~/component.vue'
 
 function Singleton () {
   return {
