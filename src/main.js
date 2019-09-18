@@ -1,6 +1,3 @@
-// import '~/styles/main.styl'
-// import '~/styles/themes/bootstrap.styl'
-// import '~/styles/themes/material-design.styl'
 import component from '~/component.vue'
 import EventEmitter from '~/eventEmitter'
 import mergeDeep from '~/helpers'
