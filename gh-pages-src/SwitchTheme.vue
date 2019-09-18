@@ -1,8 +1,6 @@
 <template>
   <div class="theme-wrap">
-    <template
-      v-for="(theme, i) of themes"
-    >
+    <template v-for="(theme, i) of themes">
       <div
         :key="theme.name"
         class="theme"

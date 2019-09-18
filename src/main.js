@@ -4,7 +4,7 @@
 import component from '~/component.vue'
 import EventEmitter from '~/eventEmitter'
 
-export const CoolSelectPlugin = new Singelton()
+export const CoolSelectPlugin = new Singleton()
 export {
   EventEmitter,
   component,
@@ -12,7 +12,7 @@ export {
   component as VueCoolSelect
 }
 
-function Singelton () {
+function Singleton () {
   return {
     install (Vue, options = {}) {
 

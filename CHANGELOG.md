@@ -1,3 +1,17 @@
+## [2.11.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.11.0...v2.11.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* **input:** do not submit the form if there was a menu choice (if the component is inside the form) ([50bc64d](https://github.com/iliyaZelenko/vue-cool-select/commit/50bc64d)), closes [#196](https://github.com/iliyaZelenko/vue-cool-select/issues/196)
+
+# [2.11.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.2...v2.11.0) (2019-09-12)
+
+
+### Features
+
+* **input:** update component to ignore chrome autofill ([b64671f](https://github.com/iliyaZelenko/vue-cool-select/commit/b64671f))
+
 ## [2.10.2](https://github.com/iliyaZelenko/vue-cool-select/compare/v2.10.1...v2.10.2) (2019-03-29)
 
 

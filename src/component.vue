@@ -54,7 +54,7 @@
             tabindex: disableSearch ? -1 : 0,
             type: 'text',
             role: 'combobox',
-            autocomplete: 'off',
+            autocomplete: 'new-password',
             ...inputElCustomAttributes,
             style: inputForTextStyles,
           }"

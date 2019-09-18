@@ -24,7 +24,7 @@ export interface VueCoolSelectComponentInterface extends Vue {
 
   /* Methods */
   onSelectByArrow (e)
-  onEnter ()
+  onEnter (e)
   onClick ()
   onClickSelectItem (item)
   onSearchKeyDown (e)
