@@ -58,6 +58,7 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 - the ability to set your styles, you can write theme from scratch
 - TypeScript support
 - tab navigation
+- SSR (Server-Side Rendering)
 
 Write your suggestions, glad to add.
 
