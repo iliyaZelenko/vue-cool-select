@@ -1,30 +1,33 @@
   <p align="center">
-    <a href="https://codecov.io/gh/iliyaZelenko/vue-cool-select">
+    <a href="https://codecov.io/gh/iliyaZelenko/vue-cool-select" rel="noopener noreferrer" target="_blank">
       <img src="https://img.shields.io/codecov/c/github/iliyaZelenko/vue-cool-select.svg" alt="Coverage">
     </a>
-    <a href="https://www.npmjs.com/package/vue-cool-select">
+    <a href="https://www.npmjs.com/package/vue-cool-select" rel="noopener noreferrer" target="_blank">
       <img src="https://img.shields.io/npm/dm/vue-cool-select.svg" alt="Downloads">
     </a>
-    <a href="https://www.npmjs.com/package/vue-cool-select">
+    <a href="https://www.npmjs.com/package/vue-cool-select" rel="noopener noreferrer" target="_blank">
       <img src="https://img.shields.io/npm/v/vue-cool-select.svg" alt="Version">
     </a>
-    <a href="https://www.npmjs.com/package/vue-cool-select">
+    <a href="https://www.npmjs.com/package/vue-cool-select" rel="noopener noreferrer" target="_blank">
       <img src="https://img.shields.io/npm/l/vue-cool-select.svg" alt="License">
     </a>
-    <a href="https://circleci.com/gh/iliyaZelenko/vue-cool-select">
+    <a href="https://circleci.com/gh/iliyaZelenko/vue-cool-select" rel="noopener noreferrer" target="_blank">
       <img src="https://circleci.com/gh/iliyaZelenko/vue-cool-select.svg?style=shield" alt="CircleCI Build Status">
     </a>
-    <a href="https://lgtm.com/projects/g/iliyaZelenko/vue-cool-select/context:javascript">
+    <a href="https://lgtm.com/projects/g/iliyaZelenko/vue-cool-select/context:javascript" rel="noopener noreferrer" target="_blank">
       <img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/iliyaZelenko/vue-cool-select.svg?logo=lgtm&logoWidth=18" />
     </a>
-    <a href="https://codebeat.co/projects/github-com-iliyazelenko-vue-cool-select-master">
+    <a href="https://codebeat.co/projects/github-com-iliyazelenko-vue-cool-select-master" rel="noopener noreferrer" target="_blank">
       <img alt="codebeat badge" src="https://codebeat.co/badges/a6d9cfc8-529e-48c7-ae04-7d69fe6b1239" />
     </a>
-    <a href="https://standardjs.com/">
+    <a href="https://standardjs.com/" rel="noopener noreferrer" target="_blank">
       <img alt="codebeat badge" src="https://badgen.net/badge/code%20style/standard/f2a" />
     </a>
-    <a href="https://www.npmjs.com/package/vue-cool-select">
+    <a href="https://www.npmjs.com/package/vue-cool-select" rel="noopener noreferrer" target="_blank">
       <img src="https://img.shields.io/npm/dt/vue-cool-select?color=red&label=total%20downloads" alt="Downloads">
+    </a>
+    <a href="https://github.com/iliyaZelenko/vue-cool-select/graphs/contributors" rel="noopener noreferrer" target="_blank">
+      <img src="https://img.shields.io/github/contributors/iliyaZelenko/vue-cool-select.svg" alt="Contributors">
     </a>
   </p>
 
