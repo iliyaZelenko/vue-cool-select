@@ -62,6 +62,7 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 - TypeScript support
 - tab navigation
 - SSR (Server-Side Rendering)
+- no dependencies
 
 Write your suggestions, glad to add.
 
