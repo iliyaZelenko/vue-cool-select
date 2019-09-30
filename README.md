@@ -67,6 +67,8 @@ Write your suggestions, glad to add.
 
 ## Get started
 
+### NPM
+
 1. Import this plugin, css (theme) and add plugin via `Vue.use`:
 ```js
 import { CoolSelectPlugin } from 'vue-cool-select'
@@ -105,6 +107,23 @@ export default {
   :items="items"
 />
 ```
+
+### Browser (CDN)
+
+Include v-tooltip in the page.
+
+```html
+<script src="https://unpkg.com/vue-cool-select"></script>
+
+<!-- paste the line below only if you need "bootstrap" theme -->
+<link rel="stylesheet" href="https://unpkg.com/vue-cool-select@3.0.2/dist/themes/bootstrap.css">
+<!-- paste the line below only if you need "material-design" theme -->
+<link rel="stylesheet" href="https://unpkg.com/vue-cool-select@3.0.2/dist/themes/material-design.css">
+```
+
+If Vue is detected in the Page, the plugin is installed automatically.
+
+---
 
 Documentation and examples [here](https://iliyazelenko.github.io/vue-cool-select).
 
