@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.0.2...v3.1.0) (2019-09-30)
+
+
+### Features
+
+* **plugin:** auto-install for CDN usage (script tag) ([2174ad1](https://github.com/iliyaZelenko/vue-cool-select/commit/2174ad1)), closes [#213](https://github.com/iliyaZelenko/vue-cool-select/issues/213)
+
 ## [3.0.2](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.0.1...v3.0.2) (2019-09-18)
 
 
