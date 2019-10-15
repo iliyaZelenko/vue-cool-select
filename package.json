@@ -44,7 +44,7 @@
     "propdoc": "^0.9.3",
     "push-dir": "^0.4.1",
     "rollup": "^1.8.0",
-    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-alias": "^2.0.1",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^4.1.0",
     "rollup-plugin-postcss": "^2.0.3",
