@@ -5,6 +5,7 @@ menuRadius = inputRadius
 inputPaddingLeft = 15px
 
 .IZ-select
+  position: relative
   outline: none
 
   .IZ-select__input
@@ -126,15 +127,35 @@ inputPaddingLeft = 15px
       pointer-events: none
 
 .IZ-select__menu
+  opacity 0
+  transition: opacity 0.1s
   position: absolute
   z-index: 8
   transform-origin: left top 0 // на всякий случай
   background-color: #fff
   border: 1px solid #ced4da
   border-radius: menuRadius
-  border-top-left-radius: 0
-  border-top-right-radius: 0
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)
+
+  &--at-top
+    border-bottom: 0
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+
+    &.IZ-select__menu--disable-search
+      border-bottom: 1px
+      border-bottom-left-radius: menuRadius
+      border-bottom-right-radius: menuRadius
+
+  &--at-bottom
+    border-top: 0
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+
+    &.IZ-select__menu--disable-search
+      border-top: 1px
+      border-top-left-radius: menuRadius
+      border-top-right-radius: menuRadius
 
   .IZ-select__menu-items
     overflow-y: auto
@@ -142,11 +163,6 @@ inputPaddingLeft = 15px
 
   .IZ-select__no-data
     margin: 0 10px
-
-  &.IZ-select__menu--disable-search
-    border-top: 1
-    border-top-left-radius: menuRadius
-    border-top-right-radius: menuRadius
 
 .IZ-select__item
   cursor: pointer
