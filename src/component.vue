@@ -79,76 +79,78 @@
       />
     </div>
 
-    <transition name="fade">
+    <div
+      v-for="menuPos of [MENU_POSITIONS.TOP, MENU_POSITIONS.BOTTOM]"
+      :key="'menu-position-' + menuPos"
+      :ref="'IZ-select__menu-' + menuPos"
+      :style="{
+        'pointer-events': hasMenu ? 'auto' : 'none',
+        ...getMenuDynamicStyles(menuPos)
+      }"
+      :class="{
+        [`IZ-select__menu IZ-select__menu--at-${menuPos}`]: true,
+        'IZ-select__menu--disable-search': disableSearch
+      }"
+    >
+      <slot name="before-items-fixed" />
+
       <div
-        v-if="hasMenu"
-        ref="IZ-select__menu"
-        :style="menuDynamicStyles"
-        :class="{
-          'IZ-select__menu': true,
-          'IZ-select__menu--disable-search': disableSearch
+        ref="IZ-select__menu-items"
+        :style="{
+          'max-height': menuItemsMaxHeight
         }"
+        class="IZ-select__menu-items"
+        @scroll="onScroll"
       >
-        <slot name="before-items-fixed" />
+        <slot name="before-items">
+          <div style="height: 8px;" />
+        </slot>
+
+        <!--itemsComputedWithScrollLimit-->
+        <div
+          v-for="(item, i) in itemsComputed"
+          v-show="i < scrollItemsLimitCurrent || (arrowsIndex && i <= arrowsIndex)"
+          ref="items"
+          :key="'IZ-item-' + i"
+          :class="{
+            'IZ-select__item': true,
+            'IZ-select__item--selected': isItemSelected(item)
+          }"
+          @click="onClickSelectItem(item)"
+        >
+          <slot
+            :item="item"
+            name="item"
+          >
+            <span>
+              {{ getItemText(item) }}
+            </span>
+          </slot>
+        </div>
 
         <div
-          ref="IZ-select__menu-items"
-          :style="{
-            'max-height': menuItemsMaxHeight
-          }"
-          class="IZ-select__menu-items"
-          @scroll="onScroll"
+          v-if="!itemsComputed.length && !loading"
+          class="IZ-select__no-data"
         >
-          <slot name="before-items">
-            <div style="height: 8px;" />
-          </slot>
-
-          <!--itemsComputedWithScrollLimit-->
-          <div
-            v-for="(item, i) in itemsComputed"
-            v-show="i < scrollItemsLimitCurrent || (arrowsIndex && i <= arrowsIndex)"
-            ref="items"
-            :key="'IZ-item-' + i"
-            :class="{
-              'IZ-select__item': true,
-              'IZ-select__item--selected': isItemSelected(item)
-            }"
-            @click="onClickSelectItem(item)"
-          >
-            <slot
-              :item="item"
-              name="item"
-            >
-              <span>
-                {{ getItemText(item) }}
-              </span>
-            </slot>
-          </div>
-
-          <div
-            v-if="!itemsComputed.length && !loading"
-            class="IZ-select__no-data"
-          >
-            <slot name="no-data">
-              {{ $coolSelect.options.text.noData }}
-            </slot>
-          </div>
-
-          <slot name="after-items">
-            <div style="height: 8px;" />
+          <slot name="no-data">
+            {{ $coolSelect.options.text.noData }}
           </slot>
         </div>
 
-        <slot name="after-items-fixed" />
-
-        <div style="position: absolute; top: 0; left: 0; right: 0;">
-          <slot name="before-items-fixed-absolute" />
-        </div>
-        <div style="position: absolute; bottom: 0; left: 0; right: 0;">
-          <slot name="after-items-fixed-absolute" />
-        </div>
+        <slot name="after-items">
+          <div style="height: 8px;" />
+        </slot>
       </div>
-    </transition>
+
+      <slot name="after-items-fixed" />
+
+      <div style="position: absolute; top: 0; left: 0; right: 0;">
+        <slot name="before-items-fixed-absolute" />
+      </div>
+      <div style="position: absolute; bottom: 0; left: 0; right: 0;">
+        <slot name="after-items-fixed-absolute" />
+      </div>
+    </div>
 
     <transition name="fade">
       <div
@@ -171,7 +173,8 @@ import { isObject, getOffsetSum } from './helpers'
 import eventsListeners from './eventsListeners'
 import props from './props'
 import computed from './computed'
-import { SIZES } from '~/constants'
+import { SIZES, MENU_POSITIONS } from '~/constants'
+import { outOfViewportGetFreePosition } from '~/helpers'
 
 export default {
   name: 'VueSelect',
@@ -183,6 +186,7 @@ export default {
   props,
   data () {
     return {
+      MENU_POSITIONS,
       SIZES,
       wishShowMenu: false,
       arrowsIndex: null,
@@ -193,7 +197,19 @@ export default {
       searchData: '',
       scrollItemsLimitCurrent: this.scrollItemsLimit,
       // addEventListener identifier
-      mousedownListener: null
+      listeners: {
+        mousedown: ({ target }) => {
+          const select = this.$refs['IZ-select']
+
+          if (this.focused && select && !select.contains(target)) {
+            this.setBlured()
+          }
+        },
+        scroll: this.menuCalculatePos,
+        resize: this.menuCalculatePos
+      },
+      menuCurrentPosition: this.menuDefaultPosition,
+      lastMenuDynamicStyles: null
     }
   },
   computed,
@@ -226,19 +242,71 @@ export default {
   },
   mounted () {
     // listener for window (see removeEventListener on beforeDestroy hook)
-    this.mousedownListener = window.addEventListener('mousedown', ({ target }) => {
-      const select = this.$refs['IZ-select']
+    window.addEventListener('mousedown', this.listeners.mousedown)
 
-      if (this.focused && select && !select.contains(target)) {
-        this.setBlured()
-      }
-    })
+    if (this.menuDynamicPosition) {
+      window.addEventListener('scroll', this.listeners.scroll)
+      window.addEventListener('resize', this.listeners.resize)
+    }
   },
   beforeDestroy () {
-    window.removeEventListener('mousedown', this.mousedownListener)
+    window.removeEventListener('mousedown', this.listeners.mousedown)
+
+    if (this.menuDynamicPosition) {
+      window.removeEventListener('scroll', this.listeners.scroll)
+      window.removeEventListener('resize', this.listeners.resize)
+    }
   },
   methods: {
     ...eventsListeners,
+    getMenuDynamicStyles (menuPos) {
+      const isCurrentMenu = this.menuCurrentPosition === menuPos && this.hasMenu
+      const obj = {
+        visibility: isCurrentMenu ? 'visible' : 'hidden',
+        opacity: +isCurrentMenu
+      }
+
+      // возвращать старую позицию если нет меню, чтобы стили не дёргались
+      if (!this.hasMenu) return { ...this.lastMenuDynamicStyles, ...obj }
+
+      const input = this.$refs['IZ-select__input']
+      // ширина и смещение слева такие же как и у поля ввода
+      obj.width = input.offsetWidth + 'px'
+      obj.left = input.offsetLeft + 'px'
+
+      if (menuPos === MENU_POSITIONS.BOTTOM) {
+        obj.top = input.offsetTop + input.offsetHeight + 'px'
+
+        if (this.disableSearch) {
+          obj.top = input.offsetTop + 'px'
+        }
+      } else if (menuPos === MENU_POSITIONS.TOP) {
+        obj.bottom = '100%'
+
+        if (this.disableSearch) {
+          obj.bottom = 0
+        }
+      }
+
+      this.lastMenuDynamicStyles = obj
+
+      return obj
+    },
+    // динамически позиционирует меню чтобы не выходило за границу viewport
+    menuCalculatePos () {
+      if (!this.menuDynamicPosition) return
+
+      if (this.hasMenu) {
+        const newPosTop = outOfViewportGetFreePosition(this.$refs['IZ-select__menu-' + MENU_POSITIONS.TOP][0])
+        const newPosBottom = outOfViewportGetFreePosition(this.$refs['IZ-select__menu-' + MENU_POSITIONS.BOTTOM][0])
+
+        if (!newPosTop && !newPosBottom) {
+          this.menuCurrentPosition = this.menuDefaultPosition
+        } else {
+          this.menuCurrentPosition = newPosTop || newPosBottom
+        }
+      }
+    },
     getSearchData () {
       return this.searchData
     },
@@ -361,10 +429,12 @@ export default {
     isItemSelected (item) {
       return item === this.selectedItemByArrows || (item === this.selectedItem && !this.selectedItemByArrows)
     },
-    showMenu () {
+    async showMenu () {
       if (this.hasMenu) return
 
       this.wishShowMenu = true
+
+      this.menuCalculatePos()
     },
     hideMenu () {
       if (!this.hasMenu) return

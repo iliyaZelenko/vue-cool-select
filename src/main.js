@@ -1,4 +1,4 @@
-import mergeDeep from '~/helpers'
+import { mergeDeep } from '~/helpers'
 import CoolSelect from '~/component.vue'
 
 export const CoolSelectPlugin = new Singleton()

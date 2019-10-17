@@ -1,3 +1,5 @@
+import { MENU_POSITIONS } from './constants'
+
 export function isObject (val) {
   return val && (val.constructor === Object)
 }
@@ -28,7 +30,7 @@ export function scrollIfNeeded (element, container) {
   }
 }
 
-export default function mergeDeep (target, source) {
+export function mergeDeep (target, source) {
   let output = Object.assign({}, target)
   if (isObject(target) && isObject(source)) {
     Object.keys(source).forEach(key => {
@@ -44,4 +46,15 @@ export default function mergeDeep (target, source) {
     })
   }
   return output
+}
+
+export function outOfViewportGetFreePosition (elem) {
+  const bounding = elem.getBoundingClientRect()
+
+  return bounding.top < 0
+    ? MENU_POSITIONS.BOTTOM
+    : bounding.bottom > window.innerHeight
+      ? MENU_POSITIONS.TOP
+      // default position
+      : false
 }
