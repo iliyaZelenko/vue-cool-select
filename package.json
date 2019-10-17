@@ -1,6 +1,6 @@
 {
   "name": "vue-cool-select",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "scripts": {
     "commit": "git-cz",
     "serve": "cd ./gh-pages-src && yarn serve",

@@ -115,15 +115,15 @@ export default {
 
 ### Browser (CDN)
 
-Include v-tooltip in the page.
+Include vue-cool-select in the page.
 
 ```html
 <script src="https://unpkg.com/vue-cool-select"></script>
 
 <!-- paste the line below only if you need "bootstrap" theme -->
-<link rel="stylesheet" href="https://unpkg.com/vue-cool-select@3.0.2/dist/themes/bootstrap.css">
+<link rel="stylesheet" href="https://unpkg.com/vue-cool-select/dist/themes/bootstrap.css">
 <!-- paste the line below only if you need "material-design" theme -->
-<link rel="stylesheet" href="https://unpkg.com/vue-cool-select@3.0.2/dist/themes/material-design.css">
+<link rel="stylesheet" href="https://unpkg.com/vue-cool-select/dist/themes/material-design.css">
 ```
 
 If Vue is detected in the Page, the plugin is installed automatically.
