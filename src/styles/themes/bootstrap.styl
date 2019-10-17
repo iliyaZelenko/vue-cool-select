@@ -5,6 +5,7 @@ menuRadius = inputRadius
 inputPaddingLeft = .75rem
 
 .IZ-select
+  position: relative
   outline: none
 
   .IZ-select__input
@@ -42,10 +43,8 @@ inputPaddingLeft = .75rem
 //  font-family: sans-serif
 
 .IZ-select__input
-  -webkit-box-align: center
   align-items: center
   display: flex
-  -webkit-box-flex: 1
   flex: 1 1 auto
   flex-wrap: wrap
   width: 100%
@@ -126,6 +125,8 @@ inputPaddingLeft = .75rem
       pointer-events: none
 
 .IZ-select__menu
+  opacity 0
+  transition: opacity 0.1s
   position: absolute
   z-index: 8
   transform-origin: left top 0 // на всякий случай
@@ -133,10 +134,27 @@ inputPaddingLeft = .75rem
   border: 1px solid #ced4da
   // не забудь поменять для &.IZ-select__menu--disable-search (ниже) стили рамки
   border-radius: menuRadius
-  border-top: 0
-  border-top-left-radius: 0
-  border-top-right-radius: 0
-  box-shadow: 0 2px 11px -2px rgba(0,0,0,0.19)
+  box-shadow: 0 2px 11px -2px rgba(0, 0, 0, 0.19)
+
+  &--at-top
+    border-bottom: 0
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+
+    &.IZ-select__menu--disable-search
+      border-bottom: 1px
+      border-bottom-left-radius: menuRadius
+      border-bottom-right-radius: menuRadius
+
+  &--at-bottom
+    border-top: 0
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+
+    &.IZ-select__menu--disable-search
+      border-top: 1px
+      border-top-left-radius: menuRadius
+      border-top-right-radius: menuRadius
 
   .IZ-select__menu-items
     overflow-y: auto
@@ -144,11 +162,6 @@ inputPaddingLeft = .75rem
 
   .IZ-select__no-data
     margin: 0 10px
-
-  &.IZ-select__menu--disable-search
-    border-top: 1px
-    border-top-left-radius: menuRadius
-    border-top-right-radius: menuRadius
 
 .IZ-select__item
   cursor: pointer

@@ -1,4 +1,4 @@
-import { SIZES } from './constants'
+import { SIZES, MENU_POSITIONS } from './constants'
 
 export default {
   value: {
@@ -143,5 +143,15 @@ export default {
     type: String,
     default: SIZES.DEFAULT,
     note: 'sets size'
+  },
+  menuDefaultPosition: {
+    type: String,
+    default: MENU_POSITIONS.BOTTOM,
+    note: 'sets menu\'s default position'
+  },
+  menuDynamicPosition: {
+    type: Boolean,
+    default: true,
+    note: 'sets the dynamic position behavior for the menu (based on viewport)'
   }
 }

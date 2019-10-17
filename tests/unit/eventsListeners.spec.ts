@@ -2,7 +2,9 @@ import { mount } from '@vue/test-utils'
 import { Wrapper } from '@vue/test-utils/types'
 
 import MainComponent from '~/component.vue'
+import { MENU_POSITIONS } from '~/constants'
 import { VueCoolSelectComponentInterface } from '../../types/types'
+import createLocalVueWithPlugin from './helpers'
 
 const comp: VueCoolSelectComponentInterface & any = MainComponent
 
@@ -17,7 +19,9 @@ describe('eventsListeners', () => {
   ]
 
   it('checks click and then focus on input', () => {
+    const localVue = createLocalVueWithPlugin()
     const wrapper = mount<VueCoolSelectComponentInterface>(comp, {
+      localVue,
       propsData: { items: itemsDefault }
     })
     // const mainElement = wrapper.find('.IZ-select')
@@ -62,9 +66,10 @@ describe('eventsListeners', () => {
     expect(wrapper.vm.hasMenu).toBeTruthy()
 
     const selectMenu = wrapper.find({
-      ref: 'IZ-select__menu'
+      ref: 'IZ-select__menu-' + MENU_POSITIONS.BOTTOM
     })
-    const selectItems = wrapper.findAll('.IZ-select__item')
+    // @ts-ignore
+    const selectItems = selectMenu.findAll(`.IZ-select__menu--at-${MENU_POSITIONS.BOTTOM} .IZ-select__item`)
 
     expect(selectMenu.isVisible()).toBeTruthy()
     expect(selectItems.length).toBe(items.length)
@@ -300,7 +305,9 @@ describe('eventsListeners', () => {
   })
 
   it('checks onSearch disabled and readonly', async () => {
+    const localVue = createLocalVueWithPlugin()
     const wrapperDisabled = mount<VueCoolSelectComponentInterface>(comp, {
+      localVue,
       propsData: { items: itemsDefault, disabled: true }
     })
     expect(
@@ -308,6 +315,7 @@ describe('eventsListeners', () => {
     ).toBeUndefined()
 
     const wrapperReadonly = mount<VueCoolSelectComponentInterface>(comp, {
+      localVue,
       propsData: { items: itemsDefault, readonly: true }
     })
     expect(
@@ -315,6 +323,7 @@ describe('eventsListeners', () => {
     ).toBeUndefined()
 
     const wrapper = mount<VueCoolSelectComponentInterface>(comp, {
+      localVue,
       propsData: { items: itemsDefault }
     })
     const event = {

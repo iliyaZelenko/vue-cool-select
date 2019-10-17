@@ -1,3 +1,5 @@
+import { MENU_POSITIONS } from './constants'
+
 export default {
   itemsComputed () {
     let items = this.items
@@ -45,21 +47,6 @@ export default {
     if (process.server) return false
     // return window.innerWidth + window.innerHeight <= 1800
     return window.innerWidth <= 900 && window.innerHeight <= 900
-  },
-  menuDynamicStyles () {
-    const input = this.$refs['IZ-select__input']
-    const obj = {
-      // ширина и смещение слева такие же как и у поля ввода
-      width: input.offsetWidth + 'px',
-      left: input.offsetLeft + 'px',
-      'pointer-events': this.hasMenu ? 'auto' : 'none'
-    }
-
-    if (this.disableSearch) {
-      obj.top = input.offsetTop + 'px'
-    }
-
-    return obj
   },
   // get item index from arr
   selectedItemIndex () {
