@@ -143,5 +143,10 @@ export default {
     type: String,
     default: SIZES.DEFAULT,
     note: 'sets size'
+  },
+  selectTextOnFocus: {
+    type: Boolean,
+    default: false,
+    note: 'if true, fully select a chosen item so the user can instantly search for a new item.'
   }
 }

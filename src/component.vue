@@ -16,6 +16,7 @@
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
     @mousedown="onClick"
+    @mouseup="setSelected"
     @focus="setFocused"
   >
     <div class="IZ-select__input-wrap">
@@ -250,6 +251,9 @@ export default {
     setInputFocused () {
       this.$refs['IZ-select__input-for-text'].focus()
     },
+    setInputSelected () {
+      this.$refs['IZ-select__input-for-text'].select()
+    },
     setFocused (byInput = false) {
       if (this.focused || this.disabled || this.readonly) return
 
@@ -275,6 +279,11 @@ export default {
 
       this.showMenu()
       this.$emit('focus')
+    },
+    setSelected () {
+      if (!this.selectTextOnFocus) return
+
+      this.setInputSelected()
     },
     setBlured () {
       if (this.resetSearchOnBlur) {

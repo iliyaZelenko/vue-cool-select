@@ -24,6 +24,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :disable-search="disableSearch"
+        :select-text-on-focus="selectTextOnFocus"
         placeholder="Select name"
       />
 
@@ -37,6 +38,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :disable-search="disableSearch"
+        :select-text-on-focus="selectTextOnFocus"
         placeholder="Select name"
       >
         <template
@@ -58,6 +60,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :disable-search="disableSearch"
+        :select-text-on-focus="selectTextOnFocus"
         placeholder="Select name"
       >
         <template #input-before>
@@ -100,6 +103,13 @@
         >
           Toggle disable search
         </v-btn>
+
+        <v-btn
+          class="ma-2"
+          @click="selectTextOnFocus = !selectTextOnFocus"
+        >
+          Toggle text select on focus
+        </v-btn>
       </v-layout>
     </div>
   </div>
@@ -114,6 +124,7 @@ export default {
     disabled: false,
     readonly: false,
     disableSearch: false,
+    selectTextOnFocus: false,
     selected: null,
     items: '[{"first_name":"one"}, {"first_name":"two"}, {"first_name":"three"}, {"first_name":"four"}, {"first_name":"five"}]',
     errorMessage: null
