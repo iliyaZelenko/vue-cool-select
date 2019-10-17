@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve ./main.js",
-    "deploy": "push-dir --dir=gh-pages-build --branch=gh-pages --cleanup",
+    "deploy": "push-dir --dir=../gh-pages-build --branch=gh-pages --cleanup",
     "build": "vue-cli-service build ./main.js --dest=../gh-pages-build",
     "build-with-deploy": "yarn build && yarn deploy"
   },
