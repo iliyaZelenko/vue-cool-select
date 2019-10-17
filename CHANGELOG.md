@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.1.0...v3.2.0) (2019-10-17)
+
+
+### Features
+
+* **menu:** new props: menuDynamicPosition, menuDefaultPosition. Smart position for menu ([6a30ed3](https://github.com/iliyaZelenko/vue-cool-select/commit/6a30ed3)), closes [#228](https://github.com/iliyaZelenko/vue-cool-select/issues/228) [#234](https://github.com/iliyaZelenko/vue-cool-select/issues/234)
+
 # [3.1.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.0.2...v3.1.0) (2019-09-30)
 
 
