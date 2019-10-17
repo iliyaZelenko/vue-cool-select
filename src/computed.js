@@ -1,5 +1,3 @@
-import { MENU_POSITIONS } from './constants'
-
 export default {
   itemsComputed () {
     let items = this.items
