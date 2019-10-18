@@ -157,6 +157,6 @@ export default {
   selectTextOnFocus: {
     type: Boolean,
     default: false,
-    note: 'if true, fully select a chosen item so the user can instantly search for a new item.'
+    note: 'if true, fully select a chosen item on focus so the user can instantly search for a new item.'
   }
 }

@@ -16,7 +16,6 @@
     @keydown.enter="onEnter"
     @keydown.tab.esc="setBlured"
     @mousedown="onClick"
-    @mouseup="setSelected"
     @focus="setFocused"
   >
     <div class="IZ-select__input-wrap">
@@ -347,11 +346,6 @@ export default {
 
       this.showMenu()
       this.$emit('focus')
-    },
-    setSelected () {
-      if (!this.selectTextOnFocus) return
-
-      this.setInputSelected()
     },
     setBlured () {
       if (this.resetSearchOnBlur) {
