@@ -1,6 +1,16 @@
 import { mount } from '@vue/test-utils'
 import clone from 'clone'
 import MainComponent from '~/component.vue'
+import { MENU_POSITIONS } from '~/constants'
+import createLocalVueWithPlugin from './helpers'
+
+it('Plugin installation', () => {
+  const localVue = createLocalVueWithPlugin()
+
+  // проверка на установку плагина
+  expect(typeof localVue.prototype.$coolSelect).toBe('object')
+  expect(typeof localVue.prototype.$coolSelect.options.text.noData).toBe('string')
+})
 
 describe('MainComponent.vue', () => {
   const itemsDefault = [
@@ -52,11 +62,13 @@ describe('MainComponent.vue', () => {
   })
 
   it('tests "item-value", "itemText" props, checks values for every item, checks if an item is selected', () => {
+    const localVue = createLocalVueWithPlugin()
     const itemIndex = 0
     const value = itemsCollection[itemIndex][VAL]
     const items = clone(itemsCollection)
     const itemByValue = items.find(i => i[VAL] === value)
     const wrapper = mount(MainComponent, {
+      localVue,
       propsData: {
         ...getBoilerplateCollectionProps(),
         items,
@@ -87,11 +99,9 @@ describe('MainComponent.vue', () => {
       wrapper.vm.selectedItemIndex
     ).toBe(itemIndex.toString())
 
+    wrapper.vm.setSearchData('u4904g098fdhg0d9f8hff3ghfg2hfgh3gfhfg7hfg')
+
     // Если нет результатов поиска, то selectedItemIndex === null
-    wrapper.setData({
-      // random string
-      searchData: 'u4904g098fdhg0d9f8hff3ghfg2hfgh3gfhfg7hfg'
-    })
     expect(
       wrapper.vm.selectedItemIndex
     ).toBe(null)
@@ -373,27 +383,29 @@ describe('MainComponent.vue', () => {
     expect(wrapper.vm.wishShowMenu).toBe(false)
   })
 
-  it('should check menuDynamicStyles', () => {
+  it('should check getMenuDynamicStyles', () => {
     const wrapper = mount(MainComponent, {
       propsData: {
         items: clone(itemsDefault),
         disableSearch: false
       }
     })
-    let styles = wrapper.vm.menuDynamicStyles
+    wrapper.vm.showMenu()
+
+    let styles = wrapper.vm.getMenuDynamicStyles(MENU_POSITIONS.BOTTOM)
 
     expect(
-      !!(styles.width && styles.left && styles['pointer-events'] && !styles.top)
+      !!(styles.width && styles.left && styles.top !== undefined)
     ).toBe(true)
 
     wrapper.setProps({
       disableSearch: true
     })
 
-    styles = wrapper.vm.menuDynamicStyles
+    styles = wrapper.vm.getMenuDynamicStyles(MENU_POSITIONS.TOP)
 
     expect(
-      !!(styles.width && styles.left && styles['pointer-events'] && styles.top)
+      !!(styles.width && styles.left && styles.bottom !== undefined)
     ).toBe(true)
   })
 })

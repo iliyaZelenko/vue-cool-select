@@ -1,6 +1,9 @@
 <template>
   <div class="demo-page-wrap">
-    <div style="height: 500px;">
+    <div
+      v-if="!destroy"
+      style="height: 500px;"
+    >
       <h1 style="text-align: center;">Usage Example 5</h1>
 
       <b>Selected:</b> {{ selected || 'not chosen' }}.
@@ -8,6 +11,7 @@
 
       <form @submit="onSubmit">
         <cool-select
+          ref="select"
           v-model="selected"
           :items="items"
           placeholder="Select name"
@@ -18,6 +22,7 @@
       <br>
 
       <cool-select
+        ref="select"
         v-model="selected"
         :items="items"
         :error-message="errorMessage"
@@ -106,6 +111,13 @@
 
         <v-btn
           class="ma-2"
+          @click="destroy = true"
+        >
+          Destroy
+        </v-btn>
+
+        <v-btn
+          class="ma-2"
           @click="selectTextOnFocus = !selectTextOnFocus"
         >
           Toggle text select on focus
@@ -121,6 +133,7 @@ import { CoolSelect } from '../../main'
 export default {
   components: { CoolSelect },
   data: () => ({
+    destroy: false,
     disabled: false,
     readonly: false,
     disableSearch: false,

@@ -3,3 +3,8 @@ export const SIZES = {
   SMALL: 'sm',
   LARGE: 'lg'
 }
+
+export const MENU_POSITIONS = {
+  TOP: 'top',
+  BOTTOM: 'bottom'
+}

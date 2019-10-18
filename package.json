@@ -1,6 +1,6 @@
 {
   "name": "vue-cool-select",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "scripts": {
     "commit": "git-cz",
     "serve": "cd ./gh-pages-src && yarn serve",
@@ -17,7 +17,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "rollup-plugin-babel": "^4.3.2",
     "@babel/preset-env": "^7.4.3",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/commit-analyzer": "^6.1.0",
@@ -45,6 +44,7 @@
     "push-dir": "^0.4.1",
     "rollup": "^1.8.0",
     "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^4.1.0",
     "rollup-plugin-postcss": "^2.0.3",
