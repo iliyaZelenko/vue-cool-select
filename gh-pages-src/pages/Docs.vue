@@ -188,11 +188,6 @@ export default {
         name: 'after-items-fixed-absolute',
         scopeProperties: {},
         description: 'Define a custom error appearance (fixed, absolute)'
-      },
-      {
-        name: 'select-text-on-focus',
-        scopeProperties: {},
-        description: 'Fully select input text when clicking on the input'
       }
     ]
   })
