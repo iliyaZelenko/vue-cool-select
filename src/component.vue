@@ -38,6 +38,7 @@
         :style="inputStyles"
       >
         <slot
+          :loading="loading"
           name="input-start"
         />
 
@@ -70,6 +71,7 @@
         >
 
         <slot
+          :loading="loading"
           name="input-end"
         />
       </div>

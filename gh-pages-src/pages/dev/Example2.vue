@@ -54,7 +54,7 @@
         </template>
         <template
           v-if="loading"
-          #input-end
+          #input-end="{ loading }"
         >
           <!--
           http://loadinggif.com/images/image-selection/3.gif
