@@ -318,6 +318,9 @@ export default {
     setInputFocused () {
       this.$refs['IZ-select__input-for-text'].focus()
     },
+    setInputSelected () {
+      this.$refs['IZ-select__input-for-text'].select()
+    },
     setFocused (byInput = false) {
       if (this.focused || this.disabled || this.readonly) return
 
