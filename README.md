@@ -63,6 +63,7 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 - tab navigation
 - SSR (Server-Side Rendering)
 - no dependencies
+- auto determine the suitable position for the menu if it goes beyond the viewport
 
 Write your suggestions, glad to add.
 

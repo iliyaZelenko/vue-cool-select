@@ -153,5 +153,10 @@ export default {
     type: Boolean,
     default: true,
     note: 'sets the dynamic position behavior for the menu (based on viewport)'
+  },
+  selectTextOnFocus: {
+    type: Boolean,
+    default: false,
+    note: 'if true, fully select a chosen item on focus so the user can instantly search for a new item.'
   }
 }
