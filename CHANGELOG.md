@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.2.0...v3.3.0) (2019-10-24)
+
+
+### Features
+
+* **component:** add prop to toggle full input selection on click/focus ([dc1b997](https://github.com/iliyaZelenko/vue-cool-select/commit/dc1b997))
+
 # [3.2.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.1.0...v3.2.0) (2019-10-17)
 
 
