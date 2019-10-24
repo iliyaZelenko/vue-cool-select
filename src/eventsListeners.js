@@ -85,10 +85,6 @@ export default {
 
     this.setFocused()
     this.showMenu()
-
-    // select text input if enabled
-    if (!this.selectTextOnFocus) return
-    setTimeout(this.setInputSelected, 0)
   },
   // on click on item
   onClickSelectItem (item) {

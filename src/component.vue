@@ -319,7 +319,12 @@ export default {
       this.$refs['IZ-select__input-for-text'].focus()
     },
     setInputSelected () {
-      this.$refs['IZ-select__input-for-text'].select()
+      setTimeout(() => {
+        // Вроде не нужно https://stackoverflow.com/a/5001669/5286034
+        // if (isTextSelected(this.$refs['IZ-select__input-for-text'])) return
+
+        this.$refs['IZ-select__input-for-text'].select()
+      }, 100)
     },
     setFocused (byInput = false) {
       if (this.focused || this.disabled || this.readonly) return
@@ -342,11 +347,14 @@ export default {
         })
       }
 
+      if (this.selectTextOnFocus) this.setInputSelected()
+
       this.focused = true
 
       this.showMenu()
       this.$emit('focus')
     },
+    // TODO правильнее blurred!
     setBlured () {
       if (this.resetSearchOnBlur) {
         this.setSearchData('')

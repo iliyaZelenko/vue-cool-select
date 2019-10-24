@@ -9,17 +9,7 @@
       <b>Selected:</b> {{ selected || 'not chosen' }}.
       <br><br>
 
-      <form @submit="onSubmit">
-        <cool-select
-          ref="select"
-          v-model="selected"
-          :items="items"
-          placeholder="Select name"
-          @keydown.enter.native="onEnter"
-        />
-      </form>
-
-      <br>
+      {{ selectTextOnFocus }}
 
       <cool-select
         ref="select"
@@ -148,12 +138,6 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      alert('Submit!')
-    },
-    onEnter () {
-      alert('onEnter!')
-    },
     validate () {
       this.errorMessage = this.selected ? null : 'This is required field!'
     }
