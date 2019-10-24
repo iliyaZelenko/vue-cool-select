@@ -15,7 +15,6 @@ it('Plugin installation', () => {
 })
 
 describe('MainComponent.vue', () => {
-  const Vue = require('vue')
   const itemsDefault = [
     'JS',
     'PHP',
