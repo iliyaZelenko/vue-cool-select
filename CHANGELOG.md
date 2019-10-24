@@ -1,11 +1,6 @@
 # [3.3.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.2.0...v3.3.0) (2019-10-24)
 
 
-### Bug Fixes
-
-* **component:** trigger setInputSelected on onClick ([aec9b01](https://github.com/iliyaZelenko/vue-cool-select/commit/aec9b01))
-
-
 ### Features
 
 * **component:** add prop to toggle full input selection on click/focus ([dc1b997](https://github.com/iliyaZelenko/vue-cool-select/commit/dc1b997))
