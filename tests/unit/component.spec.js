@@ -1,8 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import clone from 'clone'
 import MainComponent from '~/component.vue'
 import { MENU_POSITIONS } from '~/constants'
-import createLocalVueWithPlugin from './helpers'
+import createLocalVueWithPlugin, { isTextSelected } from './helpers'
+
+jest.useFakeTimers()
 
 it('Plugin installation', () => {
   const localVue = createLocalVueWithPlugin()
@@ -13,6 +15,7 @@ it('Plugin installation', () => {
 })
 
 describe('MainComponent.vue', () => {
+  const Vue = require('vue')
   const itemsDefault = [
     'JS',
     'PHP',
@@ -60,6 +63,113 @@ describe('MainComponent.vue', () => {
     expect(wrapper.classes()).toContain('IZ-select')
     expect(wrapper.is('div')).toBe(true)
   })
+
+  it('is text selected after setInputSelected', () => {
+    // isTextSelected
+    const wrapper = mount(MainComponent, {
+      propsData: { items: itemsDefault }
+    })
+
+    wrapper.vm.setInputSelected()
+
+    const isSelected = isTextSelected(
+      wrapper.find({ ref: 'IZ-select__input-for-text' }).element
+    )
+
+    expect(isSelected).toBe(true)
+    expect(setTimeout).toHaveBeenCalledTimes(1)
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 100)
+  })
+
+  it('is searchText (watch property) works correctly', () => {
+    const localVue = createLocalVueWithPlugin()
+    const wrapper = mount(MainComponent, {
+      localVue,
+      propsData: { items: itemsDefault }
+    })
+    const searchData = 'TEST'
+    const mock = jest.spyOn(wrapper.vm, 'setSearchData')
+
+    wrapper.setMethods({
+      setSearchData: mock
+    })
+
+    wrapper.vm.$options.watch.searchText.call(wrapper.vm, searchData)
+
+    expect(mock).toBeCalledWith(searchData)
+    expect(wrapper.vm.searchData).toBe(searchData)
+  })
+
+  it('is items (watch property) works correctly', () => {
+    const localVue = createLocalVueWithPlugin()
+    const wrapper = mount(MainComponent, {
+      localVue,
+      propsData: { items: itemsDefault }
+    })
+    const mock = jest.spyOn(wrapper.vm, 'setSelectedItemByValue')
+
+    wrapper.setMethods({ setSelectedItemByValue: mock })
+    wrapper.vm.$options.watch.items.call(wrapper.vm)
+
+    expect(mock).toBeCalled()
+  })
+
+  it('tests beforeDestroy', () => {
+    const mockFn = jest.fn()
+
+    shallowMount(MainComponent, {
+      propsData: { items: itemsDefault },
+      destroyed: mockFn
+    }).destroy()
+
+    expect(mockFn).toHaveBeenCalled()
+  })
+
+  // it('tests mousedown', async () => {
+  //   const mockMousedown = jest.fn()
+  //   const wrapper = mount(MainComponent, {
+  //     propsData: { items: itemsDefault },
+  //     data () {
+  //       return {
+  //         listeners: {
+  //           mousedown: mockMousedown
+  //         }
+  //       }
+  //     }
+  //   })
+  //   // const inputForText = wrapper.find({
+  //   //   ref: 'IZ-select__input-for-text'
+  //   // })
+  //
+  //   const mockSetBlured = jest.fn() // jest.spyOn(wrapper.vm, 'setBlured')
+  //
+  //   wrapper.setMethods({ setBlured: mockSetBlured })
+  //
+  //   wrapper.vm.setFocused()
+  //
+  //   await Vue.nextTick()
+  //
+  //   wrapper.vm.listeners.mousedown.call({
+  //     $refs: {
+  //       'IZ-select': wrapper.find({ ref: 'IZ-select' }).element
+  //     },
+  //     focused: true
+  //   }, {
+  //     target: document.createElement('div') // wrapper.find({ ref: 'IZ-select__input-for-text' }).element
+  //   })
+  //
+  //   await Vue.nextTick()
+  //
+  //   //
+  //   // inputForText.trigger('mousedown')
+  //   //
+  //   // await Vue.nextTick()
+  //
+  //   expect(mockSetBlured).toBeCalled()
+  //   expect(mockMousedown).toHaveBeenCalled()
+  // })
+
+  // inputForText.trigger('focus')
 
   it('tests "item-value", "itemText" props, checks values for every item, checks if an item is selected', () => {
     const localVue = createLocalVueWithPlugin()

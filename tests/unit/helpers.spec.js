@@ -1,4 +1,4 @@
-import { isObject, getOffsetSum, scrollIfNeeded } from '~/helpers'
+import { isObject, getOffsetSum, scrollIfNeeded, mergeDeep } from '~/helpers'
 
 describe('helpers.js', () => {
   it('checks isObject', () => {
@@ -96,5 +96,50 @@ describe('helpers.js', () => {
     expect(
       TEST3.container.scrollTop
     ).toBe(TEST3.container.scrollTop)
+  })
+
+  it('checks mergeDeep', () => {
+    const obj = {
+      a: 10,
+      b: {
+        b1: 20
+      }
+    }
+
+    expect(
+      mergeDeep(obj, {
+        c: 40
+      })
+    ).toEqual({ ...obj, c: 40 })
+
+    expect(
+      mergeDeep(obj, {
+        b: {
+          b2: 20
+        }
+      })
+    ).toEqual({
+      a: 10,
+      b: {
+        b1: 20,
+        b2: 20
+      }
+    })
+
+    expect(
+      mergeDeep(obj, {
+        c: {
+          test: 123
+        }
+      })
+    ).toEqual({
+      a: 10,
+      b: {
+        b1: 20
+      },
+      c: {
+        test: 123
+      }
+    })
   })
 })
