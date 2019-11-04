@@ -36,7 +36,7 @@ export default {
     return styles
   },
   hasMenu () {
-    return this.wishShowMenu && !this.loading // this.focused && !this.loading
+    return !this.simpleInput && this.wishShowMenu && !this.loading // this.focused && !this.loading
   },
   hasError () {
     return !!this.errorMessage

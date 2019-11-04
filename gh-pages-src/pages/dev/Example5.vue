@@ -57,6 +57,7 @@
         :disable-search="disableSearch"
         :select-text-on-focus="selectTextOnFocus"
         placeholder="Select name"
+        simple-input
       >
         <template #input-before>
           before

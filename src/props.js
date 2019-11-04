@@ -158,5 +158,10 @@ export default {
     type: Boolean,
     default: false,
     note: 'if true, fully select a chosen item on focus so the user can instantly search for a new item.'
+  },
+  simpleInput: {
+    type: Boolean,
+    default: false,
+    note: 'works as simple input (no menu)'
   }
 }

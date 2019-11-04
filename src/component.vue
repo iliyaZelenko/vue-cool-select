@@ -48,6 +48,28 @@
         />
 
         <input
+          v-if="simpleInput"
+          ref="IZ-select__input-for-text"
+          v-bind="{
+            value,
+            placeholder,
+            class: inputForTextClass,
+            disabled,
+            readonly,
+            tabindex: 0,
+            type: 'text',
+            autocomplete: 'new-password',
+            ...inputElCustomAttributes,
+            style: inputForTextStyles,
+          }"
+          @keyup="onSearchKeyUp"
+          @keydown="onSearchKeyDown"
+          @input="$emit('input', $event.target.value)"
+          @mousedown="onClick"
+          @focus="setFocused(true)"
+        >
+        <input
+          v-else
           ref="IZ-select__input-for-text"
           v-bind="{
             value: inputValue,
@@ -79,78 +101,80 @@
       />
     </div>
 
-    <div
-      v-for="menuPos of [MENU_POSITIONS.TOP, MENU_POSITIONS.BOTTOM]"
-      :key="'menu-position-' + menuPos"
-      :ref="'IZ-select__menu-' + menuPos"
-      :style="{
-        'pointer-events': hasMenu ? 'auto' : 'none',
-        ...getMenuDynamicStyles(menuPos)
-      }"
-      :class="{
-        [`IZ-select__menu IZ-select__menu--at-${menuPos}`]: true,
-        'IZ-select__menu--disable-search': disableSearch
-      }"
-    >
-      <slot name="before-items-fixed" />
-
+    <template v-if="!simpleInput">
       <div
-        ref="IZ-select__menu-items"
+        v-for="menuPos of [MENU_POSITIONS.TOP, MENU_POSITIONS.BOTTOM]"
+        :key="'menu-position-' + menuPos"
+        :ref="'IZ-select__menu-' + menuPos"
         :style="{
-          'max-height': menuItemsMaxHeight
+          'pointer-events': hasMenu ? 'auto' : 'none',
+          ...getMenuDynamicStyles(menuPos)
         }"
-        class="IZ-select__menu-items"
-        @scroll="onScroll"
+        :class="{
+          [`IZ-select__menu IZ-select__menu--at-${menuPos}`]: true,
+          'IZ-select__menu--disable-search': disableSearch
+        }"
       >
-        <slot name="before-items">
-          <div style="height: 8px;" />
-        </slot>
+        <slot name="before-items-fixed" />
 
-        <!--itemsComputedWithScrollLimit-->
         <div
-          v-for="(item, i) in itemsComputed"
-          v-show="i < scrollItemsLimitCurrent || (arrowsIndex && i <= arrowsIndex)"
-          ref="items"
-          :key="'IZ-item-' + i"
-          :class="{
-            'IZ-select__item': true,
-            'IZ-select__item--selected': isItemSelected(item)
+          ref="IZ-select__menu-items"
+          :style="{
+            'max-height': menuItemsMaxHeight
           }"
-          @click="onClickSelectItem(item)"
+          class="IZ-select__menu-items"
+          @scroll="onScroll"
         >
-          <slot
-            :item="item"
-            name="item"
+          <slot name="before-items">
+            <div style="height: 8px;" />
+          </slot>
+
+          <!--itemsComputedWithScrollLimit-->
+          <div
+            v-for="(item, i) in itemsComputed"
+            v-show="i < scrollItemsLimitCurrent || (arrowsIndex && i <= arrowsIndex)"
+            ref="items"
+            :key="'IZ-item-' + i"
+            :class="{
+              'IZ-select__item': true,
+              'IZ-select__item--selected': isItemSelected(item)
+            }"
+            @click="onClickSelectItem(item)"
           >
-            <span>
-              {{ getItemText(item) }}
-            </span>
+            <slot
+              :item="item"
+              name="item"
+            >
+              <span>
+                {{ getItemText(item) }}
+              </span>
+            </slot>
+          </div>
+
+          <div
+            v-if="!itemsComputed.length && !loading"
+            class="IZ-select__no-data"
+          >
+            <slot name="no-data">
+              {{ $coolSelect.options.text.noData }}
+            </slot>
+          </div>
+
+          <slot name="after-items">
+            <div style="height: 8px;" />
           </slot>
         </div>
 
-        <div
-          v-if="!itemsComputed.length && !loading"
-          class="IZ-select__no-data"
-        >
-          <slot name="no-data">
-            {{ $coolSelect.options.text.noData }}
-          </slot>
+        <slot name="after-items-fixed" />
+
+        <div style="position: absolute; top: 0; left: 0; right: 0;">
+          <slot name="before-items-fixed-absolute" />
         </div>
-
-        <slot name="after-items">
-          <div style="height: 8px;" />
-        </slot>
+        <div style="position: absolute; bottom: 0; left: 0; right: 0;">
+          <slot name="after-items-fixed-absolute" />
+        </div>
       </div>
-
-      <slot name="after-items-fixed" />
-
-      <div style="position: absolute; top: 0; left: 0; right: 0;">
-        <slot name="before-items-fixed-absolute" />
-      </div>
-      <div style="position: absolute; bottom: 0; left: 0; right: 0;">
-        <slot name="after-items-fixed-absolute" />
-      </div>
-    </div>
+    </template>
 
     <transition name="fade">
       <div
