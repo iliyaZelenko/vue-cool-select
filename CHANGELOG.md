@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.3.0...v3.4.0) (2019-11-04)
+
+
+### Features
+
+* **props:** simple-input prop ([4c534cc](https://github.com/iliyaZelenko/vue-cool-select/commit/4c534cc))
+
 # [3.3.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.2.0...v3.3.0) (2019-10-24)
 
 
