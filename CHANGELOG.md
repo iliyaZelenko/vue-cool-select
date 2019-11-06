@@ -5,11 +5,6 @@
 
 * **component:** fixes [#254](https://github.com/iliyaZelenko/vue-cool-select/issues/254) - Remove async from showMenu() ([223160f](https://github.com/iliyaZelenko/vue-cool-select/commit/223160f))
 
-
-### Features
-
-* **package.json:** add package.json prepare script - yarn build ([7cf5e0f](https://github.com/iliyaZelenko/vue-cool-select/commit/7cf5e0f))
-
 # [3.4.0](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.3.0...v3.4.0) (2019-11-04)
 
 
