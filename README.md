@@ -48,21 +48,21 @@ The current version is `3.x`, if you are looking for `2.x`, you can find [it her
 
 ## Features
 
-- 2 themes: Bootstrap 4 (equal styles), Material Design, you can also create your own theme
-- autocomplete (you can use custom search, you can also disable the search input)
-- keyboard controls (not only through the arrows)
+- no dependencies
+- props (30) allow you to customize a component in a various ways
 - slots (13) allow content to be changed anywhere
 - events (8) will let you know about everything
-- props (30) allow you to customize a component in a various ways
-- validation, state of error and success
+- autocomplete (you can use custom search, you can also disable the search input)
+- keyboard controls (not only through the arrows)
 - support on mobile devices
+- validation, state of error and success
 - disabled and readonly
-- smile and large sizes (as in bootstrap)
-- the ability to set your styles, you can write theme from scratch
+- small and large sizes (as in bootstrap)
+- the ability to set your styles, you can write theme from scratch. 2 themes: Bootstrap 4 (equal styles), Material Design
 - TypeScript support
 - tab navigation
 - SSR (Server-Side Rendering)
-- no dependencies
+
 - auto determine the suitable position for the menu if it goes beyond the viewport
 
 Write your suggestions, glad to add.
