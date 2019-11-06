@@ -4,7 +4,6 @@
   "scripts": {
     "commit": "git-cz",
     "serve": "cd ./gh-pages-src && yarn serve",
-    "prepare": "yarn build",
     "build": "rollup --c ./build/rollup.config.js --environment BUILD:production",
     "build-watch": "rollup -w -c",
     "lint": "vue-cli-service lint",
