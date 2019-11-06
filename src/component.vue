@@ -464,7 +464,7 @@ export default {
     isItemSelected (item) {
       return item === this.selectedItemByArrows || (item === this.selectedItem && !this.selectedItemByArrows)
     },
-    async showMenu () {
+    showMenu () {
       if (this.hasMenu) return
 
       this.wishShowMenu = true
