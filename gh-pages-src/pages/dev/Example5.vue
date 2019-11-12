@@ -9,12 +9,10 @@
       <b>Selected:</b> {{ selected || 'not chosen' }}.
       <br><br>
 
-      {{ selectTextOnFocus }}
-
       <cool-select
         ref="select"
-        v-model="selected"
-        :items="items"
+        v-model="selected2"
+        :items="items2"
         :error-message="errorMessage"
         :disabled="disabled"
         :readonly="readonly"
@@ -26,8 +24,8 @@
       <br>
 
       <cool-select
-        v-model="selected"
-        :items="items"
+        v-model="selected2"
+        :items="items2"
         :error-message="errorMessage"
         :successful="!!(!errorMessage && selected)"
         :disabled="disabled"
@@ -121,6 +119,8 @@
 <script>
 import { CoolSelect } from '../../main'
 
+const items2 = [{ 'first_name': 'one' }, { 'first_name': 'two' }, { 'first_name': 'three' }, { 'first_name': 'four' }, { 'first_name': 'five' }]
+
 export default {
   components: { CoolSelect },
   data: () => ({
@@ -129,8 +129,10 @@ export default {
     readonly: false,
     disableSearch: false,
     selectTextOnFocus: false,
-    selected: null,
     items: '[{"first_name":"one"}, {"first_name":"two"}, {"first_name":"three"}, {"first_name":"four"}, {"first_name":"five"}]',
+    items2,
+    selected: null,
+    selected2: items2[0],
     errorMessage: null
   }),
   watch: {

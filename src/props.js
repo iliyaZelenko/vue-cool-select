@@ -8,7 +8,7 @@ export default {
   },
   items: {
     type: [Array, String],
-    required: true,
+    required: false,
     note: 'array of suggestions (data fetched from backend, etc).'
   },
   itemText: {
