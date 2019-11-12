@@ -233,7 +233,9 @@ export default {
         resize: this.menuCalculatePos
       },
       menuCurrentPosition: this.menuDefaultPosition,
-      lastMenuDynamicStyles: null
+      lastMenuDynamicStyles: null,
+      // чтобы не вызывался input из-за selectedItem (в created вызывается setSelectedItemByValue)
+      ignoreFirstInputEvent: true
     }
   },
   computed,
@@ -248,6 +250,12 @@ export default {
       this.setSelectedItemByValue()
     },
     selectedItem () {
+      if (this.ignoreFirstInputEvent) {
+        this.ignoreFirstInputEvent = false
+
+        return
+      }
+
       this.selectedItemByArrows = null
 
       this.$emit('input', this.currentItemValue)
