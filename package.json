@@ -25,7 +25,7 @@
     "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/jest": "^24.0.6",
     "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-e2e-cypress": "^3.4.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.1.2",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-plugin-unit-jest": "^3.4.1",
     "@vue/cli-service": "^3.0.5",
