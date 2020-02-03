@@ -54,7 +54,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "sugarss": "^2.0.0",
-    "ts-jest": "^24.0.0",
+    "ts-jest": "^25.2.0",
     "ts-loader": "^6.1.2",
     "tslint": "^5.13.0",
     "tslint-config-standard": "^8.0.1",
