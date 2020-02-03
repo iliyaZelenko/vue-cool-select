@@ -6,9 +6,9 @@ export const CoolSelect: Component
 export const VueCoolSelect: Component
 export const CoolSelectPlugin: PluginFunction<CoolSelectUseOptionsInterface>
 export const EventEmitter: {
-  on: (event, listener) => any
-  onOnce: (event, listener) => any
-  emit: (event, data) => any
+  on: (event: Event, listener: EventListener) => any
+  onOnce: (event: Event, listener: EventListener) => any
+  emit: (event: Event, data: any) => any
 }
 
 export interface CoolSelectUseOptionsInterface {
@@ -38,14 +38,14 @@ export interface VueCoolSelectComponentInterface extends Vue {
   itemsComputed: any[]
 
   /* Methods */
-  onSelectByArrow (e)
-  onEnter (e)
-  onClick ()
-  onClickSelectItem (item)
-  onSearchKeyDown (e)
-  onSearchKeyUp (e)
-  onSearch (e)
-  onScroll (event)
+  onSelectByArrow (e: Event): any
+  onEnter (e: Event): any
+  onClick (): any
+  onClickSelectItem (item: any): any
+  onSearchKeyDown (e: Event): any
+  onSearchKeyUp (e: Event): any
+  onSearch (e: Event): any
+  onScroll (event: any): any
 
-  setBlured ()
+  setBlured (): any
 }
