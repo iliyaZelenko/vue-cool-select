@@ -1,3 +1,12 @@
+## [3.5.2](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.5.1...v3.5.2) (2020-02-04)
+
+
+### Bug Fixes
+
+* pin core-js to 3.4.6 ([081a676](https://github.com/iliyaZelenko/vue-cool-select/commit/081a676))
+* **types:** incorrect work with config strict: true ([0f1d2f8](https://github.com/iliyaZelenko/vue-cool-select/commit/0f1d2f8)), closes [#315](https://github.com/iliyaZelenko/vue-cool-select/issues/315)
+* **types:** incorrect work with config strict: true ([8fbb9a5](https://github.com/iliyaZelenko/vue-cool-select/commit/8fbb9a5))
+
 ## [3.5.1](https://github.com/iliyaZelenko/vue-cool-select/compare/v3.5.0...v3.5.1) (2019-11-12)
 
 
