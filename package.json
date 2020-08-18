@@ -57,7 +57,7 @@
     "ts-jest": "^24.0.0",
     "ts-loader": "^6.1.2",
     "tslint": "^5.13.0",
-    "tslint-config-standard": "^8.0.1",
+    "tslint-config-standard": "^9.0.0",
     "typescript": "^3.3.3333",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
