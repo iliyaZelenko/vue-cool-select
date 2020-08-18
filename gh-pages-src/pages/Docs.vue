@@ -149,10 +149,16 @@ export default {
       },
       {
         name: 'input-start',
+        scopeProperties: {
+          loading: 'loading boolean'
+        },
         description: 'Inside the input at the start'
       },
       {
         name: 'input-end',
+        scopeProperties: {
+          loading: 'loading boolean'
+        },
         description: 'Inside the input at the end'
       },
       {
